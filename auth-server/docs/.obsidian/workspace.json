@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "e603b6fb2bdc009b",
+    "type": "split",
+    "children": [
+      {
+        "id": "fa3405dd39c921df",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "352b038a4900f0f8",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "Bugs in-progress.base",
+                "viewName": "All"
+              },
+              "pinned": true,
+              "icon": "lucide-table",
+              "title": "Bugs in-progress"
+            }
+          },
+          {
+            "id": "ed782ad19e0e9f75",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "Bugs To-do.base",
+                "viewName": "Critical"
+              },
+              "pinned": true,
+              "icon": "lucide-table",
+              "title": "Bugs To-do"
+            }
+          },
+          {
+            "id": "1b1c4e9b854650ad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "rules/memory-bank/architecture.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "architecture"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "04234a4cbc858c65",
+    "type": "split",
+    "children": [
+      {
+        "id": "cfd6d1e5b52cd868",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "190c306ee3de4d59",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a874b397f5229fd1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c2d95406c38b2f39",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "45c1555d1d14869d",
+    "type": "split",
+    "children": [
+      {
+        "id": "333f7390e25dcc13",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc8cbf0b1083c7ae",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Bugs in-progress.base",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Bugs in-progress"
+            }
+          },
+          {
+            "id": "92c1a086c9bb5880",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9aec867f6e92689c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Bugs in-progress.base",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Bugs in-progress"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "1b1c4e9b854650ad",
+  "lastOpenFiles": [
+    "rules/forbidden-terminal-actions.md",
+    "rules/memory-bank-rules.md",
+    "rules/spring-boot-expert.md",
+    "rules/doc-rules.md",
+    "rules/doc-rules/system-docs.md",
+    "rules/doc-rules/code-explanations.md",
+    "Bugs To-do.base",
+    "rules/doc-rules/bugs.md",
+    "docs (Case Conflict 2)/rules/doc-rules/code-explanations.md",
+    "docs (Case Conflict 2)/rules/doc-rules",
+    "docs (Case Conflict 2)/rules",
+    "docs (Case Conflict 2)",
+    "docs/rules/doc-rules/code-explanations.md",
+    "docs/rules/doc-rules",
+    "docs/rules",
+    "docs",
+    "docs (Case Conflict 1)/rules/doc-rules/system-docs.md",
+    "docs (Case Conflict 1)/rules/doc-rules",
+    "docs (Case Conflict 1)/rules",
+    "docs (Case Conflict 1)",
+    "docs/rules/doc-rules/system-docs.md",
+    "Docs/Login and Security Architecture.md",
+    "Tasks/current/JWT-CORS-Optimization-4.4.md",
+    "Reports/LoginArchitectureReview.md",
+    "Tasks/current/Optimize-Login-Architecture-step-3-Remove-Hardcoded-Defaults.md",
+    "Tasks/done/Optimize-Login-Architecture-step-3-Remove-Hardcoded-Defaults.md",
+    "Features/in-progress/Optimize Login Architecture.md",
+    "Tasks/current/Optimize-Login-Architecture-step-2-1-JSON-Login.md",
+    "Tasks/done/Optimize-Login-Architecture-step-2-1-JSON-Login.md",
+    "Docs/Upload Idempotency System.md",
+    "Docs/Secret Management.md",
+    "Docs/File Upload Process.md",
+    "Tasks/current/Optimize-JWT-Validation-step-1-1-Remove-DB-Hits.md",
+    "Tasks/done/Optimize-JWT-Validation-step-1-1-Remove-DB-Hits.md",
+    "Tasks/done/LY34MT909722.md",
+    "Bugs/done/Implement Idempotency for Upload Operations.md",
+    "Untitled.canvas"
+  ]
+}

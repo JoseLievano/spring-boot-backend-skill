@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "b7fb0eea7b7efad6",
+    "type": "split",
+    "children": [
+      {
+        "id": "b59a338f2cc24467",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a63a488cf13dc502",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Docs/Skill-Architecture.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Skill-Architecture"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "84663fd58acdda35",
+    "type": "split",
+    "children": [
+      {
+        "id": "7ff892f800b2197f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d0d02244cf93e64f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e221ce2183db4554",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "4e0ce63ed5bc6118",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "34d1a51b8a6956e0",
+    "type": "split",
+    "children": [
+      {
+        "id": "356280bae24fe1ad",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ed1db725e259e614",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Docs/Skill-Architecture.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Skill-Architecture"
+            }
+          },
+          {
+            "id": "e9778bb77b109461",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Docs/Skill-Architecture.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Skill-Architecture"
+            }
+          },
+          {
+            "id": "d47a2d6a45f23430",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c4a99f85a43da259",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "075a437310fb891b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Docs/Skill-Architecture.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Skill-Architecture"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "a63a488cf13dc502",
+  "lastOpenFiles": [
+    "Docs/Skill-Directory-Convention.md",
+    "Memory/context.md.tmp.256920.1774817142845",
+    "Docs/Skill-Architecture.md",
+    "Docs/Skill-Architecture.md.tmp.256920.1774817132173",
+    "Memory/progress.md.tmp.256920.1774816417561",
+    "Memory/tech.md.tmp.256920.1774816401922",
+    "Memory/architecture.md.tmp.256920.1774816390646",
+    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md",
+    "Features/to-do/Spring-Boot-Skill-Creation.md",
+    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774808009308",
+    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774807926458",
+    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774807831543",
+    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774807767835",
+    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774807639256",
+    "Memory/context.md",
+    "Memory/brief.md",
+    "Memory/architecture.md"
+  ]
+}

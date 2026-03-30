@@ -1,0 +1,20 @@
+{
+  "vault_name": "spring-boot-backend-skill",
+  "directories": {
+    "bugs": "Bugs",
+    "features": "Features",
+    "tasks": "Tasks",
+    "docs": "Docs",
+    "code": "Code",
+    "rules": "rules"
+  },
+  "statuses": {
+    "bugs": ["to-do", "in-progress", "done"],
+    "features": ["to-do", "in-progress", "done"],
+    "tasks": ["current", "done"]
+  },
+  "obsidian": {
+    "use_cli": false,
+    "vault_name": "spring-boot-backend-skill"
+  }
+}

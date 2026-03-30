@@ -1,0 +1,47 @@
+formulas:
+  Untitled: ""
+views:
+  - type: table
+    name: All
+    filters:
+      and:
+        - file.folder.contains("in-progress")
+    order:
+      - file.name
+      - file.tags
+    sort:
+      - property: file.tags
+        direction: ASC
+    columnSize:
+      file.name: 383
+      file.tags: 176
+  - type: table
+    name: Critical
+    filters:
+      and:
+        - file.folder.contains("in-progress")
+        - file.tags.contains("critical")
+    order:
+      - file.name
+      - file.tags
+  - type: table
+    name: High
+    filters:
+      and:
+        - file.folder.contains("in-progress")
+        - file.tags.contains("high")
+    order:
+      - file.name
+      - file.tags
+    columnSize:
+      file.name: 357
+      file.tags: 176
+  - type: table
+    name: Medium
+    filters:
+      and:
+        - file.folder.contains("in-progress")
+        - file.tags.contains("medium")
+    order:
+      - file.name
+      - file.tags
