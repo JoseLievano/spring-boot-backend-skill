@@ -8,13 +8,15 @@ analysis and skill-authoring process. The primary output artifact is a Claude Co
 ## Source code map
 | Path | Role |
 |------|------|
-| `auth-server/` | Reference project #1 — Spring Boot app (focus: authentication/authorization) |
+| `backend/` | Reference project #1 — Spring Boot 3.4.1 app (artifactId `agentForgeBackend`); replaces the former `auth-server/` with a reorganized auth design |
 | `BugTracker/` | Reference project #2 — Spring Boot app (focus: issue/bug tracking domain) |
-| `wpmanager/` | Reference project #3 — Spring Boot app (focus: TBD — not yet analyzed) |
+| `wpmanager/` | Reference project #3 — Spring Boot 3.4.1 premium WordPress plugin/theme repository and distribution backend (S3 storage, upload idempotency, replication); ships its own vault `wpManagerDocs/` |
 | `spring-boot-skill/` | **Primary output** — all skill files live here during development |
 | `documentation/` | Obsidian-based project docs, memory bank, analysis notes |
 | `documentation/Memory/` | Memory Bank — persistent context for Claude across sessions |
 | `documentation/Docs/` | System-level docs: analysis findings, pattern comparisons, skill design |
+| `documentation/Docs/<project>/` | Phase 1 analysis per reference project: `<project>-Index.md`, `Explanations/NN-*.md`, `Reviews/NN-*-Review.md` + `Reviews/00-Review-Summary.md`. Format: [[Docs/Analysis-Doc-Conventions]] |
+| `scripts/validate-analysis-docs.py` | Validator for the analysis docs (headings, citations `path:line`, wiki links + anchors, finding IDs, summary/index coverage). Tests in `scripts/tests/`. Local read-only guard snapshots in `scripts/.snapshots/` (gitignored) |
 | `documentation/Features/` | Feature tracking for the skill-authoring work |
 | `documentation/Tasks/` | Task breakdown for analysis and writing work |
 
@@ -73,11 +75,20 @@ only by adding a row to the Phase Registry table — its body does not grow with
 - The Phase Registry in `skill.md` is the only cross-phase index.
 
 ## Design patterns
-_Spring Boot architectural patterns to be filled in after project analysis._
+- Analysis docs are split into **Explanations** (descriptive, "how it is built") and **Reviews**
+  (evaluative, stable finding IDs `<BE|BT|WP>-R<NN>-<MM>`). Task 4 compares findings by ID.
+- `backend/` patterns (candidates for the skill) are listed in [[Docs/backend/Reviews/00-Review-Summary]]
+  → "Candidate Patterns for the Skill"; BugTracker's in [[Docs/BugTracker/Reviews/00-Review-Summary]] (which
+  also splits findings into defects vs era gaps); wpmanager's in [[Docs/wpmanager/Reviews/00-Review-Summary]] (which
+  also maps same-root-cause findings to `BE-` IDs in "Shared with backend").
+- **Lineage BugTracker → wpmanager → backend.** The generic `DefaultController`/`DefaultServiceImplements` stack
+  goes from five type parameters (BugTracker, with `LISTDTO`) to four (wpmanager) and back to five plus a
+  QueryDSL list engine (`backend/`). `backend/` inherited wpmanager's `configuration/`, `shared/` and
+  `exceptions/` almost unchanged (27 of 37 shared files identical) and removed the upload/storage domain.
 
 ## Component relationships
 ```
-auth-server/ ──┐
+backend/     ──┐
 BugTracker/  ──┼──► analysis ──► documentation/Docs/ ──► spring-boot-skill/ ──► (migrate) ──► ~/.claude/plugins/
 wpmanager/   ──┘
 ```

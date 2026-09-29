@@ -225,7 +225,7 @@ content, and ordering may change as the reference project analysis progresses.
 | Exception handling | `@ControllerAdvice`, error response shape, exception hierarchy |
 | Testing | Unit and integration test patterns, Testcontainers setup |
 
-The analysis of the three reference projects (auth-server, BugTracker, wpmanager) will
+The analysis of the three reference projects (backend — formerly auth-server —, BugTracker, wpmanager) will
 determine the exact shape and ordering of these phases. Patterns chosen for each phase
 must be grounded in at least two of the three reference projects.
 

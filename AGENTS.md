@@ -3,7 +3,7 @@
 This repository is a skill-authoring workspace for a reusable `spring-boot-backend` agent skill.
 
 It contains three Spring Boot backend projects used as reference material:
-- `auth-server/`
+- `backend/` (replaces the former `auth-server/`)
 - `BugTracker/`
 - `wpmanager/`
 

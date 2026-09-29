@@ -1,0 +1,2985 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="8.66" tests="8" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend/target/test-classes:/home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend/target/classes:/home/jlievano/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/home/jlievano/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/home/jlievano/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar:/home/jlievano/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/jlievano/.m2/repository/org/mockito/mockito-junit-jupiter/5.14.2/mockito-junit-jupiter-5.14.2.jar:/home/jlievano/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/home/jlievano/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-batch/3.4.1/spring-boot-starter-batch-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter/3.4.1/spring-boot-starter-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.4.1/spring-boot-starter-logging-3.4.1.jar:/home/jlievano/.m2/repository/ch/qos/logback/logback-classic/1.5.12/logback-classic-1.5.12.jar:/home/jlievano/.m2/repository/ch/qos/logback/logback-core/1.5.12/logback-core-1.5.12.jar:/home/jlievano/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/home/jlievano/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/home/jlievano/.m2/repository/org/slf4j/jul-to-slf4j/2.0.16/jul-to-slf4j-2.0.16.jar:/home/jlievano/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/jlievano/.m2/repository/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar:/home/jlievano/.m2/repository/org/springframework/batch/spring-batch-core/5.2.1/spring-batch-core-5.2.1.jar:/home/jlievano/.m2/repository/org/springframework/batch/spring-batch-infrastructure/5.2.1/spring-batch-infrastructure-5.2.1.jar:/home/jlievano/.m2/repository/org/springframework/retry/spring-retry/2.0.11/spring-retry-2.0.11.jar:/home/jlievano/.m2/repository/org/springframework/spring-beans/6.2.1/spring-beans-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-context/6.2.1/spring-context-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-tx/6.2.1/spring-tx-6.2.1.jar:/home/jlievano/.m2/repository/io/micrometer/micrometer-core/1.14.2/micrometer-core-1.14.2.jar:/home/jlievano/.m2/repository/io/micrometer/micrometer-commons/1.14.2/micrometer-commons-1.14.2.jar:/home/jlievano/.m2/repository/org/hdrhistogram/HdrHistogram/2.2.2/HdrHistogram-2.2.2.jar:/home/jlievano/.m2/repository/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar:/home/jlievano/.m2/repository/io/micrometer/micrometer-observation/1.14.2/micrometer-observation-1.14.2.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-commons/3.4.1/spring-data-commons-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-data-jdbc/3.4.1/spring-boot-starter-data-jdbc-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-jdbc/3.4.1/spring-data-jdbc-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-relational/3.4.1/spring-data-relational-3.4.1.jar:/home/jlievano/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.4.1/spring-boot-starter-data-jpa-3.4.1.jar:/home/jlievano/.m2/repository/org/hibernate/orm/hibernate-core/6.6.4.Final/hibernate-core-6.6.4.Final.jar:/home/jlievano/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/jlievano/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/jlievano/.m2/repository/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final.jar:/home/jlievano/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/home/jlievano/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/jlievano/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/home/jlievano/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/home/jlievano/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/home/jlievano/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/home/jlievano/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/jlievano/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/jlievano/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-jpa/3.4.1/spring-data-jpa-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-orm/6.2.1/spring-orm-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-aspects/6.2.1/spring-aspects-6.2.1.jar:/home/jlievano/.m2/repository/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar:/home/jlievano/.m2/repository/io/github/openfeign/querydsl/querydsl-jpa/6.12/querydsl-jpa-6.12.jar:/home/jlievano/.m2/repository/io/github/openfeign/querydsl/querydsl-core/6.12/querydsl-core-6.12.jar:/home/jlievano/.m2/repository/com/mysema/commons/mysema-commons-lang/0.2.4/mysema-commons-lang-0.2.4.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-data-rest/3.4.1/spring-boot-starter-data-rest-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-rest-webmvc/4.4.1/spring-data-rest-webmvc-4.4.1.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-rest-core/4.4.1/spring-data-rest-core-4.4.1.jar:/home/jlievano/.m2/repository/org/springframework/hateoas/spring-hateoas/2.4.1/spring-hateoas-2.4.1.jar:/home/jlievano/.m2/repository/org/springframework/plugin/spring-plugin-core/3.0.0/spring-plugin-core-3.0.0.jar:/home/jlievano/.m2/repository/org/atteo/evo-inflector/1.3/evo-inflector-1.3.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.2/jackson-annotations-2.18.2.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.4.1/spring-boot-starter-jdbc-3.4.1.jar:/home/jlievano/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/home/jlievano/.m2/repository/org/springframework/spring-jdbc/6.2.1/spring-jdbc-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.4.1/spring-boot-starter-security-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-aop/6.2.1/spring-aop-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-config/6.4.2/spring-security-config-6.4.2.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-web/6.4.2/spring-security-web-6.4.2.jar:/home/jlievano/.m2/repository/org/springframework/spring-expression/6.2.1/spring-expression-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.4.1/spring-boot-starter-validation-3.4.1.jar:/home/jlievano/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.34/tomcat-embed-el-10.1.34.jar:/home/jlievano/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.2.Final/hibernate-validator-8.0.2.Final.jar:/home/jlievano/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.4.1/spring-boot-starter-web-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.4.1/spring-boot-starter-json-3.4.1.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.18.2/jackson-datatype-jdk8-2.18.2.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.18.2/jackson-datatype-jsr310-2.18.2.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.18.2/jackson-module-parameter-names-2.18.2.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.4.1/spring-boot-starter-tomcat-3.4.1.jar:/home/jlievano/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.34/tomcat-embed-core-10.1.34.jar:/home/jlievano/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.34/tomcat-embed-websocket-10.1.34.jar:/home/jlievano/.m2/repository/org/springframework/spring-web/6.2.1/spring-web-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-webmvc/6.2.1/spring-webmvc-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-web-services/3.4.1/spring-boot-starter-web-services-3.4.1.jar:/home/jlievano/.m2/repository/com/sun/xml/messaging/saaj/saaj-impl/3.0.4/saaj-impl-3.0.4.jar:/home/jlievano/.m2/repository/jakarta/xml/soap/jakarta.xml.soap-api/3.0.2/jakarta.xml.soap-api-3.0.2.jar:/home/jlievano/.m2/repository/org/jvnet/staxex/stax-ex/2.1.0/stax-ex-2.1.0.jar:/home/jlievano/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/home/jlievano/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/home/jlievano/.m2/repository/jakarta/xml/ws/jakarta.xml.ws-api/4.0.2/jakarta.xml.ws-api-4.0.2.jar:/home/jlievano/.m2/repository/org/springframework/spring-oxm/6.2.1/spring-oxm-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/ws/spring-ws-core/4.0.11/spring-ws-core-4.0.11.jar:/home/jlievano/.m2/repository/org/springframework/ws/spring-xml/4.0.11/spring-xml-4.0.11.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/3.4.1/spring-boot-starter-webflux-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/3.4.1/spring-boot-starter-reactor-netty-3.4.1.jar:/home/jlievano/.m2/repository/io/projectreactor/netty/reactor-netty-http/1.2.1/reactor-netty-http-1.2.1.jar:/home/jlievano/.m2/repository/io/netty/netty-resolver-dns/4.1.116.Final/netty-resolver-dns-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-codec-dns/4.1.116.Final/netty-codec-dns-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-resolver-dns-native-macos/4.1.116.Final/netty-resolver-dns-native-macos-4.1.116.Final-osx-x86_64.jar:/home/jlievano/.m2/repository/io/netty/netty-resolver-dns-classes-macos/4.1.116.Final/netty-resolver-dns-classes-macos-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-transport-native-epoll/4.1.116.Final/netty-transport-native-epoll-4.1.116.Final-linux-x86_64.jar:/home/jlievano/.m2/repository/io/projectreactor/netty/reactor-netty-core/1.2.1/reactor-netty-core-1.2.1.jar:/home/jlievano/.m2/repository/io/netty/netty-handler-proxy/4.1.116.Final/netty-handler-proxy-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-codec-socks/4.1.116.Final/netty-codec-socks-4.1.116.Final.jar:/home/jlievano/.m2/repository/org/springframework/spring-webflux/6.2.1/spring-webflux-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-websocket/3.4.1/spring-boot-starter-websocket-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-messaging/6.2.1/spring-messaging-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-websocket/6.2.1/spring-websocket-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-devtools/3.4.1/spring-boot-devtools-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot/3.4.1/spring-boot-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.4.1/spring-boot-autoconfigure-3.4.1.jar:/home/jlievano/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:/home/jlievano/.m2/repository/org/postgresql/postgresql/42.7.4/postgresql-42.7.4.jar:/home/jlievano/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/home/jlievano/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar:/home/jlievano/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.5/jjwt-api-0.12.5.jar:/home/jlievano/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.5/jjwt-impl-0.12.5.jar:/home/jlievano/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.5/jjwt-jackson-0.12.5.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.2/jackson-core-2.18.2.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.4.1/spring-boot-starter-test-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-test/3.4.1/spring-boot-test-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.4.1/spring-boot-test-autoconfigure-3.4.1.jar:/home/jlievano/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/home/jlievano/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/home/jlievano/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/home/jlievano/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/home/jlievano/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/home/jlievano/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/home/jlievano/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/home/jlievano/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/jlievano/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/home/jlievano/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/home/jlievano/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/home/jlievano/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/jlievano/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/jlievano/.m2/repository/org/springframework/spring-core/6.2.1/spring-core-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-jcl/6.2.1/spring-jcl-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-test/6.2.1/spring-test-6.2.1.jar:/home/jlievano/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/home/jlievano/.m2/repository/io/projectreactor/reactor-test/3.7.1/reactor-test-3.7.1.jar:/home/jlievano/.m2/repository/io/projectreactor/reactor-core/3.7.1/reactor-core-3.7.1.jar:/home/jlievano/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/home/jlievano/.m2/repository/org/springframework/batch/spring-batch-test/5.2.1/spring-batch-test-5.2.1.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-test/6.4.2/spring-security-test-6.4.2.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-core/6.4.2/spring-security-core-6.4.2.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-crypto/6.4.2/spring-security-crypto-6.4.2.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/s3/2.20.12/s3-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/aws-xml-protocol/2.20.12/aws-xml-protocol-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/aws-query-protocol/2.20.12/aws-query-protocol-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/protocol-core/2.20.12/protocol-core-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/arns/2.20.12/arns-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/profiles/2.20.12/profiles-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/sdk-core/2.20.12/sdk-core-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/auth/2.20.12/auth-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/eventstream/eventstream/1.0.1/eventstream-1.0.1.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/http-client-spi/2.20.12/http-client-spi-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/regions/2.20.12/regions-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/annotations/2.20.12/annotations-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/utils/2.20.12/utils-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/aws-core/2.20.12/aws-core-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/metrics-spi/2.20.12/metrics-spi-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/json-utils/2.20.12/json-utils-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/third-party-jackson-core/2.20.12/third-party-jackson-core-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/endpoints-spi/2.20.12/endpoints-spi-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/apache-client/2.20.12/apache-client-2.20.12.jar:/home/jlievano/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/home/jlievano/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/jlievano/.m2/repository/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar:/home/jlievano/.m2/repository/commons-codec/commons-codec/1.17.1/commons-codec-1.17.1.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/netty-nio-client/2.20.12/netty-nio-client-2.20.12.jar:/home/jlievano/.m2/repository/io/netty/netty-codec-http/4.1.116.Final/netty-codec-http-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-codec-http2/4.1.116.Final/netty-codec-http2-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-codec/4.1.116.Final/netty-codec-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-transport/4.1.116.Final/netty-transport-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-resolver/4.1.116.Final/netty-resolver-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-common/4.1.116.Final/netty-common-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-buffer/4.1.116.Final/netty-buffer-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-handler/4.1.116.Final/netty-handler-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.116.Final/netty-transport-native-unix-common-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-transport-classes-epoll/4.1.116.Final/netty-transport-classes-epoll-4.1.116.Final.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-suite-engine/1.11.4/junit-platform-suite-engine-1.11.4.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-suite-api/1.11.4/junit-platform-suite-api-1.11.4.jar:/home/jlievano/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.11.4/junit-platform-suite-commons-1.11.4.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-launcher/1.11.4/junit-platform-launcher-1.11.4.jar:"/>
+    <property name="java.vm.vendor" value="Ubuntu"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="user.timezone" value="Europe/Brussels"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="APPLICATION_NAME" value="agentForgeBackend-TEST-SUITE"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend/target/surefire/surefirebooter-20260507123520394_3.jar /home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend/target/surefire 2026-05-07T12-35-20_282-jvmRun1 surefire-20260507123520394_1tmp surefire_0-20260507123520394_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend/target/test-classes:/home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend/target/classes:/home/jlievano/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/home/jlievano/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/home/jlievano/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar:/home/jlievano/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/jlievano/.m2/repository/org/mockito/mockito-junit-jupiter/5.14.2/mockito-junit-jupiter-5.14.2.jar:/home/jlievano/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/home/jlievano/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-batch/3.4.1/spring-boot-starter-batch-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter/3.4.1/spring-boot-starter-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.4.1/spring-boot-starter-logging-3.4.1.jar:/home/jlievano/.m2/repository/ch/qos/logback/logback-classic/1.5.12/logback-classic-1.5.12.jar:/home/jlievano/.m2/repository/ch/qos/logback/logback-core/1.5.12/logback-core-1.5.12.jar:/home/jlievano/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/home/jlievano/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/home/jlievano/.m2/repository/org/slf4j/jul-to-slf4j/2.0.16/jul-to-slf4j-2.0.16.jar:/home/jlievano/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/jlievano/.m2/repository/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar:/home/jlievano/.m2/repository/org/springframework/batch/spring-batch-core/5.2.1/spring-batch-core-5.2.1.jar:/home/jlievano/.m2/repository/org/springframework/batch/spring-batch-infrastructure/5.2.1/spring-batch-infrastructure-5.2.1.jar:/home/jlievano/.m2/repository/org/springframework/retry/spring-retry/2.0.11/spring-retry-2.0.11.jar:/home/jlievano/.m2/repository/org/springframework/spring-beans/6.2.1/spring-beans-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-context/6.2.1/spring-context-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-tx/6.2.1/spring-tx-6.2.1.jar:/home/jlievano/.m2/repository/io/micrometer/micrometer-core/1.14.2/micrometer-core-1.14.2.jar:/home/jlievano/.m2/repository/io/micrometer/micrometer-commons/1.14.2/micrometer-commons-1.14.2.jar:/home/jlievano/.m2/repository/org/hdrhistogram/HdrHistogram/2.2.2/HdrHistogram-2.2.2.jar:/home/jlievano/.m2/repository/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar:/home/jlievano/.m2/repository/io/micrometer/micrometer-observation/1.14.2/micrometer-observation-1.14.2.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-commons/3.4.1/spring-data-commons-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-data-jdbc/3.4.1/spring-boot-starter-data-jdbc-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-jdbc/3.4.1/spring-data-jdbc-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-relational/3.4.1/spring-data-relational-3.4.1.jar:/home/jlievano/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.4.1/spring-boot-starter-data-jpa-3.4.1.jar:/home/jlievano/.m2/repository/org/hibernate/orm/hibernate-core/6.6.4.Final/hibernate-core-6.6.4.Final.jar:/home/jlievano/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/jlievano/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/jlievano/.m2/repository/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final.jar:/home/jlievano/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/home/jlievano/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/jlievano/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/home/jlievano/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/home/jlievano/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/home/jlievano/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/home/jlievano/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/jlievano/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/jlievano/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-jpa/3.4.1/spring-data-jpa-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-orm/6.2.1/spring-orm-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-aspects/6.2.1/spring-aspects-6.2.1.jar:/home/jlievano/.m2/repository/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar:/home/jlievano/.m2/repository/io/github/openfeign/querydsl/querydsl-jpa/6.12/querydsl-jpa-6.12.jar:/home/jlievano/.m2/repository/io/github/openfeign/querydsl/querydsl-core/6.12/querydsl-core-6.12.jar:/home/jlievano/.m2/repository/com/mysema/commons/mysema-commons-lang/0.2.4/mysema-commons-lang-0.2.4.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-data-rest/3.4.1/spring-boot-starter-data-rest-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-rest-webmvc/4.4.1/spring-data-rest-webmvc-4.4.1.jar:/home/jlievano/.m2/repository/org/springframework/data/spring-data-rest-core/4.4.1/spring-data-rest-core-4.4.1.jar:/home/jlievano/.m2/repository/org/springframework/hateoas/spring-hateoas/2.4.1/spring-hateoas-2.4.1.jar:/home/jlievano/.m2/repository/org/springframework/plugin/spring-plugin-core/3.0.0/spring-plugin-core-3.0.0.jar:/home/jlievano/.m2/repository/org/atteo/evo-inflector/1.3/evo-inflector-1.3.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.2/jackson-annotations-2.18.2.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.4.1/spring-boot-starter-jdbc-3.4.1.jar:/home/jlievano/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/home/jlievano/.m2/repository/org/springframework/spring-jdbc/6.2.1/spring-jdbc-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.4.1/spring-boot-starter-security-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-aop/6.2.1/spring-aop-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-config/6.4.2/spring-security-config-6.4.2.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-web/6.4.2/spring-security-web-6.4.2.jar:/home/jlievano/.m2/repository/org/springframework/spring-expression/6.2.1/spring-expression-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.4.1/spring-boot-starter-validation-3.4.1.jar:/home/jlievano/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.34/tomcat-embed-el-10.1.34.jar:/home/jlievano/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.2.Final/hibernate-validator-8.0.2.Final.jar:/home/jlievano/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.4.1/spring-boot-starter-web-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.4.1/spring-boot-starter-json-3.4.1.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.18.2/jackson-datatype-jdk8-2.18.2.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.18.2/jackson-datatype-jsr310-2.18.2.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.18.2/jackson-module-parameter-names-2.18.2.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.4.1/spring-boot-starter-tomcat-3.4.1.jar:/home/jlievano/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.34/tomcat-embed-core-10.1.34.jar:/home/jlievano/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.34/tomcat-embed-websocket-10.1.34.jar:/home/jlievano/.m2/repository/org/springframework/spring-web/6.2.1/spring-web-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-webmvc/6.2.1/spring-webmvc-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-web-services/3.4.1/spring-boot-starter-web-services-3.4.1.jar:/home/jlievano/.m2/repository/com/sun/xml/messaging/saaj/saaj-impl/3.0.4/saaj-impl-3.0.4.jar:/home/jlievano/.m2/repository/jakarta/xml/soap/jakarta.xml.soap-api/3.0.2/jakarta.xml.soap-api-3.0.2.jar:/home/jlievano/.m2/repository/org/jvnet/staxex/stax-ex/2.1.0/stax-ex-2.1.0.jar:/home/jlievano/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/home/jlievano/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/home/jlievano/.m2/repository/jakarta/xml/ws/jakarta.xml.ws-api/4.0.2/jakarta.xml.ws-api-4.0.2.jar:/home/jlievano/.m2/repository/org/springframework/spring-oxm/6.2.1/spring-oxm-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/ws/spring-ws-core/4.0.11/spring-ws-core-4.0.11.jar:/home/jlievano/.m2/repository/org/springframework/ws/spring-xml/4.0.11/spring-xml-4.0.11.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/3.4.1/spring-boot-starter-webflux-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/3.4.1/spring-boot-starter-reactor-netty-3.4.1.jar:/home/jlievano/.m2/repository/io/projectreactor/netty/reactor-netty-http/1.2.1/reactor-netty-http-1.2.1.jar:/home/jlievano/.m2/repository/io/netty/netty-resolver-dns/4.1.116.Final/netty-resolver-dns-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-codec-dns/4.1.116.Final/netty-codec-dns-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-resolver-dns-native-macos/4.1.116.Final/netty-resolver-dns-native-macos-4.1.116.Final-osx-x86_64.jar:/home/jlievano/.m2/repository/io/netty/netty-resolver-dns-classes-macos/4.1.116.Final/netty-resolver-dns-classes-macos-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-transport-native-epoll/4.1.116.Final/netty-transport-native-epoll-4.1.116.Final-linux-x86_64.jar:/home/jlievano/.m2/repository/io/projectreactor/netty/reactor-netty-core/1.2.1/reactor-netty-core-1.2.1.jar:/home/jlievano/.m2/repository/io/netty/netty-handler-proxy/4.1.116.Final/netty-handler-proxy-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-codec-socks/4.1.116.Final/netty-codec-socks-4.1.116.Final.jar:/home/jlievano/.m2/repository/org/springframework/spring-webflux/6.2.1/spring-webflux-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-websocket/3.4.1/spring-boot-starter-websocket-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-messaging/6.2.1/spring-messaging-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-websocket/6.2.1/spring-websocket-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-devtools/3.4.1/spring-boot-devtools-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot/3.4.1/spring-boot-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.4.1/spring-boot-autoconfigure-3.4.1.jar:/home/jlievano/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:/home/jlievano/.m2/repository/org/postgresql/postgresql/42.7.4/postgresql-42.7.4.jar:/home/jlievano/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/home/jlievano/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar:/home/jlievano/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.5/jjwt-api-0.12.5.jar:/home/jlievano/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.5/jjwt-impl-0.12.5.jar:/home/jlievano/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.5/jjwt-jackson-0.12.5.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2.jar:/home/jlievano/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.2/jackson-core-2.18.2.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.4.1/spring-boot-starter-test-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-test/3.4.1/spring-boot-test-3.4.1.jar:/home/jlievano/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.4.1/spring-boot-test-autoconfigure-3.4.1.jar:/home/jlievano/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/home/jlievano/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/home/jlievano/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/home/jlievano/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/home/jlievano/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/home/jlievano/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/home/jlievano/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/home/jlievano/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/jlievano/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/home/jlievano/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/home/jlievano/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/home/jlievano/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/jlievano/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/jlievano/.m2/repository/org/springframework/spring-core/6.2.1/spring-core-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-jcl/6.2.1/spring-jcl-6.2.1.jar:/home/jlievano/.m2/repository/org/springframework/spring-test/6.2.1/spring-test-6.2.1.jar:/home/jlievano/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/home/jlievano/.m2/repository/io/projectreactor/reactor-test/3.7.1/reactor-test-3.7.1.jar:/home/jlievano/.m2/repository/io/projectreactor/reactor-core/3.7.1/reactor-core-3.7.1.jar:/home/jlievano/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/home/jlievano/.m2/repository/org/springframework/batch/spring-batch-test/5.2.1/spring-batch-test-5.2.1.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-test/6.4.2/spring-security-test-6.4.2.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-core/6.4.2/spring-security-core-6.4.2.jar:/home/jlievano/.m2/repository/org/springframework/security/spring-security-crypto/6.4.2/spring-security-crypto-6.4.2.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/s3/2.20.12/s3-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/aws-xml-protocol/2.20.12/aws-xml-protocol-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/aws-query-protocol/2.20.12/aws-query-protocol-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/protocol-core/2.20.12/protocol-core-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/arns/2.20.12/arns-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/profiles/2.20.12/profiles-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/sdk-core/2.20.12/sdk-core-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/auth/2.20.12/auth-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/eventstream/eventstream/1.0.1/eventstream-1.0.1.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/http-client-spi/2.20.12/http-client-spi-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/regions/2.20.12/regions-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/annotations/2.20.12/annotations-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/utils/2.20.12/utils-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/aws-core/2.20.12/aws-core-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/metrics-spi/2.20.12/metrics-spi-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/json-utils/2.20.12/json-utils-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/third-party-jackson-core/2.20.12/third-party-jackson-core-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/endpoints-spi/2.20.12/endpoints-spi-2.20.12.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/apache-client/2.20.12/apache-client-2.20.12.jar:/home/jlievano/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/home/jlievano/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/jlievano/.m2/repository/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar:/home/jlievano/.m2/repository/commons-codec/commons-codec/1.17.1/commons-codec-1.17.1.jar:/home/jlievano/.m2/repository/software/amazon/awssdk/netty-nio-client/2.20.12/netty-nio-client-2.20.12.jar:/home/jlievano/.m2/repository/io/netty/netty-codec-http/4.1.116.Final/netty-codec-http-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-codec-http2/4.1.116.Final/netty-codec-http2-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-codec/4.1.116.Final/netty-codec-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-transport/4.1.116.Final/netty-transport-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-resolver/4.1.116.Final/netty-resolver-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-common/4.1.116.Final/netty-common-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-buffer/4.1.116.Final/netty-buffer-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-handler/4.1.116.Final/netty-handler-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.116.Final/netty-transport-native-unix-common-4.1.116.Final.jar:/home/jlievano/.m2/repository/io/netty/netty-transport-classes-epoll/4.1.116.Final/netty-transport-classes-epoll-4.1.116.Final.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-suite-engine/1.11.4/junit-platform-suite-engine-1.11.4.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-suite-api/1.11.4/junit-platform-suite-api-1.11.4.jar:/home/jlievano/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.11.4/junit-platform-suite-commons-1.11.4.jar:/home/jlievano/.m2/repository/org/junit/platform/junit-platform-launcher/1.11.4/junit-platform-launcher-1.11.4.jar:"/>
+    <property name="test" value="com.agentForgeBackend.TestLauncher"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/jlievano"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-01-20"/>
+    <property name="java.home" value="/usr/lib/jvm/java-21-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="/home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend/target/surefire/surefirebooter-20260507123520394_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="jdk.instrument.traceUsage" value="false"/>
+    <property name="java.runtime.version" value="21.0.10+7-Ubuntu-122.04"/>
+    <property name="user.name" value="jlievano"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.8.0-111-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/jlievano/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-21"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="java.version" value="21.0.10"/>
+    <property name="user.dir" value="/home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="25124"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Ubuntu"/>
+    <property name="java.vm.version" value="21.0.10+7-Ubuntu-122.04"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[agentForgeBackend-TEST-SUITE] "/>
+  </properties>
+  <testcase name="unsupportedOperatorOnBooleanFieldReturnsBadRequest" classname="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="0.645">
+    <system-out><![CDATA[12:35:21.559 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest]: AdminControllerListEndpointTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:35:21.756 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.agentForgeBackend.agentForgeBackendApplication for test class com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest
+12:35:21.949 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.1)
+
+2026-05-07T12:35:22.272+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .a.m.h.a.AdminControllerListEndpointTest : Starting AdminControllerListEndpointTest using Java 21.0.10 with PID 25124 (started by jlievano in /home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill/backend)
+2026-05-07T12:35:22.274+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .a.m.h.a.AdminControllerListEndpointTest : The following 1 profile is active: "test"
+2026-05-07T12:35:23.211+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-07T12:35:23.213+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-05-07T12:35:23.262+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.agentForgeBackend.models.hq.admin.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-05-07T12:35:23.263+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.agentForgeBackend.models.hq.client.ClientRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-05-07T12:35:23.264+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.agentForgeBackend.shared.securityUser.BaseUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-05-07T12:35:23.265+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 0 JDBC repository interfaces.
+2026-05-07T12:35:23.277+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-07T12:35:23.278+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-07T12:35:23.411+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 127 ms. Found 3 JPA repository interfaces.
+2026-05-07T12:35:23.896+02:00  WARN 25124 --- [agentForgeBackend-TEST-SUITE] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-05-07T12:35:23.967+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-05-07T12:35:24.106+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-07T12:35:24.327+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-07T12:35:24.329+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-07T12:35:24.476+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-07T12:35:24.560+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-05-07T12:35:24.609+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-07T12:35:24.965+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-07T12:35:25.017+02:00  WARN 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-07T12:35:25.031+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-07T12:35:25.893+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    create global temporary table HT_base_user(id bigint not null, primary key (id)) TRANSACTIONAL
+Hibernate: 
+    create global temporary table HT_base_user(id bigint not null, primary key (id)) TRANSACTIONAL
+2026-05-07T12:35:25.900+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    create global temporary table HTE_base_user(account_non_expired boolean, account_non_locked boolean, credentials_non_expired boolean, enabled boolean, HTE_IDENTITY bigint generated 
+by
+    default as identity, apikey bigint, date_created timestamp(6), id bigint, last_login timestamp(6), email varchar(100), first_name varchar(100), last_name varchar(100), username varchar(100), password varchar(255), primary key (HTE_IDENTITY)) TRANSACTIONAL
+Hibernate: 
+    create global temporary table HTE_base_user(account_non_expired boolean, account_non_locked boolean, credentials_non_expired boolean, enabled boolean, HTE_IDENTITY bigint generated 
+by
+    default as identity, apikey bigint, date_created timestamp(6), id bigint, last_login timestamp(6), email varchar(100), first_name varchar(100), last_name varchar(100), username varchar(100), password varchar(255), primary key (HTE_IDENTITY)) TRANSACTIONAL
+2026-05-07T12:35:25.907+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    create global temporary table HTE_client(account_non_expired boolean, account_non_locked boolean, credentials_non_expired boolean, enabled boolean, HTE_IDENTITY bigint generated 
+by
+    default as identity, apikey bigint, date_created timestamp(6), id bigint, last_login timestamp(6), email varchar(100), first_name varchar(100), last_name varchar(100), username varchar(100), password varchar(255), primary key (HTE_IDENTITY)) TRANSACTIONAL
+Hibernate: 
+    create global temporary table HTE_client(account_non_expired boolean, account_non_locked boolean, credentials_non_expired boolean, enabled boolean, HTE_IDENTITY bigint generated 
+by
+    default as identity, apikey bigint, date_created timestamp(6), id bigint, last_login timestamp(6), email varchar(100), first_name varchar(100), last_name varchar(100), username varchar(100), password varchar(255), primary key (HTE_IDENTITY)) TRANSACTIONAL
+2026-05-07T12:35:25.909+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    create global temporary table HTE_admin(account_non_expired boolean, account_non_locked boolean, credentials_non_expired boolean, enabled boolean, HTE_IDENTITY bigint generated 
+by
+    default as identity, date_created timestamp(6), id bigint, last_login timestamp(6), email varchar(100), first_name varchar(100), last_name varchar(100), username varchar(100), password varchar(255), primary key (HTE_IDENTITY)) TRANSACTIONAL
+Hibernate: 
+    create global temporary table HTE_admin(account_non_expired boolean, account_non_locked boolean, credentials_non_expired boolean, enabled boolean, HTE_IDENTITY bigint generated 
+by
+    default as identity, date_created timestamp(6), id bigint, last_login timestamp(6), email varchar(100), first_name varchar(100), last_name varchar(100), username varchar(100), password varchar(255), primary key (HTE_IDENTITY)) TRANSACTIONAL
+2026-05-07T12:35:26.034+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-07T12:35:26.045+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    drop table if exists admin cascade 
+Hibernate: 
+    drop table if exists admin cascade 
+2026-05-07T12:35:26.046+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    drop table if exists base_user cascade 
+Hibernate: 
+    drop table if exists base_user cascade 
+2026-05-07T12:35:26.046+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    drop table if exists client cascade 
+Hibernate: 
+    drop table if exists client cascade 
+2026-05-07T12:35:26.047+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    drop table if exists user_roles cascade 
+Hibernate: 
+    drop table if exists user_roles cascade 
+2026-05-07T12:35:26.053+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    create table admin (
+        id bigint not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table admin (
+        id bigint not null,
+        primary key (id)
+    )
+2026-05-07T12:35:26.056+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    create table base_user (
+        account_non_expired boolean not null,
+        account_non_locked boolean not null,
+        credentials_non_expired boolean not null,
+        enabled boolean not null,
+        date_created timestamp(6),
+        id bigint generated by default as identity,
+        last_login timestamp(6),
+        email varchar(100) not null unique,
+        first_name varchar(100),
+        last_name varchar(100),
+        username varchar(100) not null unique,
+        password varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table base_user (
+        account_non_expired boolean not null,
+        account_non_locked boolean not null,
+        credentials_non_expired boolean not null,
+        enabled boolean not null,
+        date_created timestamp(6),
+        id bigint generated by default as identity,
+        last_login timestamp(6),
+        email varchar(100) not null unique,
+        first_name varchar(100),
+        last_name varchar(100),
+        username varchar(100) not null unique,
+        password varchar(255) not null,
+        primary key (id)
+    )
+2026-05-07T12:35:26.060+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    create table client (
+        apikey bigint unique,
+        id bigint not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table client (
+        apikey bigint unique,
+        id bigint not null,
+        primary key (id)
+    )
+2026-05-07T12:35:26.061+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    create table user_roles (
+        role tinyint check (role between 0 and 2),
+        user_id bigint not null
+    )
+Hibernate: 
+    create table user_roles (
+        role tinyint check (role between 0 and 2),
+        user_id bigint not null
+    )
+2026-05-07T12:35:26.063+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    alter table if exists admin 
+       add constraint FK4y4emwrubxwgmaelnquqapxtj 
+       foreign key (id) 
+       references base_user
+Hibernate: 
+    alter table if exists admin 
+       add constraint FK4y4emwrubxwgmaelnquqapxtj 
+       foreign key (id) 
+       references base_user
+2026-05-07T12:35:26.064+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    alter table if exists client 
+       add constraint FK90edbajwq5sg58vgj7rspmii 
+       foreign key (id) 
+       references base_user
+Hibernate: 
+    alter table if exists client 
+       add constraint FK90edbajwq5sg58vgj7rspmii 
+       foreign key (id) 
+       references base_user
+2026-05-07T12:35:26.066+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    alter table if exists user_roles 
+       add constraint FKpvbp5n3m7opkt91gn0fdk3ybb 
+       foreign key (user_id) 
+       references base_user
+Hibernate: 
+    alter table if exists user_roles 
+       add constraint FKpvbp5n3m7opkt91gn0fdk3ybb 
+       foreign key (user_id) 
+       references base_user
+2026-05-07T12:35:26.070+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-07T12:35:26.589+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name securityUserServiceImpl
+2026-05-07T12:35:28.098+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-05-07T12:35:28.098+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-05-07T12:35:28.100+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-05-07T12:35:28.249+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] .a.m.h.a.AdminControllerListEndpointTest : Started AdminControllerListEndpointTest in 6.313 seconds (process running for 7.787)
+2026-05-07T12:35:28.253+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] o.s.b.a.b.JobLauncherApplicationRunner   : Running default command line with: []
+2026-05-07T12:35:28.560+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        admin ae1_0
+Hibernate: 
+    select
+        count(*) 
+    from
+        admin ae1_0
+2026-05-07T12:35:28.586+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] c.a.c.boostrap.AdminBoostrap             : Admin count: 0
+2026-05-07T12:35:28.586+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] c.a.c.boostrap.AdminBoostrap             : Creating first admin
+2026-05-07T12:35:28.673+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] c.a.c.boostrap.AdminBoostrap             : Admin form created, inserting
+2026-05-07T12:35:28.717+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:28.728+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:28.739+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:28.742+02:00  INFO 25124 --- [agentForgeBackend-TEST-SUITE] [           main] c.a.c.boostrap.AdminBoostrap             : Admin inserted
+2026-05-07T12:35:29.159+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+2026-05-07T12:35:29.170+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.176+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.178+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.179+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.184+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.185+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.186+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.187+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.188+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.189+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.190+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.191+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.191+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+]]></system-out>
+    <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+]]></system-err>
+  </testcase>
+  <testcase name="invalidRequestValidationReturnsBadRequest" classname="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="0.062">
+    <system-out><![CDATA[2026-05-07T12:35:29.403+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+2026-05-07T12:35:29.406+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.407+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.408+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.409+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.410+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.411+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.411+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.412+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.413+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.413+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.414+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.414+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.417+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.418+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.419+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.421+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.422+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.423+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.426+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.427+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.428+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+]]></system-out>
+  </testcase>
+  <testcase name="listWithFilterSortAndPaginationReturnsMatchingAdminPage" classname="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="0.306">
+    <system-out><![CDATA[2026-05-07T12:35:29.468+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+2026-05-07T12:35:29.470+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.471+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.472+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.474+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.475+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.477+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.479+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.479+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.481+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.482+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.483+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.484+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.488+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.490+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.491+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.494+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.496+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.497+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.499+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.500+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.501+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.660+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id 
+    where
+        ae1_1.enabled=? 
+    order by
+        ae1_1.username desc 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id 
+    where
+        ae1_1.enabled=? 
+    order by
+        ae1_1.username desc 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-05-07T12:35:29.663+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.713+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        count(ae1_0.id) 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id 
+    where
+        ae1_1.enabled=?
+Hibernate: 
+    select
+        count(ae1_0.id) 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id 
+    where
+        ae1_1.enabled=?
+2026-05-07T12:35:29.725+02:00  WARN 25124 --- [agentForgeBackend-TEST-SUITE] [           main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+]]></system-out>
+  </testcase>
+  <testcase name="unknownSortFieldReturnsBadRequest" classname="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="0.043">
+    <system-out><![CDATA[2026-05-07T12:35:29.776+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+2026-05-07T12:35:29.779+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.780+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.780+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.781+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.782+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.783+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.784+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.784+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.785+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.786+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.787+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.787+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.790+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.791+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.792+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.794+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.795+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.796+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.799+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.800+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.801+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+]]></system-out>
+  </testcase>
+  <testcase name="malformedOperatorEnumReturnsBadRequest" classname="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="0.041">
+    <system-out><![CDATA[2026-05-07T12:35:29.821+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+2026-05-07T12:35:29.823+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.824+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.825+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.826+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.827+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.827+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.828+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.829+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.829+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.830+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.831+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.831+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.834+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.835+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.836+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.838+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.839+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.840+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.843+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.844+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.845+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+]]></system-out>
+  </testcase>
+  <testcase name="unknownPasswordFilterFieldReturnsBadRequest" classname="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="0.05">
+    <system-out><![CDATA[2026-05-07T12:35:29.868+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+2026-05-07T12:35:29.872+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.873+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.874+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.875+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.876+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.877+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.877+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.878+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.879+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.879+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.880+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.881+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.883+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.884+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.886+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.888+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.889+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.891+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.895+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.896+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.897+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+]]></system-out>
+  </testcase>
+  <testcase name="invalidIdValueTypeReturnsBadRequest" classname="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="0.046">
+    <system-out><![CDATA[2026-05-07T12:35:29.913+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+2026-05-07T12:35:29.915+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.916+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.917+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.922+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.922+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.925+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.926+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.926+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.928+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.928+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.929+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.929+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.933+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.934+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.935+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.938+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.939+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.941+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.943+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.944+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.945+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+]]></system-out>
+  </testcase>
+  <testcase name="listWithDefaultRequestReturnsAdminListPageWithoutPassword" classname="com.agentForgeBackend.models.hq.admin.AdminControllerListEndpointTest" time="0.055">
+    <system-out><![CDATA[2026-05-07T12:35:29.963+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id
+2026-05-07T12:35:29.968+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.969+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.970+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.971+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.972+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.972+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+Hibernate: 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-05-07T12:35:29.973+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.973+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.974+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.975+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.975+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        admin 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        admin 
+    where
+        id=?
+2026-05-07T12:35:29.976+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        base_user 
+    where
+        id=?
+2026-05-07T12:35:29.978+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.979+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.979+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.981+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.981+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.982+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.984+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        base_user
+        (account_non_expired, account_non_locked, credentials_non_expired, date_created, email, enabled, first_name, last_login, last_name, password, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-05-07T12:35:29.985+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+Hibernate: 
+    insert 
+    into
+        admin
+        (id) 
+    values
+        (?)
+2026-05-07T12:35:29.986+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        user_roles
+        (user_id, role) 
+    values
+        (?, ?)
+2026-05-07T12:35:29.996+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id 
+    order by
+        ae1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+Hibernate: 
+    select
+        ae1_0.id,
+        ae1_1.account_non_expired,
+        ae1_1.account_non_locked,
+        ae1_1.credentials_non_expired,
+        ae1_1.date_created,
+        ae1_1.email,
+        ae1_1.enabled,
+        ae1_1.first_name,
+        ae1_1.last_login,
+        ae1_1.last_name,
+        ae1_1.password,
+        ae1_1.username 
+    from
+        admin ae1_0 
+    join
+        base_user ae1_1 
+            on ae1_0.id=ae1_1.id 
+    order by
+        ae1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-05-07T12:35:29.998+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:29.999+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+2026-05-07T12:35:30.000+02:00 DEBUG 25124 --- [agentForgeBackend-TEST-SUITE] [           main] org.hibernate.SQL                        : 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.user_id,
+        r1_0.role 
+    from
+        user_roles r1_0 
+    where
+        r1_0.user_id=?
+]]></system-out>
+  </testcase>
+</testsuite>

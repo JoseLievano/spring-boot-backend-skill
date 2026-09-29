@@ -1,0 +1,2 @@
+FILE_SIGNATURE_SECRET="local-dev-file-signature-secret-32-chars-minimum" 
+JWT_SECRET_KEY="local-dev-jwt-secret-key-32-chars-at-least-1234567890"
