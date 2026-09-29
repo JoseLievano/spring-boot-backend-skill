@@ -15,9 +15,9 @@ patterns extracted from three real Spring Boot reference projects.
 ## Phases
 
 ### Phase 1 — Analysis
-- [x] Analyze `backend/` — structure, dependencies, patterns, conventions → [[Docs/backend/backend-Index]] (via [[Tasks/current/Spring-Boot-Skill-Creation-step-1-Analyze-backend|Task 1]])
-- [x] Analyze `BugTracker/` — structure, dependencies, patterns, conventions → [[Docs/BugTracker/BugTracker-Index]] (via [[Tasks/current/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker|Task 2]])
-- [x] Analyze `wpmanager/` — structure, dependencies, patterns, conventions → [[Docs/wpmanager/wpmanager-Index]] (via [[Tasks/current/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager|Task 3]])
+- [x] Analyze `backend/` — structure, dependencies, patterns, conventions → [[Docs/backend/backend-Index]] (via [[Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend|Task 1]])
+- [x] Analyze `BugTracker/` — structure, dependencies, patterns, conventions → [[Docs/BugTracker/BugTracker-Index]] (via [[Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker|Task 2]])
+- [x] Analyze `wpmanager/` — structure, dependencies, patterns, conventions → [[Docs/wpmanager/wpmanager-Index]] (via [[Tasks/done/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager|Task 3]])
 - [ ] Compare all three: extract common patterns
 - [ ] Compare all three: identify differences and decide best approach per area
 - [x] Document findings in `documentation/Docs/` — per-project docs for all three projects (Tasks 1–3); the cross-project comparison is Task 4, next
@@ -52,9 +52,9 @@ documentation/Docs/
 #### Phase 1 — Task breakdown
 | Task | Scope | Complexity | Depends on |
 |------|-------|------------|------------|
-| [[Tasks/current/Spring-Boot-Skill-Creation-step-1-Analyze-backend\|Task 1]] ✅ | Analyze `backend/` → write `Docs/backend/Explanations/*` and `Docs/backend/Reviews/*`. Output: [[Docs/backend/backend-Index]] (11 explanations, 10 reviews, 67 findings), [[Docs/Analysis-Doc-Conventions]], `scripts/validate-analysis-docs.py` | High | — |
-| [[Tasks/current/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker\|Task 2]] ✅ | Analyze `BugTracker/` → write `Docs/BugTracker/Explanations/*` and `Docs/BugTracker/Reviews/*`. Output: [[Docs/BugTracker/BugTracker-Index]] (14 explanations, 11 reviews incl. summary, 86 findings: 81 defects, 5 era gaps) | High | Task 1 (reuse doc format) |
-| [[Tasks/current/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager\|Task 3]] ✅ | Analyze `wpmanager/` → write `Docs/wpmanager/Explanations/*` and `Docs/wpmanager/Reviews/*`. Output: [[Docs/wpmanager/wpmanager-Index]] (14 explanations, 12 reviews incl. summary, 88 findings: 9 🔴, 16 🟠, 43 🟡, 20 🟢; 34 shared with `backend/`) | High | Task 1 (reuse doc format) |
+| [[Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend\|Task 1]] ✅ | Analyze `backend/` → write `Docs/backend/Explanations/*` and `Docs/backend/Reviews/*`. Output: [[Docs/backend/backend-Index]] (11 explanations, 10 reviews, 67 findings), [[Docs/Analysis-Doc-Conventions]], `scripts/validate-analysis-docs.py` | High | — |
+| [[Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker\|Task 2]] ✅ | Analyze `BugTracker/` → write `Docs/BugTracker/Explanations/*` and `Docs/BugTracker/Reviews/*`. Output: [[Docs/BugTracker/BugTracker-Index]] (14 explanations, 11 reviews incl. summary, 86 findings: 81 defects, 5 era gaps) | High | Task 1 (reuse doc format) |
+| [[Tasks/done/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager\|Task 3]] ✅ | Analyze `wpmanager/` → write `Docs/wpmanager/Explanations/*` and `Docs/wpmanager/Reviews/*`. Output: [[Docs/wpmanager/wpmanager-Index]] (14 explanations, 12 reviews incl. summary, 88 findings: 9 🔴, 16 🟠, 43 🟡, 20 🟢; 34 shared with `backend/`) | High | Task 1 (reuse doc format) |
 | Task 4 (later) | Cross-project comparison: common patterns + best approach per area | High | Tasks 1–3 |
 
 Tasks 1–3 are independent in content; the only ordering constraint is that Task 1 establishes

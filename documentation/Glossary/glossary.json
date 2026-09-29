@@ -1,3 +1,198 @@
 {
-  "categories": {}
+  "categories": {
+    "Analysis Documentation": {
+      "terms": {
+        "Reference Project": {
+          "term": "Reference Project",
+          "definition": "One of the three existing Spring Boot backends in this workspace (backend/, BugTracker/, wpmanager/) that are analyzed as source material for the spring-boot-backend skill. Reference projects are read-only: they are studied, never modified.",
+          "examples": "BugTracker/ is the oldest reference project (Boot 2.7); backend/ is the newest (Boot 3.4.1).",
+          "synonyms": "reference backend",
+          "related": "Explanation Doc, Review Doc, Lineage"
+        },
+        "Explanation Doc": {
+          "term": "Explanation Doc",
+          "definition": "A descriptive analysis document under documentation/Docs/<project>/Explanations/ that explains how one area of a reference project is built (architecture, patterns, design rationale) in enough detail to build a new project the same way. It follows the Explanation template in Analysis-Doc-Conventions and does not judge the code; critique goes in the matching Review Doc.",
+          "examples": "Docs/backend/Explanations/05-Dynamic-List-Query-Engine.md",
+          "synonyms": "Explanation",
+          "related": "Review Doc, Recipe, Reference Project"
+        },
+        "Review Doc": {
+          "term": "Review Doc",
+          "definition": "An evaluative analysis document under documentation/Docs/<project>/Reviews/ that critiques one area of a reference project: a verdict, Strengths to Keep, a list of Findings, and a Recommended Target Pattern. It follows the Review template in Analysis-Doc-Conventions.",
+          "examples": "Docs/wpmanager/Reviews/04-Idempotency-Review.md",
+          "synonyms": "Review",
+          "related": "Explanation Doc, Finding, Strength to Keep, Review Summary"
+        },
+        "Finding": {
+          "term": "Finding",
+          "definition": "A single evidence-backed problem recorded in a Review Doc. Every finding has a Finding ID, title, severity (Critical/High/Medium/Low), category, evidence citations, impact, recommendation, a version-verification line and a confidence level. A finding lives in exactly one review (where its root cause is) and is linked from others.",
+          "examples": "BE-R02-01: the generic update saves the entity without applying the form.",
+          "synonyms": "review finding",
+          "related": "Finding ID, Review Doc, Era Gap"
+        },
+        "Finding ID": {
+          "term": "Finding ID",
+          "definition": "The stable identifier of a Finding, formatted <PROJ>-R<NN>-<MM>, where PROJ is BE (backend), BT (BugTracker) or WP (wpmanager), NN is the review doc number and MM is sequential within that doc. IDs are never renumbered; withdrawn findings keep their heading with a Status line. Used by the cross-project comparison (Task 4) to reference findings.",
+          "examples": "BT-R01-02 (BugTracker, review 01, finding 02); linked as [[Docs/BugTracker/Reviews/01-Security-and-Multi-Tenancy-Review#BT-R01-02|BT-R01-02]]",
+          "synonyms": "",
+          "related": "Finding, Review Summary"
+        },
+        "Strength to Keep": {
+          "term": "Strength to Keep",
+          "definition": "A pattern in a reference project that a Review Doc judges good and worth carrying into the spring-boot-backend skill, recorded with citations in the review's Strengths to Keep section. The positive counterpart of a Finding.",
+          "examples": "backend's shared/query dynamic list engine is recorded as a Strength to Keep.",
+          "synonyms": "",
+          "related": "Review Doc, Finding, Recommended Target Pattern"
+        },
+        "Era Gap": {
+          "term": "Era Gap",
+          "definition": "A Finding that was acceptable practice when the project was written but is not what a new project should do today (for example javax namespace or an end-of-life Spring Boot line). Distinguished from a defect; era gaps are at most Medium severity unless they carry a security or end-of-life risk, and they fill in the Version note field.",
+          "examples": "BT-R08-01: Spring Boot 2.7 is past end of OSS support; BT-R08-02: javax namespace.",
+          "synonyms": "",
+          "related": "Finding, Defect"
+        },
+        "Review Summary": {
+          "term": "Review Summary",
+          "definition": "The Reviews/00-Review-Summary.md document of each reference project: an overview listing every Finding ID of the project ordered by severity, with links. It does not use the Review template.",
+          "examples": "Docs/BugTracker/Reviews/00-Review-Summary.md",
+          "synonyms": "",
+          "related": "Finding ID, Review Doc"
+        },
+        "Recipe": {
+          "term": "Recipe",
+          "definition": "The final Explanation Doc of each reference project (\"Recipe \u2014 Build a Project This Way\"): a numbered, standalone guide to building a new project the same way, with '\u26a0\ufe0f Review:' callouts wherever a step would copy a pattern flagged by a Finding.",
+          "examples": "Docs/backend/Explanations/11-Recipe-Build-a-Project-This-Way.md",
+          "synonyms": "",
+          "related": "Explanation Doc, Finding"
+        },
+        "Lineage": {
+          "term": "Lineage",
+          "definition": "The shared ancestry of the reference projects: BugTracker \u2192 wpmanager \u2192 backend. The generic CRUD stack evolved across all three, and backend's shared/ package largely mirrors wpmanager's. Each project's Overview doc has a Lineage paragraph stating what it inherited and what it changed.",
+          "examples": "BugTracker's CommonPathExpression filter engine is the predecessor of backend's shared/query engine.",
+          "synonyms": "",
+          "related": "Reference Project, Generic CRUD Stack"
+        }
+      }
+    },
+    "Backend Patterns": {
+      "terms": {
+        "Feature Module": {
+          "term": "Feature Module",
+          "definition": "The standard per-entity unit of code in the reference projects: a package holding the same set of files for one entity (Controller, ServiceImpl, Repository, Mapper, Entity, Form, DTO, MiniDTO, ListDTO, and in backend a QueryProfile) plugged into the Generic CRUD Stack. In backend it is exactly ten files.",
+          "examples": "backend's models.hq.admin (AdminController, AdminServiceImpl, AdminRepository, AdminMapper, AdminQueryProfile, AdminEntity, AdminForm, AdminDTO, AdminMiniDTO, AdminListDTO).",
+          "synonyms": "ten-file module, module",
+          "related": "Generic CRUD Stack, DTO Tiers"
+        },
+        "Generic CRUD Stack": {
+          "term": "Generic CRUD Stack",
+          "definition": "The reusable base classes (DefaultController / DefaultServiceImplements and their interfaces) that give every Feature Module list/get/insert/update/delete endpoints for free. Originates in BugTracker and was inherited, evolved, by wpmanager and backend.",
+          "examples": "BE-R02-01 and BT-R02-01: the base update in this stack re-saves the entity without applying the request form.",
+          "synonyms": "DefaultController stack, generic CRUD framework",
+          "related": "Feature Module, Lineage"
+        },
+        "DTO Tiers": {
+          "term": "DTO Tiers",
+          "definition": "The convention of exposing each entity through three read shapes: MiniDTO (a small reference used inside other DTOs), DTO (full detail, also the insert response) and ListDTO (grid row: DTO fields plus denormalized counters), with a Form as the write shape.",
+          "examples": "AdminMiniDTO, AdminDTO, AdminListDTO, AdminForm in backend's admin module.",
+          "synonyms": "",
+          "related": "Feature Module, Denormalized Counter"
+        },
+        "Denormalized Counter": {
+          "term": "Denormalized Counter",
+          "definition": "A Long xxxCount column on a parent entity that caches the size of a child collection so list views need no join; in BugTracker it is recomputed from collection.size() in each module's updateListFields override.",
+          "examples": "BusinessEntity.bsPrTaskCount, bsPriorityEntity.taskCount.",
+          "synonyms": "count column",
+          "related": "DTO Tiers"
+        },
+        "Idempotency Key": {
+          "term": "Idempotency Key",
+          "definition": "The identifier under which a repeatable request is registered so a retry or concurrent duplicate is detected. In wpmanager it is the uploaded file's SHA-256 checksum; IdempotencyManager tracks each key through PENDING \u2192 PROCESSING \u2192 COMPLETED (stores the serialized result) or FAILED, replays the stored result for a completed key, returns HTTP 409 while a key is in flight, and expires keys after 24 hours.",
+          "examples": "IdempotentUploadService wraps POST /plugin/upload; the checksum-only key is flagged as a limitation in wpmanager's Idempotency Review.",
+          "synonyms": "upload idempotency",
+          "related": "Two-Phase Upload"
+        },
+        "Two-Phase Upload": {
+          "term": "Two-Phase Upload",
+          "definition": "wpmanager's upload flow in StorageProviderManager: phase 1 stores the object in the default Storage Provider, phase 2 records a FileEntity for it in the database. If phase 2 fails, Compensation deletes the stored object so storage and database stay consistent. Both phases run inside the transaction opened by the service's upload method.",
+          "examples": "PluginService.upload \u2192 StorageProviderManager uploads the ZIP, then records the FileEntity.",
+          "synonyms": "",
+          "related": "Compensation, Storage Provider, Idempotency Key"
+        },
+        "Compensation": {
+          "term": "Compensation",
+          "definition": "An undo action that reverses an already-completed external side effect when a later step fails, used where a database transaction cannot roll the side effect back. In wpmanager, compensateUpload deletes the object from storage when recording the FileEntity fails.",
+          "examples": "StorageProviderManager: phase-2 exception \u2192 compensateUpload \u2192 client.deleteFile(name) \u2192 throw FailUpload.",
+          "synonyms": "compensating action",
+          "related": "Two-Phase Upload"
+        }
+      }
+    },
+    "Reference Domains": {
+      "terms": {
+        "HQ": {
+          "term": "HQ",
+          "definition": "The operator side of BugTracker's two-sided SaaS (package models/HQ): a single MainHQ that sells plans to clients, employs HQ employees and admins, and issues SaaS invoices. Contrasted with the tenant side (models/client).",
+          "examples": "HQ invoices, HQ employees, MainHQ.",
+          "synonyms": "operator side",
+          "related": "Tenant"
+        },
+        "Tenant": {
+          "term": "Tenant",
+          "definition": "In BugTracker, a customer Business (BusinessEntity) whose workspace owns its own users, projects, tasks, channels, comments, docs, knowledge base and configurable statuses, priorities and types (package models/client). Tenant-owned modules use the bs prefix.",
+          "examples": "BT-R01-02: nothing isolates one tenant's data from another's.",
+          "synonyms": "Business, tenant workspace",
+          "related": "HQ"
+        },
+        "Storage Provider": {
+          "term": "Storage Provider",
+          "definition": "In wpmanager, a persisted configuration row for one file store (an S3-compatible bucket such as AWS S3 or Wasabi, or an FTP server) whose getClient() returns an adapter for it. One provider is the Default Provider; the others receive copies through Replication. S3StorageClient is the only working adapter.",
+          "examples": "A Wasabi bucket reached through the AWS SDK v2 endpointOverride.",
+          "synonyms": "provider",
+          "related": "Default Provider, Replication, File Copy"
+        },
+        "Default Provider": {
+          "term": "Default Provider",
+          "definition": "The one Storage Provider that uploads are written to synchronously during the request; every other provider receives the file later through Replication.",
+          "examples": "Two-Phase Upload phase 1 always targets the default provider.",
+          "synonyms": "",
+          "related": "Storage Provider, Replication"
+        },
+        "Replication": {
+          "term": "Replication",
+          "definition": "wpmanager's scheduled copying of every uploaded version to every Storage Provider that lacks it: the FileDuplicator job downloads the file from a provider that has it into a temporary file and uploads it where it is missing.",
+          "examples": "schedule/FileDuplicator",
+          "synonyms": "file duplication",
+          "related": "Storage Provider, Default Provider, File Copy"
+        },
+        "Downloadable": {
+          "term": "Downloadable",
+          "definition": "In wpmanager, one uploaded version of a plugin or theme (DownloadableEntity), carrying its checksum, signature and a map of its File Copies per Storage Provider. Separating the version from its copies is what makes multi-provider storage possible.",
+          "examples": "Uploading plugin v1.2.0 creates one DownloadableEntity.",
+          "synonyms": "version, DownloadableEntity",
+          "related": "File Copy, File Signature"
+        },
+        "File Copy": {
+          "term": "File Copy",
+          "definition": "In wpmanager, a FileEntity: the record that one Downloadable is stored in one specific Storage Provider. A Downloadable has one copy per provider it has been uploaded or replicated to.",
+          "examples": "After Replication, a version stored in AWS and Wasabi has two FileEntity rows.",
+          "synonyms": "FileEntity, copy",
+          "related": "Downloadable, Storage Provider, Replication"
+        },
+        "File Signature": {
+          "term": "File Signature",
+          "definition": "An HMAC-SHA256 (Base64) of a version's checksum plus its name_version, computed by FileSigner with the file.signature.secret key when a Downloadable is uploaded, so a file's integrity and origin can be checked later.",
+          "examples": "PluginService.upload: signature = HMAC(checksum + name_version).",
+          "synonyms": "",
+          "related": "Downloadable"
+        },
+        "Plan Entitlement": {
+          "term": "Plan Entitlement",
+          "definition": "What a wpmanager client's plan grants: the WordPress product IDs it may use (PlanEntity.wpIDs), a website count limit and a download limit. As implemented, no endpoint yet enforces the wpIDs or the download limit.",
+          "examples": "Plan: name, wpIDs, websiteCountLimit, downloadLimit.",
+          "synonyms": "plan, wpIDs",
+          "related": "Downloadable"
+        }
+      }
+    }
+  }
 }

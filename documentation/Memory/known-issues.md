@@ -26,7 +26,8 @@ It is NOT a bug tracker — specific bugs belong in `documentation/Bugs/`.
 - This workspace's git history (commits `cc7d212`, `e0993c4`) still contains `auth-server/` properties
   with a literal database password and secret defaults. Cite the commit, never the values.
 - `wpmanager/src/test/.../E2EPluginUploadTest.java` contains committed cloud-storage keys (lines 61-62, 75-76).
-  Never copy them into docs; the user should rotate them ([[Docs/wpmanager/Reviews/01-Security-Review#WP-R01-06|WP-R01-06]]).
+  Never copy them into docs. The owner knows they (and the history secrets) are exposed and has
+  accepted this as a known bad practice for now ([[Docs/wpmanager/Reviews/01-Security-Review#WP-R01-06|WP-R01-06]]).
 - `wpmanager/wpManagerDocs/` is the reference project's own Obsidian vault (with `.obsidian/` config). Never open
   it in Obsidian during analysis: Obsidian rewrites workspace files and the checksum guard
   (`scripts/.snapshots/wpmanager.sha256`) fails. Its docs have drifted from the code (WP-R11-04); use it as intent
@@ -54,6 +55,12 @@ It is NOT a bug tracker — specific bugs belong in `documentation/Bugs/`.
   finished and explicitly approved. See [[Docs/Skill-Directory-Convention]].
 
 ## Patterns to avoid
+- **Never hardcode or commit secrets.** The reference projects commit DB passwords, JWT keys, seed passwords
+  and cloud-storage keys (BE-R01-11, BT-R01-03, WP-R01-06, plus git history `cc7d212`/`e0993c4`). The owner
+  accepted leaving those in place for now (2026-09-29) — do not re-raise rotation as an action item — but it is
+  a known bad practice that must not be repeated: the skill and anything new in this workspace read secrets
+  from environment variables / external config only, with no literal fallback defaults in source or committed
+  properties.
 - Do not write analysis claims from Explore-agent inventories without reading the cited lines; three
   Task 1 leads were wrong on inspection (see [[Memory/progress]] 2026-09-29).
 - The `Write` tool may refuse `.md` paths when running as a subagent; authoring in the scratchpad and

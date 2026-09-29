@@ -60,7 +60,7 @@ everything, an unbounded `Set` for lists — and two modules expose conflicting 
 `wpmanager/src/main/java/com/wpmanager/models/files/downloadable/DownloadableService.java:20-97`).
 **Impact:** `PUT /admin/{id}` cannot change an admin's e-mail, name or password; `PUT /s3/{id}` cannot rotate a
 provider's keys, switch the default provider or fix a bucket name; each call returns 200 with the unchanged
-entity. Key rotation after [[Docs/wpmanager/Reviews/01-Security-Review#WP-R01-06|WP-R01-06]] therefore needs a
+entity. Any key rotation (see [[Docs/wpmanager/Reviews/01-Security-Review#WP-R01-06|WP-R01-06]]) therefore needs a
 delete and re-create of the provider, which drops its file map.
 **Recommendation:** Make `update` abstract (or apply the form through `mapper.updateEntity(form, entity)`, a
 fourth mapper method), and return 405 for modules that do not support update.

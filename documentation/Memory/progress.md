@@ -1,7 +1,22 @@
 # Progress
 
+## 2026-09-29 (Phase 1 Tasks 1–3 closed)
+- User confirmed the manual validation of [[Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend|Task 1]],
+  [[Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker|Task 2]] and
+  [[Tasks/done/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager|Task 3]]; all three moved from `Tasks/current/` to
+  `Tasks/done/` and every link updated. Next: Task 4 (cross-project comparison).
+
+## 2026-09-29 (Glossary and secrets decision)
+- **Glossary populated** — 26 terms in [[Glossary/Glossary]] across *Analysis Documentation* (Reference Project,
+  Explanation Doc, Review Doc, Finding, Finding ID, Strength to Keep, Era Gap, Review Summary, Recipe, Lineage),
+  *Backend Patterns* (Feature Module, Generic CRUD Stack, DTO Tiers, Denormalized Counter, Idempotency Key,
+  Two-Phase Upload, Compensation) and *Reference Domains* (HQ, Tenant, Storage Provider, Default Provider,
+  Replication, Downloadable, File Copy, File Signature, Plan Entitlement), with the user's approval.
+- **Committed secrets accepted, not to be repeated** — the owner leaves the exposed reference-project and
+  git-history credentials in place for now; recorded as a rule in [[Memory/known-issues]] ("Patterns to avoid").
+
 ## 2026-09-29 (Task 3 executed)
-- **`wpmanager/` analysis written** — [[Tasks/current/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager]].
+- **`wpmanager/` analysis written** — [[Tasks/done/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager]].
   Output: [[Docs/wpmanager/wpmanager-Index]], [[Docs/wpmanager/Reviews/00-Review-Summary]] (88 findings: 9 🔴,
   16 🟠, 43 🟡, 20 🟢; 34 shared with `backend/`). Top issues: no URL-level authorization and an anonymous
   `/tests3` bucket controller (WP-R01-01/02), clients can delete admins and read storage keys through inherited
@@ -18,7 +33,7 @@
   is not a Boot 3.4.1 property.
 
 ## 2026-09-29 (Task 2 executed)
-- **`BugTracker/` analysis written** — [[Tasks/current/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker]].
+- **`BugTracker/` analysis written** — [[Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker]].
   Output: [[Docs/BugTracker/BugTracker-Index]], [[Docs/BugTracker/Reviews/00-Review-Summary]] (86 findings:
   5 🔴, 19 🟠, 34 🟡, 28 🟢; 81 defects vs 5 era gaps). Top issues: authentication-only authorization
   (BT-R01-01), no tenant isolation (BT-R01-02), JWT key in source (BT-R01-03), no-op base `update`
@@ -33,7 +48,7 @@
   date (2023-06-30) from the spring.io support API.
 
 ## 2026-09-29 (Task 1 executed)
-- **`backend/` analysis written** — [[Tasks/current/Spring-Boot-Skill-Creation-step-1-Analyze-backend]].
+- **`backend/` analysis written** — [[Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend]].
   Output: [[Docs/backend/backend-Index]], [[Docs/backend/Reviews/00-Review-Summary]] (67 findings: 4 🔴,
   10 🟠, 26 🟡, 27 🟢). Top issues: no authorization enforced (BE-R01-01), anonymous client-token minting
   (BE-R01-02), Spring Data REST exposure (BE-R01-03, needs runtime check), no-op generic `update` (BE-R02-01).
@@ -48,9 +63,9 @@
 ## 2026-09-29
 - **Phase 1 analysis planned.** The parent Feature now defines the `Docs/<project>/{Explanations,Reviews}`
   layout and a Task 1–4 breakdown. Three Task docs were created and reviewed:
-  [[Tasks/current/Spring-Boot-Skill-Creation-step-1-Analyze-backend]],
-  [[Tasks/current/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker]],
-  [[Tasks/current/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager]].
+  [[Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend]],
+  [[Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker]],
+  [[Tasks/done/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager]].
 - Key facts found during planning:
   - Stacks: BugTracker is Boot 2.7.0 (javax, Java 17 effective); backend and wpmanager are Boot 3.4.1 / Java 21.
   - Lineage: BugTracker → wpmanager → backend. The generic CRUD stack evolved across all three.

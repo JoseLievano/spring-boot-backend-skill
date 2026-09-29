@@ -186,7 +186,7 @@ skip and the reason in the index. Testing is covered by `09-Testing-Review.md`.
 - [x] `documentation/Docs/BugTracker/BugTracker-Index.md`
 - [x] `documentation/Docs/BugTracker/Explanations/01…14-*.md` — 14 explanation docs
 - [x] `documentation/Docs/BugTracker/Reviews/00…10-*.md` — 11 review docs
-- [ ] `documentation/Docs/Analysis-Doc-Conventions.md` — **only if** a rule gap is found. Add a Changelog entry and do not change existing rules silently.
+- [x] `documentation/Docs/Analysis-Doc-Conventions.md` — only if a rule gap is found. **N/A:** no rule gap found; conventions unchanged.
 - [x] `documentation/Features/to-do/Spring-Boot-Skill-Creation.md` — tick "Analyze `BugTracker/`", link this task and the index
 - [x] `documentation/Memory/context.md`, `progress.md`, `tech.md`, `known-issues.md` — end-of-task update
 
@@ -199,9 +199,9 @@ skip and the reason in the index. Testing is covered by `09-Testing-Review.md`.
 **Goal:** Confirm Task 1 outputs exist, and guard the read-only constraint.
 **Dependencies:** Task 1 complete
 
-- [ ] `python3 -m unittest discover -s scripts/tests -v` → passes.
-- [ ] Read `documentation/Docs/Analysis-Doc-Conventions.md` in full, including its Changelog.
-- [ ] Snapshot:
+- [x] `python3 -m unittest discover -s scripts/tests -v` → passes.
+- [x] Read `documentation/Docs/Analysis-Doc-Conventions.md` in full, including its Changelog.
+- [x] Snapshot:
 
 ```bash
 cd /home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill
@@ -220,14 +220,14 @@ find BugTracker -type f -not -path 'BugTracker/target/*' -not -path 'BugTracker/
 **Goal:** Validate the pipeline on this project before scaling out.
 **Dependencies:** Step 0
 
-- [ ] Create `BugTracker-Index.md` with planned docs as plain text, plus the "Testing explanation skipped" note.
-- [ ] Write `01-Overview-and-Design-Philosophy.md`:
+- [x] Create `BugTracker-Index.md` with planned docs as plain text, plus the "Testing explanation skipped" note.
+- [x] Write `01-Overview-and-Design-Philosophy.md`:
   - the two-sided SaaS domain in plain language;
   - a Mermaid context diagram: HQ operator, Client (customer), Business (tenant), and the users inside a Business;
   - the stack table cited to `pom.xml`;
   - the design philosophy: maximal convention (every entity gets the same 10-file module), generic CRUD with override hooks, rich filtering for grid UIs, and denormalized counters for list views;
   - a **Lineage** paragraph, as the conventions require. Verify it by comparing `shared/controller/DefaultController.java` with `backend/src/main/java/com/agentForgeBackend/shared/defaultImplements/DefaultController.java` and with wpmanager's equivalent. State what is inherited, and cite both sides.
-- [ ] `python3 scripts/validate-analysis-docs.py BugTracker` → exit 0.
+- [x] `python3 scripts/validate-analysis-docs.py BugTracker` → exit 0.
 
 ---
 
@@ -313,7 +313,7 @@ Write each doc, then validate it, before starting the next. Minimum content per 
   - no profiles;
   - the `firstInstallCheck` seeding sequence as a Mermaid flowchart: MainHQ → admin → plan → client → business → default settings.
 
-- [ ] 02 through 13 written, and each validated before starting the next
+- [x] 02 through 13 written, and each validated before starting the next
 
 #### Edge Cases
 1. **Case:** the module catalogue grep misses a route without a leading slash (`"bs_invoice"`) — normalize it in the table and note the inconsistency as fact.
@@ -417,7 +417,7 @@ Leads to verify and classify:
   - mixed field and constructor injection;
   - `@Lazy` in 28 files.
 
-- [ ] 01 through 10 written, and each validated before starting the next
+- [x] 01 through 10 written, and each validated before starting the next
 
 #### Edge Cases
 1. **Case:** a finding is identical in root cause to one in `backend/` — still record it here with its own `BT-` ID. Its Impact and Evidence are specific to this project. Link the backend ID in **Related**.
@@ -431,50 +431,50 @@ Leads to verify and classify:
 **Goal:** Answer "how do I build a new project the BugTracker way?"
 **Dependencies:** Steps 2–3
 
-- [ ] A numbered recipe:
+- [x] A numbered recipe:
   1. pom essentials (only the used dependencies);
   2. package skeleton (HQ side vs tenant side);
   3. recreate the Default* stack and the filter engine;
   4. security wiring;
   5. add one **tenant-scoped** module end to end: all 10 files, a minimal sketch per file in the project's style, including an `XPredicate` and the `updateListFields` hook;
   6. seeding.
-- [ ] `> ⚠️ Review:` callouts wherever a step copies a flagged pattern (tenant isolation, thread-unsafe predicate, EAGER collections, no-op update).
-- [ ] Validate.
+- [x] `> ⚠️ Review:` callouts wherever a step copies a flagged pattern (tenant isolation, thread-unsafe predicate, EAGER collections, no-op update).
+- [x] Validate.
 
 ---
 
 ### Step 5: Summary, index, cross-links
 
-- [ ] `Reviews/00-Review-Summary.md` must contain:
+- [x] `Reviews/00-Review-Summary.md` must contain:
   - every finding ID, by severity;
   - counts;
   - **defects vs era gaps** split into two tables (a requirement specific to this project);
   - the Strengths to Keep roll-up (e.g. configurable tenant taxonomies, DTO tiers for grid UIs, rich filter contract);
   - Top 5 Recommendations;
   - candidate patterns for the skill.
-- [ ] Finalize `BugTracker-Index.md`:
+- [x] Finalize `BugTracker-Index.md`:
   - reading order;
   - all links;
   - the testing skip with its reason;
   - counts.
-- [ ] Back-fill the "Known Limitations" links in the explanations.
-- [ ] `python3 scripts/validate-analysis-docs.py BugTracker` → exit 0.
+- [x] Back-fill the "Known Limitations" links in the explanations.
+- [x] `python3 scripts/validate-analysis-docs.py BugTracker` → exit 0.
 
 ---
 
 ### Step 6: Parent, memory bank, glossary
 
-- [ ] Parent Feature: tick `Analyze BugTracker/`, and link this task and `[[Docs/BugTracker/BugTracker-Index]]`.
-- [ ] Memory bank:
+- [x] Parent Feature: tick `Analyze BugTracker/`, and link this task and `[[Docs/BugTracker/BugTracker-Index]]`.
+- [x] Memory bank:
   - `context.md` → next is Task 3;
   - `progress.md` → a dated entry;
   - `tech.md` → the BugTracker stack (Boot 2.7.0, javax, Java 17 effective);
   - `known-issues.md` → no Spring Security 5.7 in Context7, and the gitlink reference projects need checksum guards.
-- [ ] Propose glossary terms (*HQ*, *Business / Tenant*, *Module Catalogue*, *Era Gap*, *Denormalized Counter*). Add them only after the user confirms.
+- [x] Propose glossary terms (*HQ*, *Business / Tenant*, *Module Catalogue*, *Era Gap*, *Denormalized Counter*). Add them only after the user confirms. — **Done 2026-09-29:** added with the user's approval (HQ, Tenant with synonym Business, Era Gap, Denormalized Counter; Module Catalogue skipped as too narrow).
 
 ### Step 7: Verify the read-only constraint
 
-- [ ] `sha256sum --quiet -c scripts/.snapshots/bugtracker.sha256` → exit 0.
+- [x] `sha256sum --quiet -c scripts/.snapshots/bugtracker.sha256` → exit 0.
 
 ---
 
@@ -512,10 +512,12 @@ Leads to verify and classify:
 
 ### Manual Validation
 
-- [ ] Open `BugTracker-Index.md` in Obsidian and confirm that the links work and the ER/sequence diagrams render.
-- [ ] Check the module catalogue in `03-…` against 3 random modules in the code.
-- [ ] Spot-check 5 findings against the cited lines.
-- [ ] Read `14-Recipe-…` and judge whether a new tenant-scoped module could be built from it.
+- [x] Open `BugTracker-Index.md` in Obsidian and confirm that the links work and the ER/sequence diagrams render.
+- [x] Check the module catalogue in `03-…` against 3 random modules in the code.
+- [x] Spot-check 5 findings against the cited lines.
+- [x] Read `14-Recipe-…` and judge whether a new tenant-scoped module could be built from it.
+
+**Manual validation confirmed by the user on 2026-09-29.**
 
 **Rule:** Run automatic checks when possible. Manual checks are for the user.
 

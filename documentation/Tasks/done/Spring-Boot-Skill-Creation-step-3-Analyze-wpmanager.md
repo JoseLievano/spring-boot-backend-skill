@@ -186,12 +186,12 @@ Reviews/
 
 ### Files to Create/Modify
 
-- [ ] `documentation/Docs/wpmanager/wpmanager-Index.md`
-- [ ] `documentation/Docs/wpmanager/Explanations/01…14-*.md` — 14 explanation docs
-- [ ] `documentation/Docs/wpmanager/Reviews/00…11-*.md` — 12 review docs
-- [ ] `documentation/Docs/Analysis-Doc-Conventions.md` — only if a rule gap is found (with a Changelog entry)
-- [ ] `documentation/Features/to-do/Spring-Boot-Skill-Creation.md` — tick "Analyze `wpmanager/`", link task + index; if Tasks 1–3 are all done, tick "Document findings in `documentation/Docs/`"
-- [ ] `documentation/Memory/context.md`, `progress.md`, `tech.md`, `known-issues.md`, `architecture.md` — end-of-task update
+- [x] `documentation/Docs/wpmanager/wpmanager-Index.md`
+- [x] `documentation/Docs/wpmanager/Explanations/01…14-*.md` — 14 explanation docs
+- [x] `documentation/Docs/wpmanager/Reviews/00…11-*.md` — 12 review docs
+- [x] `documentation/Docs/Analysis-Doc-Conventions.md` — gap found: reviews may add extra `##` sections after `## Findings` (section 5 + Changelog) — only if a rule gap is found (with a Changelog entry)
+- [x] `documentation/Features/to-do/Spring-Boot-Skill-Creation.md` — tick "Analyze `wpmanager/`", link task + index; if Tasks 1–3 are all done, tick "Document findings in `documentation/Docs/`"
+- [x] `documentation/Memory/context.md`, `progress.md`, `tech.md`, `known-issues.md`, `architecture.md` — end-of-task update
 
 ---
 
@@ -199,9 +199,9 @@ Reviews/
 
 ### Step 0: Preconditions and snapshot
 
-- [ ] `python3 -m unittest discover -s scripts/tests -v` → passes.
-- [ ] Read the conventions doc, including its Changelog.
-- [ ] Snapshot:
+- [x] `python3 -m unittest discover -s scripts/tests -v` → passes.
+- [x] Read the conventions doc, including its Changelog.
+- [x] Snapshot:
 
 ```bash
 cd /home/jlievano/Dropbox/CodeProjects/spring-boot-backend-skill
@@ -217,15 +217,15 @@ find wpmanager -type f -not -path 'wpmanager/target/*' -print0 \
 
 ### Step 1: Tracer bullet — `01-Overview-and-Design-Philosophy.md` + index skeleton
 
-- [ ] Index skeleton listing the planned docs as plain text.
-- [ ] Overview:
+- [x] Index skeleton listing the planned docs as plain text.
+- [x] Overview:
   - the real purpose (repository/distribution, not WP site management), with evidence (no WP clients; WP only in data fields);
   - a Mermaid context diagram: Admin → upload → providers → replication; Client → plan/websites/favorites;
   - the four domain areas;
   - the stack table cited to `pom.xml`;
   - design philosophy: generic CRUD for catalog entities plus hand-built flows for upload, idempotency and storage, with reliability features added after bug reports (cite the vault's `Bugs/done/`);
   - a **Lineage** paragraph (BugTracker-style generic stack → wpmanager → backend), verified by diffing the shared packages with backend. List what backend removed or added.
-- [ ] `python3 scripts/validate-analysis-docs.py wpmanager` → exit 0.
+- [x] `python3 scripts/validate-analysis-docs.py wpmanager` → exit 0.
 
 ---
 
@@ -318,7 +318,7 @@ Write each doc and validate it before starting the next. Minimum content per doc
   - network-dependent `URLValidatorTest`;
   - the latest surefire evidence in `wpmanager/target/surefire-reports/`, if present.
 
-- [ ] 02 through 13 written, and each validated before starting the next
+- [x] 02 through 13 written, and each validated before starting the next
 
 #### Edge Cases
 1. **Case:** the vault doc and the code disagree — the Explanation follows the code, and the disagreement becomes a finding in review 11.
@@ -443,7 +443,7 @@ Leads to verify and classify:
   - dead code: `BaseStorageProviderService`, `DownloadableParent`, the empty `services/`, `BaseUserMapper`, the `GET /test` endpoint, and the `"kit"` parent type;
   - **vault drift**: the stale `JWTTokenGeneratorFilter-java.md`, an outdated `LoginArchitectureReview.md`, "Remove Hardcoded Defaults" marked done while the fallback remains, and the partially true "Transaction Boundary Violation" done note.
 
-- [ ] 01 through 11 written, and each validated before starting the next
+- [x] 01 through 11 written, and each validated before starting the next
 
 #### Edge Cases
 1. **Case:** a vault `Bugs/to-do` item is not supported by the code — do not create a finding. List it under "Vault leads not confirmed" in review 11.
@@ -453,7 +453,7 @@ Leads to verify and classify:
 
 ### Step 4: Recipe doc — `14-Recipe-Build-a-Project-This-Way.md`
 
-- [ ] A numbered recipe:
+- [x] A numbered recipe:
   1. pom essentials (used dependencies only);
   2. package skeleton;
   3. the Default* stack;
@@ -461,43 +461,43 @@ Leads to verify and classify:
   5. add a **new downloadable type** end to end (8-file module plus upload endpoint), with a minimal sketch per file in the project's style;
   6. wire it into idempotent upload, storage and replication;
   7. tests per layer.
-- [ ] `> ⚠️ Review:` callouts wherever a step copies a flagged pattern: the transaction around network I/O, the checksum-only idempotency key, the per-call `S3Client`, the Plugin/Theme duplication, and missing URL authorization.
-- [ ] Validate.
+- [x] `> ⚠️ Review:` callouts wherever a step copies a flagged pattern: the transaction around network I/O, the checksum-only idempotency key, the per-call `S3Client`, the Plugin/Theme duplication, and missing URL authorization.
+- [x] Validate.
 
 ---
 
 ### Step 5: Summary, index, cross-links
 
-- [ ] `Reviews/00-Review-Summary.md` must contain:
+- [x] `Reviews/00-Review-Summary.md` must contain:
   - every `WP-` finding by severity;
   - counts;
   - the Strengths to Keep roll-up (e.g. the idempotency state machine concept, compensation on upload failure, provider abstraction intent, tag-based test suites, the E2E suite with real JWTs, `FileSigner` fail-fast);
   - Top 5 Recommendations;
   - a **"Shared with backend"** table: `WP-` ID ↔ `BE-` ID for same-root-cause findings;
   - candidate patterns for the skill.
-- [ ] Finalize `wpmanager-Index.md`: reading order, all links, merges or skips, counts.
-- [ ] Back-fill the "Known Limitations" links.
-- [ ] `python3 scripts/validate-analysis-docs.py wpmanager` → exit 0.
+- [x] Finalize `wpmanager-Index.md`: reading order, all links, merges or skips, counts.
+- [x] Back-fill the "Known Limitations" links.
+- [x] `python3 scripts/validate-analysis-docs.py wpmanager` → exit 0.
 
 ---
 
 ### Step 6: Parent, memory bank, glossary
 
-- [ ] Parent Feature:
+- [x] Parent Feature:
   - tick `Analyze wpmanager/`;
   - link this task and `[[Docs/wpmanager/wpmanager-Index]]`;
   - if Tasks 1–3 are all complete, also tick "Document findings in `documentation/Docs/`" and note that Task 4 (cross-project comparison) is next.
-- [ ] Memory bank:
+- [x] Memory bank:
   - `context.md` → next is Task 4 (or Task 2 if still pending);
   - `progress.md` → a dated entry;
   - `tech.md` → the wpmanager stack, including AWS SDK v2;
   - `known-issues.md` → the reference project's own vault must not be opened in Obsidian during analysis, and cloud keys exist in a test file;
   - `architecture.md` → the lineage BugTracker → wpmanager → backend.
-- [ ] Propose glossary terms (*Downloadable*, *Storage Provider*, *Default Provider*, *Replication*, *Idempotency Key*, *Two-Phase Upload*, *Compensation*). Add them only after the user confirms.
+- [x] Propose glossary terms — proposed in the final report, not added (the glossary is handled separately) (*Downloadable*, *Storage Provider*, *Default Provider*, *Replication*, *Idempotency Key*, *Two-Phase Upload*, *Compensation*). Add them only after the user confirms. — **Done 2026-09-29:** all seven added with the user's approval, plus File Copy, File Signature and Plan Entitlement (see [[Glossary/Glossary]]).
 
 ### Step 7: Verify the read-only constraint
 
-- [ ] `sha256sum --quiet -c scripts/.snapshots/wpmanager.sha256` → exit 0.
+- [x] `sha256sum --quiet -c scripts/.snapshots/wpmanager.sha256` → exit 0.
 
 ---
 
@@ -521,19 +521,21 @@ Leads to verify and classify:
 
 ### Automatic Validation
 
-- [ ] Run `python3 -m unittest discover -s scripts/tests -v` → passes.
-- [ ] Run `python3 scripts/validate-analysis-docs.py wpmanager` → exit 0, no output lines.
-- [ ] Run `python3 scripts/validate-analysis-docs.py backend` → still exit 0. If Task 2 is done, also run it for `BugTracker` → exit 0.
-- [ ] Run `grep -c '^### WP-R' documentation/Docs/wpmanager/Reviews/0[1-9]-*.md documentation/Docs/wpmanager/Reviews/1[0-9]-*.md` → each review has ≥ 1 finding.
-- [ ] Run `sha256sum --quiet -c scripts/.snapshots/wpmanager.sha256` → exit 0.
-- [ ] Run `grep -rniE '(password|secret|key)\s*[=:]\s*[^<[:space:]]' documentation/Docs/wpmanager` → inspect every hit; no real secret values (the test-file cloud keys in particular).
+- [x] Run `python3 -m unittest discover -s scripts/tests -v` → passes.
+- [x] Run `python3 scripts/validate-analysis-docs.py wpmanager` → exit 0, no output lines.
+- [x] Run `python3 scripts/validate-analysis-docs.py backend` → still exit 0. If Task 2 is done, also run it for `BugTracker` → exit 0.
+- [x] Run `grep -c '^### WP-R' documentation/Docs/wpmanager/Reviews/0[1-9]-*.md documentation/Docs/wpmanager/Reviews/1[0-9]-*.md` → each review has ≥ 1 finding.
+- [x] Run `sha256sum --quiet -c scripts/.snapshots/wpmanager.sha256` → exit 0.
+- [x] Run `grep -rniE '(password|secret|key)\s*[=:]\s*[^<[:space:]]' documentation/Docs/wpmanager` → inspect every hit; no real secret values (the test-file cloud keys in particular).
 
 ### Manual Validation
 
-- [ ] Open `wpmanager-Index.md` in **this workspace's** Obsidian vault (not `wpManagerDocs`), and confirm that the links work and the state/sequence diagrams render.
-- [ ] Check the upload sequence diagram in `07-…` against `PluginService.upload` and `StorageProviderManager`.
-- [ ] Spot-check 5 findings against the cited lines.
-- [ ] **Rotate the cloud storage keys found in `E2EPluginUploadTest.java`**. This is a security action for the user, outside this task.
+- [x] Open `wpmanager-Index.md` in **this workspace's** Obsidian vault (not `wpManagerDocs`), and confirm that the links work and the state/sequence diagrams render.
+- [x] Check the upload sequence diagram in `07-…` against `PluginService.upload` and `StorageProviderManager`.
+- [x] Spot-check 5 findings against the cited lines.
+- ~~Rotate the cloud storage keys~~ — not an open action: the owner knows these (and the git-history secrets) are exposed and has accepted this as a known bad practice for now; it must not be repeated (see [[Memory/known-issues]]).
+
+**Manual validation confirmed by the user on 2026-09-29.**
 
 **Rule:** Run automatic checks when possible. Manual checks are for the user.
 
@@ -549,17 +551,64 @@ Leads to verify and classify:
 
 ## Completion Criteria
 
-- [ ] Parent document reviewed and reflected accurately in this task
-- [ ] Task 1 outputs present and conventions followed (including any Changelog changes)
-- [ ] Relevant skills reviewed and selected for this task
-- [ ] Version-matched documentation used; non-pinned sources labeled
-- [ ] All Explanation docs created; module catalogue complete
-- [ ] Method-security activation question answered (with source) or marked for runtime verification
-- [ ] All Review docs created; every finding complete; vault drift and unconfirmed vault leads recorded
-- [ ] Review Summary lists every `WP-` ID, plus the "Shared with backend" table; index links every doc
-- [ ] `python3 scripts/validate-analysis-docs.py wpmanager` exits 0; earlier projects still validate
-- [ ] `wpmanager/` unchanged (checksum); other reference projects unchanged
-- [ ] No secret values in any doc; key rotation recommended to the user
-- [ ] Manual validation steps documented for the user
-- [ ] Parent Feature updated (Task 3 ticked + linked)
-- [ ] Memory bank updated; glossary terms proposed to the user
+- [x] Parent document reviewed and reflected accurately in this task
+- [x] Task 1 outputs present and conventions followed (including any Changelog changes)
+- [x] Relevant skills reviewed and selected for this task
+- [x] Version-matched documentation used; non-pinned sources labeled
+- [x] All Explanation docs created; module catalogue complete
+- [x] Method-security activation question answered (with source) or marked for runtime verification
+- [x] All Review docs created; every finding complete; vault drift and unconfirmed vault leads recorded
+- [x] Review Summary lists every `WP-` ID, plus the "Shared with backend" table; index links every doc
+- [x] `python3 scripts/validate-analysis-docs.py wpmanager` exits 0; earlier projects still validate
+- [x] `wpmanager/` unchanged (checksum); other reference projects unchanged
+- [x] No secret values in any doc (checked programmatically against the literal values); the exposed keys are documented as an owner-accepted known bad practice (WP-R01-06) rather than a rotation action
+- [x] Manual validation steps documented for the user
+- [x] Parent Feature updated (Task 3 ticked + linked)
+- [x] Memory bank updated; glossary terms proposed to the user
+
+---
+
+## Post-Review Notes
+
+**Status:** all automatic completion criteria met; ready for the user's manual validation (4 items above, the
+key-rotation item is superseded by the owner's decision).
+
+### Validation results (2026-09-29)
+- `python3 -m unittest discover -s scripts/tests` → 44 tests, OK.
+- `python3 scripts/validate-analysis-docs.py wpmanager` / `backend` / `BugTracker` → exit 0, no output.
+- `grep -c '^### WP-R' …` → 15, 8, 6, 6, 7, 10, 11, 7, 7, 6, 5 findings in reviews 01–11 (88 total).
+- `sha256sum --quiet -c` on `wpmanager.sha256` (created in Step 0), `backend.sha256`, `bugtracker.sha256` → exit 0.
+- Secret grep: every hit inspected (log statements, code excerpts, `${VAR:…}` placeholders shown as `<redacted>`);
+  a scripted check of the six literal secret values in the properties and test file found none in the docs.
+
+### Output
+- [[Docs/wpmanager/wpmanager-Index]]: 14 explanations, 11 reviews + summary, 88 findings (9 🔴, 16 🟠, 43 🟡,
+  20 🟢); 34 share a root cause with `backend/` ("Shared with backend" table in [[Docs/wpmanager/Reviews/00-Review-Summary]]).
+- Method-security question answered: honored and global — `javap` on `spring-context-6.2.1.jar`
+  (`ConfigurationClassUtils.candidateIndicators` includes `@Component` and `@Import`) and
+  `spring-security-config-6.4.2.jar` (`@EnableMethodSecurity` → `@Import(MethodSecuritySelector)`), plus the
+  recorded E2E run (CLIENT → 403, anonymous → 401). Explained in [[Docs/wpmanager/Explanations/06-Authentication-and-Authorization]];
+  placement smell is WP-R01-11.
+
+### Deviations from this task doc (code wins over leads)
+- 12 `@DataJpaTest` classes, not 13; 30 open vault bug notes, not 29.
+- `upload.max-file-size` is not "undefined": `UploadValidator` has a 100 MB default (WP-R09-05).
+- "No authorization tests" is partly wrong: the author E2E suite asserts 401/403; the finding is "one module
+  only" (WP-R10-01).
+- `jakarta.transaction.Transactional` has the same default rollback rules as Spring's; the real issue is that
+  it replaces the class-level Spring rollback rule (WP-R03-06, Low).
+- `spring.task.scheduling.enabled` confirmed not to exist in Boot 3.4.1 (configuration metadata, WP-R09-04).
+- "No retries" lead: the SDK applies its default retry policy; recorded under unconfirmed vault leads, and
+  timeouts/retry configuration folded into WP-R05-07.
+- New findings not in the lead list: failed provider upload commits a blocking version row (WP-R03-01),
+  plugin/theme delete `ConcurrentModificationException` (WP-R07-02), replication aborts on one bad version
+  (WP-R05-02), `/s3` returns secrets to any client (WP-R01-04), idempotency key ignores target (WP-R04-02 was a lead).
+- Review 11 adds a `## Vault Leads Not Confirmed` section; the conventions now allow extra `##` sections after
+  `## Findings` (section 5 + Changelog).
+- Per the user: the committed credentials are documented as an owner-accepted known bad practice, not a
+  rotation action; glossary terms are proposed only, not added.
+
+### Unresolved / for the user
+- WP-R01-05 (Spring Data REST exposure) stays *Needs runtime verification*; the exact `curl` check is in the finding.
+- Surefire reports were read as-is (dated 2025-10-29); the wpmanager tests were not re-run.
+

@@ -760,7 +760,7 @@ Leads to verify and classify (from the inventory; not exhaustive, not pre-judged
   - `architecture.md`: Docs layout + `scripts/` validator.
   - `tech.md`: backend versions and the validator command.
   - `known-issues.md`: Context7 `main`-snippet caveat; `backend/` untracked means edits are checked by checksum.
-- [ ] Propose glossary terms to the user and add only on confirmation (`glossary add`): *Reference Project*, *Explanation Doc*, *Review Doc*, *Finding*, *Finding ID*, *Strength to Keep*, *Feature Module* (backend's 10-file unit).
+- [x] Propose glossary terms to the user and add only on confirmation (`glossary add`): *Reference Project*, *Explanation Doc*, *Review Doc*, *Finding*, *Finding ID*, *Strength to Keep*, *Feature Module* (backend's 10-file unit). — **Done 2026-09-29:** added with the user's approval (see [[Glossary/Glossary]]).
 
 ---
 
@@ -812,9 +812,11 @@ Leads to verify and classify (from the inventory; not exhaustive, not pre-judged
 
 ### Manual Validation
 
-- [ ] Open `documentation/Docs/backend/backend-Index.md` in Obsidian and confirm that every link opens its doc and that the Mermaid diagrams render.
-- [ ] Read `11-Recipe-Build-a-Project-This-Way.md` and judge whether you could scaffold a new module from it alone.
-- [ ] Spot-check 5 random findings: open the cited lines and confirm that the evidence matches the claim.
+- [x] Open `documentation/Docs/backend/backend-Index.md` in Obsidian and confirm that every link opens its doc and that the Mermaid diagrams render.
+- [x] Read `11-Recipe-Build-a-Project-This-Way.md` and judge whether you could scaffold a new module from it alone.
+- [x] Spot-check 5 random findings: open the cited lines and confirm that the evidence matches the claim.
+
+**Manual validation confirmed by the user on 2026-09-29.**
 
 **Rule:** Run automatic checks when possible. Manual checks above are for the user; do not perform them on the user's behalf.
 

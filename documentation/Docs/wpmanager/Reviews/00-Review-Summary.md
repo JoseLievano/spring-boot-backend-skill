@@ -185,7 +185,8 @@ idempotency, storage, replication and catalog findings — the code `backend/` r
    deletes, delete `/tests3`, remove Data REST, and stop returning storage keys
    ([[Docs/wpmanager/Reviews/01-Security-Review#WP-R01-01|WP-R01-01]] to
    [[Docs/wpmanager/Reviews/01-Security-Review#WP-R01-05|WP-R01-05]]).
-2. **Rotate the committed cloud keys** and remove secrets and fallbacks from the tree
+2. **Keep secrets out of the tree**: no literals, no fallbacks, no credentials in tests (the committed cloud
+   keys are an owner-accepted known bad practice for now)
    ([[Docs/wpmanager/Reviews/01-Security-Review#WP-R01-06|WP-R01-06]],
    [[Docs/wpmanager/Reviews/01-Security-Review#WP-R01-07|WP-R01-07]]).
 3. **Redraw the upload boundary**: transfer outside any transaction, persist in one short transaction that rolls

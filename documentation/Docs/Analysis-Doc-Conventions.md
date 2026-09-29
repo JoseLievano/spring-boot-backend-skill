@@ -291,14 +291,14 @@ the reviewer; the tasks' secret-leak `grep` covers the last one.
 
 ## Changelog
 
-- **2026-09-29** — Created by [[Tasks/current/Spring-Boot-Skill-Creation-step-1-Analyze-backend|Task 1]].
+- **2026-09-29** — Created by [[Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend|Task 1]].
   Additions beyond the Task 1 spec, all enforced by the validator: file-name patterns (section 1),
   escaped-pipe aliases in tables (section 1), withdrawn findings need only `Title` and `Status`
   (section 7), wiki links inside code are not checked, exit code 2 for usage errors, and the severity
   note on dormant bugs (section 6).
   Link resolution is stricter than "basename fallback" for path-style links: `[[Docs/backend/X]]` must
   exist at exactly that path; only bare names (`[[X]]`) fall back to a unique basename.
-- **2026-09-29** — [[Tasks/current/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager|Task 3]]: a review may add
+- **2026-09-29** — [[Tasks/done/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager|Task 3]]: a review may add
   extra `##` sections after `## Findings` (as the summary already may), for material that is not a finding —
   wpmanager's review 11 adds `## Vault Leads Not Confirmed`. The validator already tolerates extra `##`
   headings; `###` headings inside `## Findings` remain reserved for finding IDs.

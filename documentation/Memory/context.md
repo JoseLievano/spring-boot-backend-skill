@@ -2,7 +2,7 @@
 
 ## Current focus
 Phase 1 (analysis) of [[Features/to-do/Spring-Boot-Skill-Creation]]. Tasks 1 (`backend/`), 2 (`BugTracker/`) and
-3 (`wpmanager/`) are implemented and await the user's manual validation. **Next: Task 4 (cross-project
+3 (`wpmanager/`) are done — manually validated by the user and moved to `Tasks/done/`. **Next: Task 4 (cross-project
 comparison)** using the stable finding IDs and each summary's "Candidate Patterns for the Skill".
 
 ## Recent changes
@@ -21,8 +21,5 @@ comparison)** using the stable finding IDs and each summary's "Candidate Pattern
 | 1+ — All remaining phases | Not yet designed | Pending reference project analysis |
 
 ## Next steps
-- User: manual validation of Tasks 1–3 (Obsidian links/Mermaid, spot checks, recipe usability); decide on the
-  proposed glossary terms (all three tasks); **rotate the cloud-storage keys committed in
-  `wpmanager/src/test/.../E2EPluginUploadTest.java`**.
-- Then Task 4: cross-project comparison using the stable finding IDs (`BE-`/`BT-`/`WP-R<NN>-<MM>`) and the
+- Task 4: cross-project comparison using the stable finding IDs (`BE-`/`BT-`/`WP-R<NN>-<MM>`) and the
   "Shared with backend" table in [[Docs/wpmanager/Reviews/00-Review-Summary]].

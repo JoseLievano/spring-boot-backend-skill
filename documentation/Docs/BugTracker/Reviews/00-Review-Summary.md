@@ -111,7 +111,7 @@ category), and the filter engine keeps per-request state in a singleton. Almost 
 ## Defects vs Era Gaps
 
 Every finding is either a **defect** or an **era gap** (rule from
-[[Tasks/current/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker|Task 2]]: era gaps are at most 🟡 unless they
+[[Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker|Task 2]]: era gaps are at most 🟡 unless they
 carry a security or end-of-life risk, and they fill in **Version note**).
 
 ### Era gaps

@@ -217,12 +217,12 @@ Wasabi region (`wpmanager/src/test/java/com/wpmanager/models/plugin/E2EPluginUpl
 part of the `wpmanager` repository (a git submodule of this workspace).
 **Impact:** Anyone with read access to the repository or its history can use the buckets directly. Removing
 the lines does not remove them from history.
-**Recommendation:** Treat the keys as compromised: **rotate them at the provider now** (manual action for the
-user). Then remove them from the file, read test credentials from environment variables or use a local S3
-emulator (MinIO, LocalStack, or Testcontainers), and purge the history (for example `git filter-repo`
-with a replace-text rule, followed by a force-push and re-clone by all collaborators). Add a secret scanner
-(gitleaks, GitHub secret scanning) to the workflow. Do not run the purge without coordinating with the
-repository owner.
+**Recommendation:** The owner knows these credentials (and those in git history) are exposed and has
+deliberately left them in place for now; this is recorded as an accepted known bad practice, not an open action
+for this analysis. For the pattern the skill should teach: never put credentials in tests — read them from
+environment variables or use a local S3 emulator (MinIO, LocalStack, or Testcontainers); treat any committed key
+as compromised (rotate it and purge history with a tool such as `git filter-repo`); add a secret scanner
+(gitleaks, GitHub secret scanning) to the workflow.
 **Verified against:** N/A — no library API involved
 **Confidence:** Confirmed (read in code)
 
