@@ -1,11 +1,15 @@
 # Active Context
 
 ## Current focus
-Phase 1 (analysis) of [[Features/to-do/Spring-Boot-Skill-Creation]]. Tasks 1 (`backend/`), 2 (`BugTracker/`) and
-3 (`wpmanager/`) are done — manually validated by the user and moved to `Tasks/done/`. **Next: Task 4 (cross-project
-comparison)** using the stable finding IDs and each summary's "Candidate Patterns for the Skill".
+New action plan: [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]] (supersedes Task 4 and
+Phases 2–3 of [[Features/to-do/Spring-Boot-Skill-Creation]], which the user asked to ignore). Its review
+[[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] has 17 findings (1 🔴, 5 🟠, 8 🟡, 3 🟢),
+all Pending. **Next: resolve the findings with the user (feature-findings-solver), then start Task 1 (ADRs).**
 
 ## Recent changes
+- **2026-09-30 — Action-plan Feature + review written.** 18 decisions (D1–D18) from a user interview: Guide in
+  `Docs/Guide/`, Base Project owns platform modules, JWT now → Clerk/WorkOS later via resource-server seam, S3-compatible +
+  local storage port, idempotency in base, PostgreSQL, MapStruct, no multi-tenancy, skill rewritten from scratch.
 - **Task 3 executed:** [[Docs/wpmanager/wpmanager-Index]] — 14 Explanations, 11 Reviews + summary, 88 findings
   (9 Critical, 16 High, 43 Medium, 20 Low; 34 share a root cause with `backend/`). Validator exit 0 for all three
   projects; checksum snapshot `scripts/.snapshots/wpmanager.sha256` unchanged. Conventions: reviews may add
@@ -21,5 +25,5 @@ comparison)** using the stable finding IDs and each summary's "Candidate Pattern
 | 1+ — All remaining phases | Not yet designed | Pending reference project analysis |
 
 ## Next steps
-- Task 4: cross-project comparison using the stable finding IDs (`BE-`/`BT-`/`WP-R<NN>-<MM>`) and the
-  "Shared with backend" table in [[Docs/wpmanager/Reviews/00-Review-Summary]].
+- Resolve the 17 review findings (F1 needs the user to change `brief.md:23`; F11 needs a Boot-line decision).
+- Then Task 1 of the new Feature: `brief.md` update (user), ADR system init, ADR-0001…0016, glossary terms.

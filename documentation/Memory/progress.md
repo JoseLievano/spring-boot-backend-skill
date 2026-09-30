@@ -1,5 +1,13 @@
 # Progress
 
+## 2026-09-30 (New action plan)
+- **Feature written:** [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]] — ADRs → Guide
+  (`Docs/Guide/`, rule IDs) → Base Project (platform modules) → rewritten Skill → Validation Loop (two user
+  domains, blind review, strict exit gate). Decisions D1–D18 from a user interview. Auth seam verified against the
+  Spring Security 7.0 resource-server docs; MapStruct `@MappingTarget` and `ReportingPolicy.ERROR` verified.
+- **Reviewed:** [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] — 17 findings; the Critical
+  one is the conflict with `brief.md` "standalone skill" (the Skill would depend on `base-project/`).
+
 ## 2026-09-29 (Phase 1 Tasks 1–3 closed)
 - User confirmed the manual validation of [[Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend|Task 1]],
   [[Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker|Task 2]] and

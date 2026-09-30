@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Docs/backend/Reviews/00-Review-Summary.md",
+                "file": "Features/to-do/Spring-Boot-Skill-Creation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00-Review-Summary"
+              "title": "Spring-Boot-Skill-Creation"
             }
           }
         ],
@@ -216,12 +216,21 @@
   },
   "active": "462934671bfc766f",
   "lastOpenFiles": [
+    "Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project.md.tmp.6459.ad2bd2f1d596",
+    "Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project.md",
+    "Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project.md.tmp.6459.184eedd97e14",
+    "Bugs/to-do",
+    "Bugs",
+    "Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project.md",
+    "Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project.md.tmp.6459.1a1ee3f48058",
+    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md",
+    "Docs/backend/Reviews/00-Review-Summary.md",
+    "Features/to-do/Spring-Boot-Skill-Creation.md",
     "Tasks/done/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager.md",
     "Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker.md",
     "Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend.md",
     "Tasks/current/sedEBIVDh",
     "Docs/backend/Explanations/11-Recipe-Build-a-Project-This-Way.md",
-    "Docs/backend/Reviews/00-Review-Summary.md",
     "Tasks/current/Spring-Boot-Skill-Creation-step-1-Analyze-backend.md",
     "Docs/Skill-Architecture.md",
     "Docs/Skill-Directory-Convention.md",
@@ -230,12 +239,6 @@
     "Memory/progress.md.tmp.256920.1774816417561",
     "Memory/tech.md.tmp.256920.1774816401922",
     "Memory/architecture.md.tmp.256920.1774816390646",
-    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md",
-    "Features/to-do/Spring-Boot-Skill-Creation.md",
-    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774808009308",
-    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774807926458",
-    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774807831543",
-    "Features/to-do/Agent-Project-Onboarding-First-Instructions.md.tmp.256920.1774807767835",
     "Memory/context.md",
     "Memory/brief.md",
     "Memory/architecture.md"
