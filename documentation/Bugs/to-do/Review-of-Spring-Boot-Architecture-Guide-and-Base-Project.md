@@ -96,7 +96,33 @@ updates `brief.md:23` and `known-issues.md:50` to "standalone skill directory (m
 assets)". Record the location in ADR-0002. Add a sync rule: `base-project/` is the development copy, and Step 6.3
 copies a tagged version into the Skill's assets.
 
-**Decision:**
+**Decision:** Custom option (user-proposed) — the Skill is a code-free convention, not a scaffold. (2026-09-30)
+
+The Skill ships **no code artifacts and no Spring app**: it is pure markdown — rules, module **contracts**
+(interfaces, invariants, error modes) and pseudo-code snippets only. Project initialization is explicitly **not**
+the Skill's job, and the Skill is not Claude-Code-specific. New projects implement the contracts fresh, and the
+Skill instructs the agent to look up current framework documentation for exact API syntax at execution time
+(never assume it).
+
+This **dissolves F1's premise**: the Skill has no dependency on `base-project/`, so `brief.md:23` ("standalone
+skill (markdown prompt file)") and `known-issues.md:50` ("self-contained markdown") are both satisfied as
+written. **No `known-issues.md` change is required for F1.** `brief.md` still needs a user update, but for
+different wording: "scaffolds new Spring Boot APIs" and "Claude Code skill" no longer match (Step 1.1 amended).
+
+`base-project/` remains a workspace deliverable as the **reference implementation** where the platform designs
+are worked out and tested — so the convention is not invented — and as the harness for the Validation Loop. It
+is never shipped with the Skill and never a copy source.
+
+**Rationale:** (a) the user requires a project-agnostic, code-free skill; (b) a Base Project pinned to one
+Spring Boot version would make the Skill teach deprecated APIs as the framework moves on (the F11 Boot 3 vs
+Boot 4 concern), whereas contracts plus doc lookup stay current; (c) the architectural defects this Feature
+exists to eliminate are prevented by contract-level precision, not by copying tested code.
+
+**Parent document patched:** yes — D2, the description, the problem statement, user story 43, the flowchart,
+sections 13 and 14, ADR-0002/0017 rows, Step 1.1 and the Risk Assessment drift bullet.
+
+**Findings affected:** F16 is auto-resolved (the Skill no longer copies the sample feature). F11 is reframed
+(only the Base Project pins a version; the Skill does not).
 
 ---
 
@@ -129,7 +155,28 @@ cheaper than finding them through generated projects.
 comparable, and it catches platform defects once instead of twice per run. Add it to Task 9 or as a new Task
 between Tasks 9 and 10.
 
-**Decision:**
+**Decision:** Option 4 (alternative, promoted to first-class) — review the contracts, not the code. (2026-09-30)
+
+Add a **blind design review of the module contracts** (interfaces, invariants, error modes, cross-module
+interactions) at the end of Phase 2, before Phase 3 encodes them: fresh agent context,
+[[Docs/Analysis-Doc-Conventions]] review format, finding IDs `GC-R<NN>-<MM>`, and a gate of 0 🔴 / 0 🟠 before
+Phase 3 starts. It goes in Task 5 alongside the existing validator + user review.
+
+Step 3.7 becomes an explicit **contract-conformance checklist** for the Base Project: every contract invariant
+from the Guide is backed by at least one test. Run 01's blind review stays as the downstream net.
+
+**Rationale:** under the D2 revision recorded in F1, generated projects implement the contracts fresh and never
+copy `base-project/` code, so the **contracts** are the highest-blast-radius artifact — a bad contract is
+reproduced in every project, while a defect in the never-shipped reference implementation is not. F3–F6 are all
+contract-level defects that pure design reasoning found with no code in existence. The review also fires earlier
+and reuses the established review format and severity scale.
+
+Option 1 (full blind code review of `base-project/`) is viable but spends the independent check on the
+lower-leverage artifact. Option 2 is invalid under the new D2: run 01's reviewer never sees base code. Option 3
+is weaker and reinstates self-grading.
+
+**Parent document patched:** yes — Steps 2.6 and 3.7, Tasks 5 and 9, and the Guide-format section (new
+`GC-R` finding-ID namespace).
 
 ---
 
@@ -163,7 +210,34 @@ engine, and it becomes the natural extension point for tenancy later (D8): a ten
 visibility rule. Make it mandatory (no silent default) so a generated feature must decide. Add it to Guide 04 and
 Guide 08, and add "list returns only visible rows" to the auth matrix tests.
 
-**Decision:**
+**Decision:** Option 4 (alternative, promoted to first-class) — a mandatory `RowScope` contract. (2026-09-30)
+
+Row visibility becomes a **contract-level, technology-neutral value**, not a JPA hook:
+
+- `RowScope` is produced by the feature's `<F>AccessPolicy` through named factories — `ownedBy(ownerPath,
+  user)`, `all()` (genuinely global resources), `system()` (F17's scheduled/system actor).
+- `ListQuery.run` and every CRUD entry point **require** a `RowScope`. There is no overload without one, so
+  deny-by-default is structural rather than a convention a generator can forget.
+- The scope is ANDed into the query **before paging**, so page size, totals and page counts stay correct
+  (unlike per-row post-filtering).
+- Rows outside the scope read as `404`, not `403` — no existence leak.
+- Guide 04, 06 and 08 state the contract; the auth matrix gains a "list returns only visible rows" case per
+  feature (two users, overlapping pages).
+- `RowScope` is the named D8 tenancy extension point: a tenant scope is just another scope composition.
+
+**Rationale:** Option 1's enforcement is right (query-level AND, correct paging, engine-independent) but its
+return type leaks a JPA `Predicate` into feature code, contradicting Guide section 7's rule that the predicate
+technology is hidden behind `platform.query`. Under the revised D2 a leaked type would be re-implemented
+differently on every project. `RowScope` is fail-closed by signature and puts row rules in the same
+`<F>AccessPolicy` file as role rules. Options 2 (Hibernate filters) and 3 (PostgreSQL RLS) are both fail-open
+or move the invariant outside the application contract, and neither survives a fresh per-project
+implementation.
+
+**Parent document patched:** yes — sections 5, 6, 7, 8, the Guide-document table (04/06/08), user story 24,
+Testing Decisions, and the D8 scope note.
+
+**Findings affected:** F7 is partly prepared (the `<F>AccessPolicy` is now the row-scope source and a Feature
+Module file); F17's system actor is provided for by the `system()` scope factory.
 
 ---
 
@@ -194,7 +268,51 @@ Project, and the design as written invites it.
 and the ArchUnit rule catches it at build time. Option 2 alone would silently suspend a caller's transaction and
 hide a design error. Update section 10, Guide 10 and the storage tests.
 
-**Decision:**
+**Decision:** Option 4 (alternative, promoted to first-class) — remove the enabler and enforce the invariant
+with the framework. (2026-10-02)
+
+Two changes, both structural:
+
+- **The CRUD base declares `@Transactional` per entry point, not at class level.** The annotation sits on the
+  six base methods only (read-only for `get`/`list`/`search`); unchecked exceptions still roll back by
+  default. Feature-added service methods are therefore **non-transactional by default** and must declare
+  `@Transactional` explicitly when they perform multiple writes. This is a **documented departure from the
+  reference projects** (US 5), recorded in Guide 04's "Differs From the Reference Projects".
+- **`UploadCoordinator.store` is declared `@Transactional(propagation = NEVER)`.** A call made while a
+  transaction is active fails immediately, before any storage I/O, instead of silently streaming inside it.
+  Framework-native fail-fast: the `NEVER` contract is part of the module's stated error mode, and it also
+  covers hook misuse and inherited class-level transactions. Upload entry points are non-transactional service
+  methods; hooks never call `store`.
+
+Also added: a transaction-boundary contract test in Testing Decisions ("`store` while a transaction is active
+fails immediately and performs no storage I/O") and the same invariant named in Step 3.7's
+contract-conformance checklist. Guide table rows 04, 10 and 13 updated.
+
+**Rationale:** the finding's title names the *enabler* — the class-level transaction — so the fix removes it
+rather than building detectors around it. Making the safe path the default path is more executable and less
+ambiguous than two detection layers; `propagation = NEVER` subsumes Option 1's fail-fast intent using framework
+machinery instead of hand-rolled `TransactionSynchronizationManager` probing, and it covers paths static
+analysis cannot see. Architecturally it is SRP-true: the base stops imposing a transaction policy on methods it
+does not own, and it inherits F3's "structural over conventional" stance. The cost is one documented departure
+from the reference shape, which US 5 already requires us to record.
+
+Options 1 and 3 remain viable but close the symptom rather than the cause. Note that Option 3 as literally
+worded cannot work: `isAnnotatedWith(Transactional.class)` is blind to the class-level `@Transactional`
+inherited from `platform.crud.CrudService` (spring-tx 6.2.1 `@Transactional` is `@Inherited`;
+TNG/ArchUnit#277), so it would miss the finding's own `NoteService` example and would need reformulation to
+`areAssignableTo(annotatedWith(...))`. Option 2 (`NOT_SUPPORTED`) silently suspends the caller's transaction —
+hiding the design error, contradicting F3's fail-closed-by-signature precedent — and the suspended outer
+transaction still holds a pooled connection for the whole transfer, so WP-R03-02's pool-exhaustion impact
+survives.
+
+**Parent document patched:** yes — section 6 (transaction bullet, rewritten as a per-entry-point rule with an
+explicit departure note), section 10 (`UploadCoordinator` gains the `NEVER` no-transaction contract), the Guide
+document table rows 04/10/13, Step 3.5, Step 3.7 (contract-conformance checklist), and Testing Decisions (the
+transaction-boundary contract test).
+
+**Findings affected:** none directly. F9 (concurrency control) is unaffected — the version/`If-Match` design
+still belongs on the six entry points. F13 (file downloads) should reuse the same rule: a download endpoint
+that streams must not run inside a transaction either.
 
 ---
 
@@ -730,10 +848,10 @@ downstream work depends on an artifact (F2, F10, F15).
 
 | # | Title | Severity | Status |
 |---|-------|----------|--------|
-| F1 | The Skill depends on an external Base Project, contradicting the "standalone skill" constraint | 🔴 Critical | Pending |
-| F2 | The Base Project is never independently reviewed | 🟠 High | Pending |
-| F3 | List and search endpoints have no ownership or visibility scoping | 🟠 High | Pending |
-| F4 | "No transaction open during upload" is not enforced | 🟠 High | Pending |
+| F1 | The Skill depends on an external Base Project, contradicting the "standalone skill" constraint | 🔴 Critical | Done |
+| F2 | The Base Project is never independently reviewed | 🟠 High | Done |
+| F3 | List and search endpoints have no ownership or visibility scoping | 🟠 High | Done |
+| F4 | "No transaction open during upload" is not enforced | 🟠 High | Done |
 | F5 | Idempotency fingerprinting conflicts with streaming uploads | 🟠 High | Pending |
 | F6 | The local identity lifecycle is undefined | 🟠 High | Pending |
 | F7 | Authorization split across four mechanisms; access declaration not in anatomy | 🟡 Moderate | Pending |

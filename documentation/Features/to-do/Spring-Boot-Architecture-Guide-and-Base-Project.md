@@ -12,11 +12,15 @@ This Feature is the action plan that turns the Phase 1 analysis of the three **R
    a Generic CRUD Stack, a whitelist query engine, stateless JWT, an object-storage abstraction, idempotent
    uploads) but removes every design and implementation defect found in the 241 review findings. It defines
    *how the system is designed and how its modules talk to each other*, not full code.
-2. **The Base Project** — a tested starter project (`base-project/`) that owns the shared **Platform
+2. **The Base Project** — a tested reference implementation (`base-project/`) of the shared **Platform
    Modules**: identity and access, errors, the CRUD base, the query engine, object storage, idempotency,
-   configuration and architecture rules. It is built from the Guide.
-3. **The Skill** — a rewritten `spring-boot-backend` skill (`spring-boot-skill/`) that starts a project from
-   the Base Project and generates Feature Modules and optional modules on top of it, citing Guide rules.
+   configuration and architecture rules. It is built from the Guide and proves the convention is implementable
+   and sound. It stays in the workspace: it is never shipped with the Skill and never a copy source.
+3. **The Skill** — a rewritten `spring-boot-backend` skill (`spring-boot-skill/`): a project-agnostic
+   convention expressed as pure markdown — rules, module **contracts** (interfaces, invariants, error modes)
+   and pseudo-code snippets only. It ships no code artifacts and no Spring app, and project initialization is
+   not its job. New projects implement the contracts fresh and look up current framework documentation for
+   exact API syntax at execution time.
 
 Then a **Validation Loop** uses the Skill to generate projects for two small domains the user defines, builds
 and runs them, has them critiqued by a blind reviewer with the same method used on the reference projects,
@@ -42,7 +46,7 @@ Copying any one project, or even the consensus of the three, would copy those de
 across a lineage is not evidence of correctness. The user needs:
 
 - one written, reviewable convention that says what to keep, what to change and why;
-- a starter project where the risky shared code is written and tested once;
+- a reference implementation where the risky shared design is worked out and tested once;
 - a skill that applies the convention reliably;
 - evidence — not opinion — that the convention produces good projects.
 
@@ -75,7 +79,8 @@ stores and a local filesystem. The design must absorb both without rewriting bus
 21. As a security reviewer, I want filterable and sortable fields to be whitelisted per entity, so that sensitive columns cannot be probed.
 22. As a security reviewer, I want query size and complexity bounded, so that a single request cannot exhaust the database.
 23. As a security reviewer, I want deny-by-default URL rules plus method security, so that an unannotated endpoint is never anonymous.
-24. As a security reviewer, I want ownership checks in the CRUD base's authorize hook, so that inherited operations cannot touch other users' data.
+24. As a security reviewer, I want row visibility enforced at query level for every inherited operation, so that
+   `get`, `list`, `search`, `update` and `delete` never touch rows the caller may not see.
 25. As a security reviewer, I want a route × role authorization test matrix, so that every endpoint's 401/403/2xx behavior is proven.
 26. As a security reviewer, I want no secret literal or fallback default anywhere in source, tests or committed properties, so that the reference projects' leaks are not repeated.
 27. As the project owner, I want our own JWT login now, so that projects work without an external identity provider.
@@ -94,7 +99,9 @@ stores and a local filesystem. The design must absorb both without rewriting bus
 40. As a backend developer, I want integration tests on real PostgreSQL (Testcontainers), so that tests exercise the production engine.
 41. As a backend developer, I want typed, validated configuration that fails at start-up, so that a missing secret or bad setting is caught immediately.
 42. As an operator, I want health indicators for the database and the storage provider, so that I can see when a dependency fails.
-43. As an AI agent using the skill, I want to start a project from the Base Project, so that the platform code is never regenerated.
+43. As an AI agent using the skill, I want the platform described as contracts (interfaces, invariants, error
+   modes) that I implement against current framework documentation, so that every project gets the same design
+   without shipping or copying version-pinned code.
 44. As an AI agent using the skill, I want instructions for adding a Feature Module that cite Guide rule IDs, so that my output is traceable to the convention.
 45. As an AI agent using the skill, I want to load only the instructions for the current task, so that my context stays small.
 46. As the project owner, I want the skill tested by generating real projects for two different domains, so that it is not tuned to one example.
@@ -115,9 +122,9 @@ source of each finding.
 flowchart LR
     R[Reference reviews<br/>241 findings] --> A[ADRs]
     A --> G[Guide<br/>Docs/Guide]
-    G --> B[Base Project<br/>platform modules]
-    G --> S[Skill<br/>spring-boot-skill]
-    B --> S
+    G --> B[Base Project<br/>reference implementation]
+    G --> S[Skill<br/>convention, no code]
+    B -.->|proves contracts work| G
     S --> V[Validation run<br/>2 domains]
     V --> C[Blind review<br/>findings]
     C -->|fix at source| G
@@ -130,7 +137,7 @@ flowchart LR
 | # | Decision | Chosen option | Main evidence |
 |---|---|---|---|
 | D1 | Source of truth | The Guide; reference projects are evidence, not authority; every departure cites a finding | Lineage copies defects (34 of 88 wpmanager findings shared with `backend/`) |
-| D2 | Base Project vs Skill | Base Project owns the Platform Modules; the Skill generates Feature Modules and enables optional modules | Shared framework is where the Critical findings live |
+| D2 | Base Project vs Skill | The Skill is a code-free convention (rules, contracts, pseudo-code); projects implement the contracts fresh against current docs. The Base Project is the workspace reference implementation that proves the convention, never a shipped artifact | Shared platform design is where the Critical findings live; shipping pinned code would teach deprecated APIs (F11) |
 | D3 | Version baseline | Spring Boot 3+, Java 21+; rules version-neutral; version notes per document | BT-R08-01 (EOL Boot 2.7), era gaps |
 | D4 | Package layout | `<root>.platform.*` + `<root>.features.<feature>`; ArchUnit-enforced dependency rules | BE-R09-07, WP-R07-05 (`shared` imports features) |
 | D5 | CRUD base | Keep, deepened: 3 DTO shapes, real update, unchecked exceptions, hooks, opt-out | BE-R02-01/06/07, WP-R02-06, BT-R02-01/02 |
@@ -163,7 +170,7 @@ flowchart LR
 
 **Out of scope**
 
-- Multi-tenancy (D8) — the Guide names the extension point only.
+- Multi-tenancy (D8) — the Guide names the extension point only: `RowScope` composition.
 - A concrete Clerk or WorkOS integration — the Guide defines the migration path and the Base Project proves
   it with a second token-verification configuration (a fake JWKS issuer in tests).
 - Building multi-provider replication — the Guide specifies it as an optional extension.
@@ -213,6 +220,8 @@ flowchart LR
 - **Drift between Guide, Base Project and Skill.** Three artifacts that describe one design will diverge.
   Mitigation: the Guide is the only place rules are stated; the Base Project cites rule IDs in class-level
   Javadoc of Platform Modules; Skill files cite rule IDs; the validator checks rule-ID references resolve.
+  Because the Base Project is never shipped or copied, drift degrades only its role as evidence, not the code
+  generated from the Skill.
 - **The CRUD base stays shallow.** wpmanager overrode 29 of 60 base methods (WP-R02-06). Mitigation: an
   explicit depth acceptance criterion measured in every validation run (override rate of `create`/`update`
   below 50% across generated features); if it fails twice, ADR-0005 is revisited.
@@ -223,8 +232,8 @@ flowchart LR
   test that failed outside Docker (BE-R08-03). Mitigation: document the requirement in the Base Project README
   and fail fast with a clear message.
 - **External identity providers differ.** Clerk and WorkOS put roles and organisations in different claims.
-  Mitigation: a `ClaimsMapper` port with one adapter per provider; the Base Project ships the local adapter and
-  a test adapter for a generic external issuer.
+  Mitigation: a `ClaimsMapper` port with one adapter per provider; the Base Project includes the local adapter
+  and a test adapter for a generic external issuer.
 - **Local token issuer is security-sensitive code.** Mitigation: keep it minimal (login, refresh, logout),
   use framework primitives, asymmetric keys from configuration, hashed rotating refresh tokens, and test it.
 - **Secrets.** The reference projects committed secrets; the owner accepted leaving those, but nothing new may
@@ -257,7 +266,7 @@ linkable record before any guide text is written.
 | ADR | Title | From |
 |---|---|---|
 | 0001 | Guide is the source of truth; references are evidence | D1 |
-| 0002 | Base Project owns the Platform Modules; the Skill generates features | D2 |
+| 0002 | Platform modules are contracts the Skill states and projects implement fresh; the Base Project is the workspace reference implementation | D2 |
 | 0003 | Version baseline: Spring Boot 3+, Java 21+ | D3 |
 | 0004 | Package layout `platform` / `features` with enforced dependency rules | D4 |
 | 0005 | Deepened generic CRUD base with hooks and three DTO shapes | D5 |
@@ -272,7 +281,7 @@ linkable record before any guide text is written.
 | 0014 | Idempotency guard, opt-in per endpoint | D14 |
 | 0015 | Validation loop protocol and exit gate | D15 |
 | 0016 | Guide document format and rule IDs | D16, D17 |
-| 0017 | Skill architecture (written in Step 4.1) | D18 |
+| 0017 | Skill architecture: code-free convention, contract-first, current-docs lookup for API syntax (written in Step 4.1) | D18 |
 
 - Glossary terms (via the `glossary` CLI, with user confirmation): **Guide**, **Guide Rule**, **Rule ID**,
   **Platform Module**, **Base Project**, **Current User**, **Token Issuer**, **Claims Mapper**,
@@ -302,6 +311,9 @@ declared is rejected with 400.
 - Extend `scripts/validate-analysis-docs.py` with a `guide` target: heading order, unique rule IDs,
   every rule has Rule/Why/Evidence, every cited finding ID and ADR resolves, every Guide document is listed in
   `Guide-Index.md`. Add unit tests in `scripts/tests/`.
+- The blind contract design review (Step 2.6) writes its findings in the [[Docs/Analysis-Doc-Conventions]]
+  review format with finding IDs `GC-R<NN>-<MM>` (`GC` = Guide contract), kept distinct from Guide rule IDs
+  `G<NN>-<MM>`. Review documents live under `documentation/Docs/Guide/Reviews/`.
 **Links:** [[Docs/Analysis-Doc-Conventions]]
 
 #### 3. The Guide documents
@@ -314,16 +326,16 @@ how they talk to each other; code appears only as short illustrative sketches.
 | 01 | Principles-and-Baseline | Deep modules + SOLID as the design rules; baseline; what "version notes" mean; how rules are cited |
 | 02 | Project-Layout-and-Module-Boundaries | `platform` / `features`; allowed dependencies; cross-feature communication; ArchUnit rules |
 | 03 | Feature-Module-Anatomy | The fixed file set and naming; when to opt out of the CRUD base |
-| 04 | CRUD-Base-and-Service-Hooks | Base controller and service contract; hooks; transactions; server-assigned ids |
+| 04 | CRUD-Base-and-Service-Hooks | Base controller and service contract; hooks; mandatory `RowScope` and row visibility; per-entry-point transactions (no class-level `@Transactional`); server-assigned ids |
 | 05 | API-Contract | Resource naming, `/api/v1` prefix, status codes, `Location`, `PageResponse`, OpenAPI |
-| 06 | Query-Engine | Query Profile, request forms (`GET` / `POST /search`), operators, bounds, typing |
+| 06 | Query-Engine | Query Profile (field whitelist), `RowScope` (row visibility), request forms (`GET` / `POST /search`), operators, bounds, typing |
 | 07 | Domain-Model-and-Persistence | Entities, `equals`/`hashCode`, LAZY by default, enums as strings, auditing, constraints, Flyway |
-| 08 | Identity-Authentication-and-Authorization | Current User seam, token verification, local issuer, provisioning, deny-by-default, method security, ownership, migration to Clerk/WorkOS |
+| 08 | Identity-Authentication-and-Authorization | Current User seam, token verification, local issuer, provisioning, deny-by-default, method security, `<F>AccessPolicy` and `RowScope`, ownership, migration to Clerk/WorkOS |
 | 09 | Errors-and-Validation | Exception hierarchy, `ProblemDetail`, validation on requests, security errors in the same shape |
-| 10 | Object-Storage-and-Uploads | Storage port and adapters, object keys, streaming, Upload Coordinator, compensation, optional replication extension |
+| 10 | Object-Storage-and-Uploads | Storage port and adapters, object keys, streaming, Upload Coordinator and its no-transaction (`NEVER`) contract, compensation, optional replication extension |
 | 11 | Idempotency | Keys, fingerprints, states, leases, replay, cleanup |
 | 12 | Configuration-and-Secrets | Typed properties, fail-fast validation, profiles, no literal secrets |
-| 13 | Testing-Strategy | Test layers, Testcontainers, contract tests, auth matrix, ArchUnit, what not to test |
+| 13 | Testing-Strategy | Test layers, Testcontainers, contract tests, transaction-boundary tests, auth matrix, ArchUnit, what not to test |
 | 14 | Observability-and-Operations | Health indicators, logging rules (parameterised, no personal data), SQL logging off by default |
 | 15 | Recipe-Add-a-Feature | End-to-end walkthrough of adding one Feature Module |
 | 16 | Traceability-Matrix | Every 🔴/🟠 reference finding → Guide rule(s) that prevent it, or "N/A — reason" |
@@ -374,6 +386,7 @@ Dependency rules (ArchUnit tests in the Base Project):
 | `<F>Summary` | List-row output |
 | `<F>Mapper` | MapStruct: `toResponse`, `toSummary`, `toEntity`, `update(request, @MappingTarget entity)` |
 | `<F>QueryProfile` | Whitelist of filterable/sortable fields |
+| `<F>AccessPolicy` | Role/action rules and the `RowScope` the base ANDs into every query |
 | `V<n>__<feature>.sql` | Flyway migration (in `db/migration`) |
 
 Replaces the reference projects' `DTO` / `MiniDTO` / `ListDTO` / `Form` quartet (BE-R02-06).
@@ -385,23 +398,34 @@ while features supply only their rules.
 
 ```java
 abstract class CrudService<REQ, RES, SUM, E, ID> {
-  RES get(ID id);
-  PageResponse<SUM> list(ListRequest request);
+  RES get(ID id);                            // scoped: invisible row → 404
+  PageResponse<SUM> list(ListRequest request);   // scoped: only visible rows
+  PageResponse<SUM> search(ListRequest request); // scoped: only visible rows
   RES create(REQ request);
-  RES update(ID id, REQ request);          // mapper.update(request, entity) — never a no-op
+  RES update(ID id, REQ request);            // mapper.update(request, entity) — never a no-op
   void delete(ID id);
 
   // hooks (protected, default no-op or default policy)
   protected void validateCreate(REQ request) {}
   protected void validateUpdate(REQ request, E current) {}
   protected void applyRelations(REQ request, E entity) {}   // resolve ids → entities, owner from CurrentUser
-  protected void authorize(Action action, E entityOrNull) {} // ownership / role rules
+  protected void authorize(Action action, E entityOrNull) {} // role / action rules (row scope is separate)
   protected void beforeDelete(E entity) {}                   // delete guards
 }
 ```
 
-- Constructor takes three collaborators: repository, mapper, Query Profile.
-- Class-level Spring `@Transactional`, read-only for reads; unchecked exceptions roll back by default.
+- Constructor takes four collaborators: repository, mapper, Query Profile, `<F>AccessPolicy`.
+- **Row visibility (`RowScope`) is mandatory and structural.** The `<F>AccessPolicy` produces a
+  technology-neutral `RowScope` (`ownedBy(ownerPath, user)`, `all()`, `system()`) and the base ANDs it into
+  every `get`, `list`, `search`, `update` and `delete` query **before paging**, so page size, totals and page
+  counts stay correct. There is no entry point that runs unscoped. Rows outside the scope read as `404`, not
+  `403` — no existence leak. `RowScope` is the D8 tenancy extension point.
+- **Transactions are declared per entry point, not at class level.** `@Transactional` sits on the six base
+  methods only (read-only for `get`/`list`/`search`); unchecked exceptions roll back by default. Feature-added
+  service methods are therefore **non-transactional by default** and must declare `@Transactional` explicitly
+  when they perform multiple writes. **This is a documented departure from the reference projects**, which put
+  class-level `@Transactional` on the base service and thereby made it easy to run storage I/O inside a
+  transaction (WP-R03-02). Guide 04 records the departure in "Differs From the Reference Projects" (US 5).
 - The base controller maps: `GET /{id}` → 200, `GET` → 200 page, `POST /search` → 200 page, `POST` → 201 +
   `Location` + `RES`, `PUT /{id}` → 200, `DELETE /{id}` → 204. Inputs carry `@Valid`.
 - Features that do not fit implement a plain service and controller (opt-out), still using `platform.errors`,
@@ -413,7 +437,11 @@ abstract class CrudService<REQ, RES, SUM, E, ID> {
 #### 7. Query engine (`platform.query`, Guide 06)
 **Purpose:** Safe ad-hoc filtering, sorting and paging behind one call.
 **Changes:**
-- Deep entry point: `PageResponse<SUM> ListQuery.run(QueryProfile<E> profile, ListRequest request, Function<E,SUM> toSummary)`.
+- Deep entry point: `PageResponse<SUM> ListQuery.run(QueryProfile<E> profile, RowScope scope, ListRequest request, Function<E,SUM> toSummary)`.
+  The `RowScope` argument is **mandatory** — a scope-less query is unrepresentable — and is ANDed into the
+  predicate before paging. `QueryProfile` whitelists *fields*; `RowScope` restricts *rows*; the two concerns
+  never mix. The predicate technology stays an implementation detail behind the interface, so `RowScope` is
+  technology-neutral and never exposes a JPA or QueryDSL type.
 - `ListRequest` is one internal form parsed from either `GET` parameters (page, size, sort) or a
   `POST /search` body (filters with operator lists, OR within a field, AND across fields, multi-sort) —
   BugTracker's contract, `backend/`'s implementation.
@@ -466,8 +494,9 @@ flowchart LR
   JWKS URI and role-claim path; no feature code changes.
 - **Authorization (`platform.access`):** `authorizeHttpRequests` with an explicit public-route list and
   `anyRequest().authenticated()`; `@EnableMethodSecurity` on the security configuration class (not on a
-  service — WP-R01-01, BE-R01-01); role rules per feature in one `<F>` access declaration used by the base
-  controller; ownership in the CRUD `authorize` hook (WP-R01-03). Authentication and authorization failures
+  service — WP-R01-01, BE-R01-01); role rules per feature in one `<F>AccessPolicy`, which also produces the
+  `RowScope` the base ANDs into every query (sections 6 and 7); single-entity role/action rules stay in the
+  CRUD `authorize` hook (WP-R01-03). Authentication and authorization failures
   produce the same `ProblemDetail` as other errors. No Spring Data REST (BE-R01-03, WP-R01-05).
 
 #### 9. Errors and validation (`platform.errors`, Guide 09)
@@ -515,6 +544,12 @@ interface ObjectStorage {                    // port — two production adapters
   `persist` inside a short `TransactionTemplate` transaction that rolls back on any exception; if
   persistence fails it deletes the object (compensation) and emits a searchable alert log when compensation
   itself fails (WP-R03-01/02/03). Callers never write transaction or cleanup code.
+  - **Enforced, not merely documented.** `store` is declared `@Transactional(propagation = NEVER)`, so a call
+    made while a transaction is active fails immediately — before any storage I/O — instead of silently
+    streaming inside it. This is framework-native fail-fast: the `NEVER` contract is part of the module's
+    stated error mode, and it also covers hook misuse and inherited class-level transactions that static
+    analysis cannot see (WP-R03-02). Upload entry points are therefore non-transactional service methods, and
+    hooks never call `store`.
 - **Optional replication extension (Guide only):** a provider registry, a default provider, an outbox row per
   stored file on commit, a worker processing one item at a time with retries, backoff and per-item error
   isolation, and a health indicator (WP-R05-02, WP-R05-06).
@@ -544,24 +579,33 @@ interface ObjectStorage {                    // port — two production adapters
   at `ERROR` (BE-R09-06).
 - Lean POM: only the starters in use (BE-R07-01, WP-R09-01); no H2 (BE-R03-06).
 
-#### 13. Base Project (`base-project/`)
-**Purpose:** The tested implementation of sections 4 and 6–12 that every new project starts from.
+#### 13. Base Project (`base-project/`, workspace reference implementation)
+**Purpose:** Prove that the design in sections 4 and 6–12 is implementable and sound, and give the Validation
+Loop a stable harness. Every new project implements the same contracts fresh — the Base Project is never
+shipped with the Skill and is never a copy source.
 **Changes:** Spring Boot project (current Boot 3.x or later line when built; Java 21+; PostgreSQL; Flyway;
 MapStruct; Testcontainers for PostgreSQL and MinIO; ArchUnit). Contains all Platform Modules, one sample
 Feature Module used by the tests (for example `features/note` with an owner, a list and an attachment
 upload), a README (prerequisites incl. Docker for tests, configuration variables, how to switch identity and
 storage modes), and no literal secrets. Each Platform Module's class-level Javadoc cites its Guide rule IDs.
+It is version-pinned by design: its API syntax is refreshed when the project is upgraded, while the Guide's
+rules and contracts stay version-neutral (F11).
 
 #### 14. Skill (`spring-boot-skill/`, rewritten)
-**Purpose:** Let an agent start projects from the Base Project and add Feature Modules and optional modules
-that follow the Guide.
-**Changes:** Designed in ADR-0017 after the Guide and Base Project exist. Minimum capabilities:
-- start a project from the Base Project (copy, rename root package, set configuration);
-- add a Feature Module from an entity description (all files in section 5, migration, tests, access rules);
-- enable an optional capability on a feature (upload + storage, idempotency);
+**Purpose:** Give an agent the project-agnostic convention for architecting, creating and editing Spring Boot
+apps — rules, module contracts and pseudo-code. No code artifacts, no Spring app; project initialization is
+not the Skill's job. The Skill is not Claude-Code-specific.
+**Changes:** Designed in ADR-0017 after the Guide and the Base Project exist. Minimum capabilities:
+- state the architecture and the module contracts (platform vs features, interfaces, invariants, error modes)
+  and how the modules talk to each other;
+- guide adding a Feature Module from an entity description (all files in section 5, migration, tests, access
+  rules), implementing the contracts against **current framework documentation looked up at execution time** —
+  never assuming API syntax;
+- guide enabling an optional capability on a feature (upload + storage, idempotency);
 - review a project against the Guide and report findings by rule ID.
-Skill files cite Guide rule IDs instead of restating rules. Skill files stay in `spring-boot-skill/` until
-Step 6.3 ([[Docs/Skill-Directory-Convention]]).
+Skill files cite Guide rule IDs instead of restating rules, and contain example code only as inline markdown
+snippets (pseudo-code or illustrative fragments) — never executable code and never bundled project files.
+Skill files stay in `spring-boot-skill/` until Step 6.3 ([[Docs/Skill-Directory-Convention]]).
 
 #### 15. Validation Loop (`validation-runs/`, `documentation/Docs/Validation/`)
 **Purpose:** Evidence that Guide + Base Project + Skill produce good projects.
@@ -584,7 +628,11 @@ Step 6.3 ([[Docs/Skill-Directory-Convention]]).
 ## Implementation Steps
 
 ### Phase 1: Decisions and vocabulary
-- [ ] **Step 1.1:** The user updates [[Memory/brief]] to relax "grounded, not invented" into "grounded or corrected, always cited" (user-owned file; the agent proposes wording only).
+- [ ] **Step 1.1:** The user updates [[Memory/brief]]: (a) relax "grounded, not invented" into "grounded or
+  corrected, always cited"; (b) replace "scaffolds new Spring Boot APIs" and "Claude Code skill (markdown prompt
+  file)" with a project-agnostic convention skill that ships no code artifacts and does not initialize projects
+  (user-owned file; the agent proposes wording only). [[Memory/known-issues]] "self-contained markdown" is
+  already satisfied and needs no change.
 - [ ] **Step 1.2:** Initialise the ADR system: add ADR directory and statuses to `documentation/doc-config.json`; create `documentation/ADRs/ADR-index.md`.
 - [ ] **Step 1.3:** Write ADR-0001 … ADR-0016 from decisions D1–D17 with context, decision and consequences, each citing the reference finding IDs; user approves → `accepted`.
 - [ ] **Step 1.4:** Add and update glossary terms listed in section 1 through the `glossary` CLI, with user confirmation.
@@ -595,19 +643,28 @@ Step 6.3 ([[Docs/Skill-Directory-Convention]]).
 - [ ] **Step 2.3:** Write Guide 06–09 (query engine, domain and persistence, identity and access, errors and validation).
 - [ ] **Step 2.4:** Write Guide 10–11 (object storage and uploads incl. the optional replication extension; idempotency).
 - [ ] **Step 2.5:** Write Guide 12–15 (configuration and secrets, testing strategy, observability, recipe).
-- [ ] **Step 2.6:** Write Guide 16 (traceability matrix): every 🔴/🟠 reference finding maps to a rule or a justified N/A; validator passes; user reviews the Guide.
+- [ ] **Step 2.6:** Write Guide 16 (traceability matrix): every 🔴/🟠 reference finding maps to a rule or a
+  justified N/A; validator passes; user reviews the Guide. Then run a **blind design review of the module
+  contracts** (fresh agent context; [[Docs/Analysis-Doc-Conventions]] review format; finding IDs
+  `GC-R<NN>-<MM>`; contracts judged on interfaces, invariants, error modes and cross-module interactions) and
+  gate 0 🔴 / 0 🟠 before Phase 3 starts.
 
 ### Phase 3: The Base Project
 - [ ] **Step 3.1:** Scaffold `base-project/` (build, PostgreSQL, Flyway, Testcontainers, MapStruct, ArchUnit), `platform.config` with fail-fast properties, ArchUnit dependency rules, `platform.errors` with its error-contract tests.
 - [ ] **Step 3.2:** Implement `platform.identity` (decoder configurations, `ClaimsMapper` adapters, `UserProvisioning`, `CurrentUser`) and `platform.access` (URL rules, method security); tests for both identity modes.
 - [ ] **Step 3.3:** Implement `platform.identity.local` (Token Issuer: login, refresh, logout, first-admin bootstrap) with tests; ArchUnit rule that nothing imports it.
 - [ ] **Step 3.4:** Implement `platform.query` and `platform.crud` with the sample Feature Module; query-engine tests, CRUD tests (update really updates; status codes), route × role auth matrix.
-- [ ] **Step 3.5:** Implement `platform.storage` (port, S3-compatible and local adapters, `StoredFile`, `UploadCoordinator`) with the shared contract suite run against both adapters and compensation tests.
+- [ ] **Step 3.5:** Implement `platform.storage` (port, S3-compatible and local adapters, `StoredFile`, `UploadCoordinator` declared `@Transactional(propagation = NEVER)`) with the shared contract suite run against both adapters, compensation tests and the no-active-transaction contract test.
 - [ ] **Step 3.6:** Implement `platform.idempotency` with replay, conflict, fingerprint-mismatch, lease-expiry and failure-rethrow tests; make the sample upload `@Idempotent`.
-- [ ] **Step 3.7:** README, health indicators, secret scan of the tree; record any Guide corrections discovered while building (fix the Guide first, then the code).
+- [ ] **Step 3.7:** README, health indicators, secret scan of the tree; record any Guide corrections discovered
+  while building (fix the Guide first, then the code). Complete the **contract-conformance checklist**: every
+  contract invariant from the Guide is backed by at least one test in the Base Project — including the
+  transaction-boundary invariant (no database transaction open during storage I/O).
 
 ### Phase 4: The Skill
-- [ ] **Step 4.1:** Write ADR-0017 (skill architecture): capabilities, file layout, loading model, how it locates the Base Project, how it cites rule IDs.
+- [ ] **Step 4.1:** Write ADR-0017 (skill architecture): capabilities, file layout, loading model, how the
+  contracts are stated and how projects implement them, how it cites rule IDs, and the rule that API syntax is
+  looked up from current framework documentation at execution time.
 - [ ] **Step 4.2:** Replace `spring-boot-skill/` contents with the new skill per ADR-0017; add a smoke scenario (start project + add one feature) run manually by the user.
 
 ### Phase 5: Validation Loop
@@ -656,11 +713,14 @@ Step 6.3 ([[Docs/Skill-Directory-Convention]]).
 - **Modules tested in the Base Project** (all confirmed by the user):
   - **Identity and access:** route × role matrix (anonymous → 401, wrong role → 403, owner/other user,
     allowed role → 2xx) for every sample endpoint, run with real tokens in `local` mode and with a fake JWKS
-    issuer in `external` mode; Token Issuer login, refresh rotation, logout and disabled-account behavior.
+    issuer in `external` mode; a `list returns only visible rows` case per feature (two users, overlapping
+    pages — totals and page counts must reflect only visible rows); Token Issuer login, refresh rotation,
+    logout and disabled-account behavior.
   - **Object storage:** one contract test suite executed against `LocalFileSystemStorage` and
     `S3CompatibleStorage` (MinIO Testcontainer) — put/open/exists/delete, missing object, overwrite,
     path traversal (local), large object streaming; `UploadCoordinator` compensation (persist fails → object
-    deleted; compensation fails → alert logged).
+    deleted; compensation fails → alert logged). Transaction-boundary contract test: calling
+    `UploadCoordinator.store` while a transaction is active fails immediately and performs no storage I/O.
   - **Query engine, CRUD base and errors:** whitelist rejection, typed parsing, bounds, sort and paging
     through `GET` and `POST /search`; CRUD status codes, `Location`, update applies every request field,
     server-assigned ids; `ProblemDetail` shape for validation, domain, 401, 403, 404, 409 and unexpected errors.
@@ -711,7 +771,8 @@ Step 6.3 ([[Docs/Skill-Directory-Convention]]).
 
 ### Task 5: Guide — storage, idempotency, operations, recipe, traceability
 - **Steps Covered:** Step 2.4, Step 2.5, Step 2.6
-- **Reason for Grouping:** Remaining documents plus the matrix that verifies the whole Guide.
+- **Reason for Grouping:** Remaining documents, the matrix that verifies the whole Guide, and the blind
+  contract design review that gates Phase 3.
 - **Planned Task File:** `Spring-Boot-Architecture-Guide-and-Base-Project-step-5-guide-storage-idempotency-traceability.md`
 - **Task Document Link:** [Add when the task document is created]
 
@@ -735,7 +796,8 @@ Step 6.3 ([[Docs/Skill-Directory-Convention]]).
 
 ### Task 9: Base Project — storage, uploads, idempotency, finish
 - **Steps Covered:** Step 3.5, Step 3.6, Step 3.7
-- **Reason for Grouping:** Uploads use both storage and idempotency; closes the Base Project.
+- **Reason for Grouping:** Uploads use both storage and idempotency; closes the Base Project with the
+  contract-conformance checklist.
 - **Planned Task File:** `Spring-Boot-Architecture-Guide-and-Base-Project-step-9-base-storage-idempotency.md`
 - **Task Document Link:** [Add when the task document is created]
 

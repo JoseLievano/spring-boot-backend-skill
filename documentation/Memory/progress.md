@@ -1,5 +1,41 @@
 # Progress
 
+## 2026-10-02 (Findings resolution — F4 decided; paused)
+- **F4 (High) → Done.** "No transaction open during upload" is not enforced. User chose the alternative
+  (Option 4): remove the enabler and enforce the invariant with the framework. The CRUD base now declares
+  `@Transactional` **per entry point** (six base methods only) instead of class-level, so feature-added service
+  methods are non-transactional by default and multi-write custom methods declare it explicitly — a documented
+  departure from the reference projects (US 5). `UploadCoordinator.store` is declared
+  `@Transactional(propagation = NEVER)` (framework-native fail-fast before any storage I/O). Added a
+  transaction-boundary contract test and named the invariant in Step 3.7's contract-conformance checklist.
+  Patched: Feature sections 6 and 10, Guide rows 04/10/13, Steps 3.5/3.7, Testing Decisions,
+  [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F4 Decision + summary table.
+- Analysis noted that the Bug Report's Option 3 (ArchUnit "classes calling UploadCoordinator must not be
+  `@Transactional`") cannot work as worded: `isAnnotatedWith(Transactional.class)` is blind to the class-level
+  `@Transactional` inherited from `CrudService` (spring-tx 6.2.1 `@Transactional` is `@Inherited`;
+  TNG/ArchUnit#277), so it would miss the finding's own `NoteService` example. Recorded in the F4 Decision.
+- Paused after F4 at the user's request. **F5–F17 remain Pending**; F16 is expected to auto-resolve.
+
+## 2026-09-30 (Findings resolution — F1, F2, F3 decided; paused)
+- **D2 revised by the user.** The Skill is a project-agnostic **code-free convention** (rules + module
+  contracts + pseudo-code; no Spring app, no code artifacts, project init is not its job) and is not
+  Claude-Code-specific. New projects implement the contracts fresh and look up current framework docs for API
+  syntax at execution time. `base-project/` stays as the workspace **reference implementation** and Validation
+  Loop harness — never shipped, never a copy source. Rationale: a version-pinned Base Project would make the
+  Skill teach deprecated APIs. Patched across the Feature (D2, description, user story 43, flowchart,
+  sections 13–14, ADR-0002/0017, Steps 1.1/4.1, Risk Assessment).
+- **F1 (Critical) → Done.** Dissolved: the Skill has no dependency on `base-project/`, so `brief.md:23` and
+  `known-issues.md:50` are satisfied as written. `brief.md` still needs a user edit to drop "scaffolds" and
+  "Claude Code skill".
+- **F2 (High) → Done.** Blind **contract design review** at end of Phase 2 (IDs `GC-R<NN>-<MM>`, gate 0 🔴 /
+  0 🟠 before Phase 3) rather than a code review of `base-project/`; Step 3.7 becomes a contract-conformance
+  checklist.
+- **F3 (High) → Done.** Mandatory technology-neutral **`RowScope`** required by `ListQuery.run` and every CRUD
+  entry point (fail-closed by signature); produced by `<F>AccessPolicy` via `ownedBy()/all()/system()`;
+  ANDed before paging; invisible rows → 404. `<F>AccessPolicy` added to the Feature Module anatomy; auth
+  matrix gains "list returns only visible rows". Named D8 tenancy extension point.
+- Paused after F3 at the user's request. **F4–F17 remain Pending**; F16 is expected to auto-resolve.
+
 ## 2026-09-30 (New action plan)
 - **Feature written:** [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]] — ADRs → Guide
   (`Docs/Guide/`, rule IDs) → Base Project (platform modules) → rewritten Skill → Validation Loop (two user
