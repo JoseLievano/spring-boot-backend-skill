@@ -1,5 +1,150 @@
 # Progress
 
+## 2026-10-03 (Findings resolution COMPLETE — F11–F17; all 17 done)
+- Resumed [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] at F11 and processed
+  F11–F17 to completion. **17 of 17 resolved** (16 Done, F16 Auto-resolved). The parent
+  [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]] is patched for every accepted decision.
+- **F11 (Moderate) → Done.** Option 4 (alternative): the version baseline is a **support policy**, not a pin.
+  Verified 2026-10-03: **every Spring Boot 3.x line is OSS-EOL** (3.5 ended 2026-06-30, terminal 3.x minor;
+  3.4 ended 2025-12-31); 4.1.x is current GA, 4.2 GA scheduled 2026-11-30. Boot 4 changes the Guide's
+  dependencies (Jackson 3 default `tools.jackson.JsonMapper`; Security 7; modularised auto-configuration).
+  Floor = "the currently OSS-supported Spring Boot generation" (today 4.x); the Base Project pins one line —
+  the current GA at build time, **decided at Task 9**; Version Notes are **evidence-scoped** (`verified on
+  <line>` with a resolvable citation, or `not verified — current-docs lookup`), enforced by the `guide`
+  validator. US 6/7 and D3 reworded. Java 21+ unchanged (Boot 4's floor is Java 17).
+- **F12 (Moderate) → Done.** Option 4 (alternative): **frozen evidence packs** — freeze the exhibits, not the
+  specimens. At review time each **cited** file is copied whole and unmodified into
+  `Docs/Validation/Run-NN/<Domain>/evidence/<path>` (line numbers 1:1) and the review cites only those;
+  `validation-runs/` **stays git-ignored** and is cleaned after the review + evidence are committed. The
+  `validation` target **rejects any citation into `validation-runs/`** (fail-closed, fires while the run is
+  live) and skips `evidence/` subtrees. Noted: the `CITATION` regex only matches `backend|BugTracker|wpmanager`
+  and must be extended either way.
+- **F13 (Moderate) → Done.** Option 4 (alternative): **`DownloadTicket` capability tokens** — the
+  `UploadCoordinator` twin on the read path. Ordinary entry point → scoped load (404) →
+  `policy.check(Action.download)` → HMAC ticket over `storedFileId + expiry` (never exposes `ObjectKey`);
+  one redemption controller verifies MAC+TTL, **re-checks existence**, then 302s to a short-lived presigned
+  URL (S3 — bandwidth still offloaded) or streams locally. Pinned 404 (invalid/deleted) / 410 (expired);
+  centralized `nosniff`+`attachment` header policy; non-transactional (F4); read-only (F5/F9). Honesty
+  correction recorded: wpmanager's `FileSigner` signs **file integrity**, not URLs — link signing is a
+  designed extension.
+- **F14 (Moderate) → Done.** Option 4 (alternative): **three owner-scoped contracts**. (a) Credential failure
+  policy = F6's `LocalCredential` (plus the `isAccountNonLocked()` default-`true` trap and a uniform
+  bad-vs-locked `ProblemDetail`). (b) CORS = typed config closing **both** halves of BE-R01-10 (origins from
+  `@ConfigurationProperties`; the chain consumes the **injected** `CorsConfigurationSource`; fail-fast on
+  wildcard+credentials; `local` profile supplies `localhost:3000`). (c) Per-IP throttling = declared
+  deployment-layer ownership with **password spraying named as residual risk**. Matrix scope becomes
+  mechanical: 🔴/🟠 **plus every 🟡/🟢 from a Security-category review** (BE-R01-10 is tagged `configuration`,
+  so a severity rule would miss it). No in-app rate limiter (Spring has none; per-IP counters unsound at scale).
+- **F15 (Low) → Done.** Option 4 (alternative): a **rule-coverage ledger** (every applicable `G<NN>-<MM>` is
+  `finding <V…ID>` or `checked — no finding` with a frozen-evidence citation; `check_rule_coverage()` in the
+  `validation` target; the Exit Gate gains "ledger is complete") **plus a one-time calibration belt in Task 7**
+  (blind on `backend/`, must find BE-R01-01/02, BE-R02-01 + the F7 `@PreAuthorize` case as a **lower bound**;
+  answer key banned from the context; Task 8 must not start until it passes). The finding's "Task 11" was
+  stale under the F8/F10 renumbering. Seeded defects rejected as structurally incompatible (they fail the
+  Exit Gate's own 0-🔴/🟠 arithmetic and have no `Root cause` value).
+- **F16 (Low) → Auto-resolved** by F1. The Skill is code-free and never copies `base-project/`, so it has no
+  handling of the sample feature at all. Parent unchanged.
+- **F17 (Low) → Done.** Option 4 (alternative): the **explicit-actor model** — `CurrentUser.system()` is a
+  sentinel inside the existing type; **no `runAsSystem`, no ambient switch**; every entry point names its
+  actor explicitly (the sibling of F3's "no entry point runs unscoped"); system is an ordinary actor whose
+  rules live in `<F>AccessPolicy>`; platform housekeeping confined to `platform.*` tables may not write
+  feature rows; audit is a mandatory parameter (`createdBy` = `system` string label, never blank).
+  `CurrentUserProvider` confined to the HTTP edge (ArchUnit).
+- Pattern across F11–F17: **the alternative subagent's proposal was promoted to first-class in six of seven**
+  (all but F16). The recurring move was the project's own grammar — fail-closed by signature, one owner per
+  decision, evidence that is checkable rather than assumed.
+
+## 2026-10-03 (Findings resolution — F9 decided; paused)
+- **F9 (Moderate) → Done.** [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] finding
+  "No concurrency control (lost updates)". User chose Option 4 (alternative, promoted to first-class) — the
+  **Conditional-Write Contract**: concurrency token on managed entities, strong `ETag` + required `If-Match`
+  on `update`/`delete`, stale → 412, missing → 428, `If-Match: *` unconditional; no body version
+  (preserves `<F>Request`); 409 reserved for state conflicts; lock failure → same 412.
+  - Option 1 ("body or If-Match", 409) not adopted verbatim: unpinned dual channel, body version contradicts
+    `<F>Request>`, 409 violates RFC 9110 on the `If-Match` channel. Option 2 (hidden `@Version`) does not fix
+    the two-admin read-modify-write scenario. Option 3 (document last-write-wins) rejected against US 4.
+  - Patched [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]: US 17, sections 5/6/9, Guide
+    rows 04/05/07/09, Steps 3.4/3.7, Testing Decisions.
+
+## 2026-10-03 (Findings resolution — F8 + F10 decided jointly; paused)
+- **F8 + F10 (Moderate) → Done, jointly.** User chose Option A — a single blast-radius reorder.
+  Execution order is now **1 → 2 → 4 → 5 → 3 → 6**: the Guide's contract layer leads and is gated by F2's
+  blind `GC-R` review; the **Skill is written next**; **run 01** of the Validation Loop is a planned discovery
+  run; only then is `base-project/` built per area at the end against converged contracts, finalizing each
+  Guide document's prose against the built code. **Step numbers stay stable as identifiers**; the Task
+  Breakdown is renumbered 1–13 in execution order (free — no task documents exist yet).
+  - **D18 amended:** "Skill rewritten from scratch after the Guide **and Base Project** exist" → "after the
+    Guide exists and its contracts pass the `GC-R` gate". Surfaced for explicit user confirmation.
+  - F8's premise dissolved with F1 (the Skill never starts from the Base Project), so the Bug Report's
+    dismissal of F8 Option 3 as "conflicts with D2" referred to the *original* D2 and is void.
+  - F10's premise corrected: F3–F7 were **cross-module contract gaps** (F5 is literally storage × idempotency)
+    that per-area vertical slices would have torn apart; F2's `GC-R` review is the instrument that found them
+    with no code in existence. Contracts lead, prose follows implementation.
+  - Run 01 accounting: discovery run inside D15's 5-run budget; root-cause field `guide`/`skill` only; a
+    convention-changing Guide correction in Phase 3 resets the consecutive-pass count.
+  - Patched: D18 row, Solution prose + mermaid flowchart, Execution Order note, phase blocks reordered,
+    Steps 2.6/3.7/5.2/5.4, sections 13 and 15, US 50, Risk Assessment drift bullet, Task Breakdown.
+    Bug Report F8 + F10 Decisions + summary table.
+- Four read-only subagents ran (F8's three options + one alternative covering both findings). The alternative
+  was judged **materially better** and promoted to first-class; the Bug Report's original pair (F8 O2 + F10 O1)
+  was rejected because the two reorders fight each other and would renumber twice.
+- Paused after F8/F10. **F9, F11, F12, F13, F14, F15, F16, F17 remain Pending**; F16 is expected to auto-resolve.
+
+## 2026-10-03 (Findings resolution — F6, F7 decided; paused)
+- **F7 (Moderate) → Done.** Authorization was split across four mechanisms. User chose the alternative
+  (Option 4): **one authorization module per feature** — the CRUD `authorize` hook is removed and folded into
+  `<F>AccessPolicy` (`check(action, actor, entityOrNull)` + `rowScope(actor)`). Actor-independent invariants go
+  to `beforeDelete`/`validate*`. Deny-by-default is structural at three layers (URL tail; policy denies when no
+  rule matches; policy required by constructor). `@PreAuthorize`/`@Secured` banned in `features.*` by an
+  ArchUnit member rule; `@EnableMethodSecurity` stays once on the security configuration class as a
+  `platform`-only belt. US 13 amended to "hooks (validate, apply relations, beforeDelete) plus one declared
+  access policy"; adds a route-coverage test. Rationale: Option 1 left actor-relative authorization in two
+  homes ("role/action rules" in the policy AND in the `authorize` hook) — F7's own drift one level down.
+  Patched: Feature sections 4, 5, 6, 8 (incl. the mermaid node), US 13, Guide rows 04/08, ADR-0005, Steps
+  3.4/3.7, Testing Decisions,
+  [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F7 Decision + summary table.
+- **F6 (High) → Done.** Local identity lifecycle undefined. User chose the alternative (Option 4): durable
+  `User` + rebindable subject binding + one `UserDirectory` lifecycle contract. `User.externalSubject` always
+  equals the token `sub` (local mode `sub` = `User.id`, no `"local:"` prefix — the `iss` claim namespaces).
+  Credential/account state split: `LocalCredential` + `RefreshToken` in `platform.identity.local`'s own Flyway
+  migrations; `User` keeps id/externalSubject/e-mail/display name/roles mirror/app-level `status`.
+  `User.status` enforced on every request and survives migration. `UserDirectory` (`create`, `setStatus`,
+  `rebindSubject`) is the sole lifecycle path; `rebindSubject` makes US 28 true at the **data** level (migration
+  runbook). One role writer per mode — no both-modes role service. Admin user management lives in the local
+  module and dies with it. Patched: Feature sections 4, 8, US 30, Guide row 08, ADR-0006/0007, Steps 3.2/3.3,
+  Risk Assessment, Testing Decisions, Bug Report F6 Decision + summary table.
+- Four read-only subagents per finding (three listed options + one alternative search). **Both alternatives
+  were judged materially better and promoted to first-class.**
+- Also fixed two stale items in the Bug Report while editing it: the Summary line ("Every finding's Decision is
+  empty") and an accidentally dropped `#### F8` heading (restored).
+- Paused after F7. **F8–F17 remain Pending**; F16 is expected to auto-resolve. **F8 and F10 both reorder Tasks
+  and should be decided together** to avoid renumbering twice.
+
+## 2026-10-03 (Findings resolution — F5 decided; paused)
+- **F5 (High) → Done.** Idempotency fingerprinting conflicted with streaming uploads: the `@Idempotent`
+  interceptor hashed the request body, forcing buffering or consuming the only stream. User chose **Option 1
+  refined** — the fingerprint is `method + path + canonical non-file fields + a declared content digest`, and no
+  code path hashes the request body. The digest's subject is the **stored object's bytes** (file-scoped form
+  field for multipart; one pinned header `X-Content-SHA256: sha-256:<hex>` or RFC 9530 `Repr-Digest` for raw
+  streams). RFC 9530 `Content-Digest` is explicitly rejected: it hashes the multipart envelope and can never
+  equal `StoredFile`'s SHA-256. Fail-closed for file/streaming requests with no digest; `UploadCoordinator.store`
+  verifies during its single streaming pass and 422s before finalising; buffered JSON endpoints keep the body
+  hash; two 422 `ProblemDetail` types (fingerprint mismatch vs content-digest mismatch); Option 2 (spool-once)
+  documented as fallback only, never a per-adapter default, hashing in the spool pass (closes WP-R04-06).
+  Patched: Feature sections 10 (`UploadSource` + digest verification) and 11 (fingerprint composition),
+  Guide rows 10/11, Steps 3.5/3.6, Testing Decisions,
+  [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F5 Decision + summary table.
+- Four read-only solution subagents ran (three listed options + one alternative search). The alternative
+  (binder-side fingerprint construction, fail-closed digest, server-computed proof on replay) judged itself
+  **not materially better** — the client-declared digest verified while streaming is forced by the constraint
+  set — but its file-scoped digest channel and fail-closed rule were absorbed into the decision.
+- Option 3 (exclude file content from the fingerprint) was **rejected**: it breaks US 37 and recreates
+  WP-R04-02 in mirrored form with no detection path.
+- Paused after F5 at the user's request. **F6–F17 remain Pending**; F16 is expected to auto-resolve.
+- Noted, not changed (pre-existing, outside F5's scope): section 11 says uploads through `UploadCoordinator`
+  are "`@Idempotent` by default" while US 38 says idempotency is opt-in per endpoint; and the Bug Report's
+  Summary line still reads "Every finding's Decision is empty" (stale since F1).
+
 ## 2026-10-02 (Findings resolution — F4 decided; paused)
 - **F4 (High) → Done.** "No transaction open during upload" is not enforced. User chose the alternative
   (Option 4): remove the enabler and enforce the invariant with the framework. The CRUD base now declares
