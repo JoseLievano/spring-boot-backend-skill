@@ -205,7 +205,7 @@ flowchart LR
 - [[Memory/architecture]], [[Memory/tech]], [[Memory/context]], [[Memory/progress]] — updated at the end of
   each Task.
 - `documentation/doc-config.json` — gains `"adrs": "ADRs"` and the ADR status list.
-- `documentation/ADRs/` — new; `ADR-index.md` plus ADRs 0001–0018.
+- `documentation/ADRs/` — new; `ADR-index.md` plus ADRs 001–018 (ADR-017 stays `Proposed` until Step 4.1).
 - [[Glossary/Glossary]] — new terms (Step 1.4).
 - `documentation/Docs/Guide/` — new; the Guide.
 - [[Docs/Analysis-Doc-Conventions]] — reused as the format for validation-run reviews; unchanged.
@@ -247,7 +247,7 @@ flowchart LR
   generated from the Skill.
 - **The CRUD base stays shallow.** wpmanager overrode 29 of 60 base methods (WP-R02-06). Mitigation: an
   explicit depth acceptance criterion measured in every validation run (override rate of `create`/`update`
-  below 50% across generated features); if it fails twice, ADR-0005 is revisited.
+  below 50% across generated features); if it fails twice, ADR-005 is revisited.
 - **Overfitting to the validation domains.** Mitigation: two different domains and a coverage checklist.
 - **Self-grading bias.** Mitigation: the reviewer runs in a fresh agent context with only the generated
   project, the Guide and the review conventions — not the Skill or the generation transcript. **Reviewer
@@ -297,23 +297,24 @@ linkable record before any guide text is written.
 
 | ADR | Title | From |
 |---|---|---|
-| 0001 | Guide is the source of truth; references are evidence | D1 |
-| 0002 | Platform modules are contracts the Skill states and projects implement fresh; the Base Project is the workspace reference implementation | D2 |
-| 0003 | Version baseline as a support policy: floor = the currently OSS-supported Spring Boot generation; one tested line pinned at Base Project build time; evidence-scoped version notes; Java 21+ | D3 |
-| 0004 | Package layout `platform` / `features` with enforced dependency rules | D4 |
-| 0005 | Deepened generic CRUD base with hooks and three DTO shapes; `<F>AccessPolicy>` as the single authorization module | D5 |
-| 0006 | Identity: resource-server validation, `CurrentUser` seam, removable local issuer owning `LocalCredential` and `RefreshToken` in its own migrations | D6 |
-| 0007 | One `User` keyed by the token subject; roles as strings; `UserDirectory` as the single lifecycle contract with a rebindable subject binding | D7 |
-| 0008 | No multi-tenancy in the Base Project | D8 |
-| 0009 | Unchecked domain exceptions mapped to `ProblemDetail` | D9 |
-| 0010 | PostgreSQL, Flyway and Testcontainers | D10 |
-| 0011 | List API: `GET` paging + `POST /search`; own page response | D11 |
-| 0012 | MapStruct mapping with unmapped-target errors | D12 |
-| 0013 | Object storage port, S3-compatible and local adapters, upload coordinator | D13 |
-| 0014 | Idempotency guard, opt-in per endpoint | D14 |
-| 0015 | Validation loop protocol and exit gate | D15 |
-| 0016 | Guide document format and rule IDs | D16, D17 |
-| 0017 | Skill architecture: code-free convention, contract-first, current-docs lookup for API syntax (written in Step 4.1) | D18 |
+| 001 | The Guide is the source of truth; the reference projects are evidence | D1 |
+| 002 | The Skill is a code-free convention; the Base Project is the workspace reference implementation | D2 |
+| 003 | Version baseline is a support policy, not a pin | D3 |
+| 004 | Package layout `platform` / `features` with enforced dependency rules | D4 |
+| 005 | Deepened generic CRUD base with hooks, three DTO shapes and one Access Policy per feature | D5 |
+| 006 | Identity by resource-server token validation, a `CurrentUser` seam and a removable local Token Issuer | D6 |
+| 007 | One `User` keyed by the token subject; roles as strings; `UserDirectory` as the single lifecycle contract | D7 |
+| 008 | No multi-tenancy in the Base Project; ownership checks only | D8 |
+| 009 | Unchecked domain exceptions mapped to RFC 9457 problem details | D9 |
+| 010 | PostgreSQL, Flyway migrations and Testcontainers | D10 |
+| 011 | List API with `GET` paging, `POST /search` and an owned page response | D11 |
+| 012 | MapStruct mapping with unmapped-target errors | D12 |
+| 013 | Object storage port with S3-compatible and local adapters, an Upload Coordinator and Download Tickets | D13 |
+| 014 | Idempotency Guard, opt-in per endpoint | D14 |
+| 015 | Validation Loop protocol and Exit Gate | D15 |
+| 016 | Guide document format, rule IDs and citation grammar | D16, D17 |
+| 017 | Skill architecture as a code-free, contract-first convention | D18 |
+| 018 | At a row entry point the scoped load comes before the policy check | D5 (order of checks) |
 
 - Glossary terms (via the `glossary` CLI, with user confirmation): **Guide**, **Guide Rule**, **Rule ID**,
   **Platform Module**, **Base Project**, **Current User**, **Token Issuer**, **Claims Mapper**,
@@ -341,7 +342,7 @@ reviews can cite rules by ID.
 **Rule:** Every filterable or sortable field is declared once in the entity's Query Profile; anything not
 declared is rejected with 400.
 **Why:** Unlisted fields let clients probe sensitive columns (password hashes).
-**Evidence:** BT-R05-07, BE-R06-05 · ADR-0011
+**Evidence:** BT-R05-07, BE-R06-05 · ADR-011
 **Differs from references:** BugTracker had no whitelist; `backend/` repeated the field name three times.
 ```
 
@@ -369,7 +370,7 @@ how they talk to each other; code appears only as short illustrative sketches.
 | 05 | API-Contract | Resource naming, `/api/v1` prefix, status codes, `Location`, `PageResponse`, strong `ETag` / `If-Match` conditional writes (412 stale, 428 missing, `*` unconditional), download ticket semantics (302 or stream; 404 invalid, 410 expired), OpenAPI |
 | 06 | Query-Engine | Query Profile (field whitelist), `RowScope` (row visibility), request forms (`GET` / `POST /search`), operators, bounds, typing |
 | 07 | Domain-Model-and-Persistence | Entities, the server-owned concurrency token on managed entities, `equals`/`hashCode`, LAZY by default, enums as strings, auditing (`createdBy`/`updatedBy` as string actor labels — the `system` sentinel for non-request work; filled from the entry-point actor, never an ambient read), constraints, Flyway |
-| 08 | Identity-Authentication-and-Authorization | Current User seam, the `CurrentUser.system()` sentinel and the explicit-actor rule (every entry point names its actor; no `runAsSystem`, no ambient switch; system is an ordinary actor whose rules live in `<F>AccessPolicy>`; platform housekeeping confined to `platform.*` tables may not write feature rows), token verification, local issuer, the `externalSubject` = `sub` invariant, `UserDirectory` lifecycle (create / setStatus / rebindSubject), the credential-vs-account state split, one role writer per mode, provisioning rules per mode, brute-force protection (credential failure policy in `LocalCredential`; the `isAccountNonLocked()` override trap; uniform bad-vs-locked `ProblemDetail`; per-IP request throttling as declared deployment-layer ownership with password spraying named as residual risk), CORS (origins from typed config; the chain consumes the injected `CorsConfigurationSource`; fail-fast on wildcard+credentials; profile-aware defaults), the authorization ownership rule (URL = public/authenticated; `<F>AccessPolicy>` = all feature authorization; `@EnableMethodSecurity` = platform-only belt), deny-by-default at three layers, the `@PreAuthorize` ban in features, ownership, the migration runbook to Clerk/WorkOS |
+| 08 | Identity-Authentication-and-Authorization | Current User seam, the `CurrentUser.system()` sentinel and the explicit-actor rule (every entry point names its actor; no `runAsSystem`, no ambient switch; system is an ordinary actor whose rules live in `<F>AccessPolicy`; platform housekeeping confined to `platform.*` tables may not write feature rows), token verification, local issuer, the `externalSubject` = `sub` invariant, `UserDirectory` lifecycle (create / setStatus / rebindSubject), the credential-vs-account state split, one role writer per mode, provisioning rules per mode, brute-force protection (credential failure policy in `LocalCredential`; the `isAccountNonLocked()` override trap; uniform bad-vs-locked `ProblemDetail`; per-IP request throttling as declared deployment-layer ownership with password spraying named as residual risk), CORS (origins from typed config; the chain consumes the injected `CorsConfigurationSource`; fail-fast on wildcard+credentials; profile-aware defaults), the authorization ownership rule (URL = public/authenticated; `<F>AccessPolicy` = all feature authorization; `@EnableMethodSecurity` = platform-only belt), deny-by-default at three layers, the `@PreAuthorize` ban in features, ownership, the migration runbook to Clerk/WorkOS |
 | 09 | Errors-and-Validation | Exception hierarchy, `ProblemDetail` with one `type` URI per failure shape (409 state conflict vs 412 stale precondition vs 428 missing precondition; 404 invalid download ticket vs 410 expired), validation on requests, security errors in the same shape |
 | 10 | Object-Storage-and-Uploads | Storage port and adapters, object keys, streaming, `UploadSource` and its expected content digest, Upload Coordinator with digest-verified streaming and its no-transaction (`NEVER`) contract, compensation, downloads (`DownloadTicket` capability token, one redemption controller, redirect-or-stream, header policy), optional replication extension |
 | 11 | Idempotency | Keys, fingerprints (body hash for buffered requests; declared content digest for file/streaming requests, fail-closed), the two 422 meanings, states, leases, replay, cleanup, the spool fallback |
@@ -405,7 +406,7 @@ how they talk to each other; code appears only as short illustrative sketches.
 Dependency rules (ArchUnit tests in the Base Project):
 - `platform` never imports `features`.
 - `platform.identity.local` is imported by nothing outside itself (so it can be deleted).
-- No `@PreAuthorize` / `@Secured` in `features.*` (feature authorization is declared in `<F>AccessPolicy>`).
+- No `@PreAuthorize` / `@Secured` in `features.*` (feature authorization is declared in `<F>AccessPolicy`).
 - `CurrentUserProvider` is used only at the HTTP edge and in adapters (F17); service and feature code
   receive its `CurrentUser` as an explicit parameter — an entry point without an actor is unrepresentable.
 - A feature reaches another feature only through that feature's `<F>Service`, never its repository or mapper.
@@ -478,7 +479,7 @@ abstract class CrudService<REQ, RES, SUM, E, ID> {
   `If-Match: *` is the explicit unconditional write. There is **no body version** — `<F>Request` keeps its
   "no `id`, no owner, no server-controlled fields" rule, and the mapper needs no version handling. The
   persistence-layer optimistic-lock failure maps to the **same 412**, so the compare/flush race shares one
-  client-visible meaning. Check order: authenticate → `policy.check` (403) → scoped load (404) → precondition
+  client-visible meaning. Check order (ADR-018): authenticate → scoped load (404) → `policy.check` with the loaded row (403) → precondition
   (412/428) → mutate — a row outside the scope never leaks existence through a 412. Bulk mutation of managed
   rows bypasses `@Version` and is banned outside the base (or ANDs the token into the predicate and checks
   affected rows).
@@ -587,9 +588,9 @@ flowchart LR
     which also strengthens section 7's statelessness.
   - **System is an ordinary actor, not a superuser.** It flows through `check` / `rowScope` like any actor,
     and deny-by-default still holds: a feature with system work **declares narrow system rules in the same
-    `<F>AccessPolicy>` file** as every other actor rule; a feature with none simply denies system. Platform
+    `<F>AccessPolicy` file** as every other actor rule; a feature with none simply denies system. Platform
     housekeeping confined to `platform.*` tables (the idempotency cleanup, the replication outbox /
-    `StoredFile` writes) is outside `<F>AccessPolicy>` jurisdiction by the existing layering rules and **may
+    `StoredFile` writes) is outside `<F>AccessPolicy` jurisdiction by the existing layering rules and **may
     not write feature rows**.
   - **Auditing is total and cannot silently go blank (F17).** `createdBy` / `updatedBy` are the entry-point
     actor's `userId` **string labels** (the `system` sentinel for system work) filled from the mandatory
@@ -662,7 +663,7 @@ flowchart LR
   expired ticket as **410 Gone**, and a ticket whose object has since been deleted as **404** — one uniform
   shape, so the redemption route never leaks existence through a distinguishable error.
 - One `@RestControllerAdvice` extending `ResponseEntityExceptionHandler`: domain exceptions → their status;
-  Bean Validation → 422 (or 400, decided in ADR-0009) with a field-error list; everything else → 500 with a
+  Bean Validation → **400** (ADR-009) with a field-error list; everything else → 500 with a
   generic detail and a correlation id, full error logged (BE-R05-03/04).
 - The security entry point and access-denied handler reuse the same problem writer and Boot's
   `ObjectMapper` (BE-R05-02, BE-R09-08).
@@ -743,7 +744,7 @@ interface ObjectStorage {                    // port — two production adapters
     `Content-Disposition: attachment` by default, `inline` only for a safe-media allowlist (blocks
     user-content XSS on the app origin).
   - **Streaming follows F4's rule.** Redemption and any streaming download entry point are **non-transactional**
-    and must never buffer a whole object as `byte[]` (WP-R05-08): stream `InputStream` /
+    and must never buffer a whole object as `byte[]` (WP-R05-04): stream `InputStream` /
     `StreamingResponseBody`. Downloads are read-only — never idempotency-guarded (F5) and never conditional
     (F9, no `If-Match`).
   - **Revocation story, stated once:** authorization is checked at **issue** time; the TTL is the exposure
@@ -764,7 +765,7 @@ interface ObjectStorage {                    // port — two production adapters
   - **Buffered JSON requests:** `method + path + canonical non-file fields (the body hash)`, computed as today.
   - **File / streaming requests:** `method + path + canonical non-file fields + declared content digest`. The
     digest is client-computed over the object's bytes and mandatory (fail-closed: a file request with no digest
-    is rejected 400/422 before the guard runs). Its format and channel are defined on `UploadSource` (section
+    is rejected 400 before the guard runs). Its format and channel are defined on `UploadSource` (section
     10); `UploadCoordinator` verifies it in its single streaming pass and 422s on mismatch. No interceptor or
     guard ever reads the request body, so large uploads stream exactly once (WP-R05-04).
   Consequence for US 37: a reused key with different file bytes yields a different digest, hence a different
@@ -776,7 +777,7 @@ interface ObjectStorage {                    // port — two production adapters
   409; expired lease → retry allowed (WP-R04-03).
 - The original exception is rethrown after recording failure, so errors keep their status (WP-R04-01).
 - Persistence only (unique index); no per-instance cache (WP-R04-04). A scheduled cleanup deletes expired rows.
-- Uploads through `UploadCoordinator` are `@Idempotent` by default.
+- Idempotency stays opt-in per endpoint (US 38); the upload recipe opts in — an upload endpoint carries `@Idempotent` unless the feature records why not (ADR-014).
 - **Documented fallback for clients that cannot compute a digest:** spool the upload to a temporary file once,
   compute the SHA-256 **in that same pass**, and hand the file to both the guard and the coordinator ("compute
   once, pass along" — never a second read, WP-R04-06). Explicitly a fallback, never a per-adapter default: upload
@@ -799,7 +800,7 @@ Validation Loop's later runs compare against. Every new project implements the s
 Project is never shipped with the Skill and is never a copy source. Under the F8/F10 order it is **built last**,
 per area, against the converged contracts (Steps 3.1–3.7), and it is where each Guide document's prose is
 finalized.
-**Changes:** Spring Boot project (**the current GA line at build time, decided at Task 9 under ADR-0003's
+**Changes:** Spring Boot project (**the current GA line at build time, decided at Task 9 under ADR-003's
 support policy** — 4.1.x as of 2026-10-03; Java 21+; PostgreSQL; Flyway; MapStruct; Testcontainers for
 PostgreSQL and MinIO; ArchUnit). Contains all Platform Modules, one sample
 Feature Module used by the tests (for example `features/note` with an owner, a list and an attachment
@@ -813,7 +814,7 @@ rules and contracts stay version-neutral (F11).
 **Purpose:** Give an agent the project-agnostic convention for architecting, creating and editing Spring Boot
 apps — rules, module contracts and pseudo-code. No code artifacts, no Spring app; project initialization is
 not the Skill's job. The Skill is not Claude-Code-specific.
-**Changes:** Designed in ADR-0017 after the Guide and the Base Project exist. Minimum capabilities:
+**Changes:** Designed in ADR-017 after the Guide exists and its contracts pass the blind `GC-R` gate (D18 as amended). Minimum capabilities:
 - state the architecture and the module contracts (platform vs features, interfaces, invariants, error modes)
   and how the modules talk to each other;
 - guide adding a Feature Module from an entity description (all files in section 5, migration, tests, access
@@ -883,18 +884,18 @@ Skill files stay in `spring-boot-skill/` until Step 6.3 ([[Docs/Skill-Directory-
 > below is numbered 1–13 in execution order.
 
 ### Phase 1: Decisions and vocabulary
-- [ ] **Step 1.1:** The user updates [[Memory/brief]]: (a) relax "grounded, not invented" into "grounded or
+- [x] **Step 1.1:** The user updates [[Memory/brief]]: (a) relax "grounded, not invented" into "grounded or
   corrected, always cited"; (b) replace "scaffolds new Spring Boot APIs" and "Claude Code skill (markdown prompt
   file)" with a project-agnostic convention skill that ships no code artifacts and does not initialize projects
   (user-owned file; the agent proposes wording only). [[Memory/known-issues]] "self-contained markdown" is
   already satisfied and needs no change.
-- [ ] **Step 1.2:** Initialise the ADR system: add ADR directory and statuses to `documentation/doc-config.json`; create `documentation/ADRs/ADR-index.md`.
-- [ ] **Step 1.3:** Write ADR-0001 … ADR-0016 from decisions D1–D17 with context, decision and consequences, each citing the reference finding IDs; user approves → `accepted`.
-- [ ] **Step 1.4:** Add and update glossary terms listed in section 1 through the `glossary` CLI, with user confirmation.
+- [x] **Step 1.2:** Initialise the ADR system: add ADR directory and statuses to `documentation/doc-config.json`; create `documentation/ADRs/ADR-index.md`.
+- [x] **Step 1.3:** Write ADR-001 … ADR-016 from decisions D1–D17 with context, decision and consequences, each citing the reference finding IDs; user approves → `accepted`. Open ADR-017 (D18) as `proposed`; Step 4.1 completes it.
+- [x] **Step 1.4:** Add and update glossary terms listed in section 1 through the `glossary` CLI, with user confirmation.
 
 ### Phase 2: The Guide
-- [ ] **Step 2.1:** Write `Docs/Guide/Guide-Conventions.md` and `Guide-Index.md`; extend the validator with the `guide` target and unit tests.
-- [ ] **Step 2.2:** Write Guide 01–05 (principles, layout and boundaries, feature anatomy, CRUD base, API contract).
+- [x] **Step 2.1:** Write `Docs/Guide/Guide-Conventions.md` and `Guide-Index.md`; extend the validator with the `guide` target and unit tests.
+- [x] **Step 2.2:** Write Guide 01–05 (principles, layout and boundaries, feature anatomy, CRUD base, API contract).
 - [ ] **Step 2.3:** Write Guide 06–09 (query engine, domain and persistence, identity and access, errors and validation).
 - [ ] **Step 2.4:** Write Guide 10–11 (object storage and uploads incl. the optional replication extension; idempotency).
 - [ ] **Step 2.5:** Write Guide 12–15 (configuration and secrets, testing strategy, observability, recipe).
@@ -907,13 +908,13 @@ Skill files stay in `spring-boot-skill/` until Step 6.3 ([[Docs/Skill-Directory-
   each document's prose is finalized later, against the built Base Project (see Phase 3).
 
 ### Phase 4: The Skill  *(executes 3rd)*
-- [ ] **Step 4.1:** Write ADR-0017 (skill architecture): capabilities, file layout, loading model, how the
+- [ ] **Step 4.1:** Complete ADR-017 (skill architecture, opened as `proposed` in Step 1.3): capabilities, file layout, loading model, how the
   contracts are stated and how projects implement them, how it cites rule IDs, and the rule that API syntax is
-  looked up from current framework documentation at execution time.
-- [ ] **Step 4.2:** Replace `spring-boot-skill/` contents with the new skill per ADR-0017; add a smoke scenario (start project + add one feature) run manually by the user.
+  looked up from current framework documentation at execution time; user approves → `accepted`.
+- [ ] **Step 4.2:** Replace `spring-boot-skill/` contents with the new skill per ADR-017; add a smoke scenario (start project + add one feature) run manually by the user.
 
 ### Phase 5: Validation Loop  *(executes 4th)*
-- [ ] **Step 5.1:** The user defines the two Validation Domains; the agent checks them against the coverage checklist and records them in `Docs/Validation/Validation-Domains.md` with ADR-0015's protocol and the `validation` validator target.
+- [ ] **Step 5.1:** The user defines the two Validation Domains; the agent checks them against the coverage checklist and records them in `Docs/Validation/Validation-Domains.md` with ADR-015's protocol and the `validation` validator target.
 - [ ] **Step 5.2:** Run `NN`: generate both domains with the Skill, build, test, start on PostgreSQL, record results. **Run 01 is a planned discovery run** inside D15's five-run budget.
 - [ ] **Step 5.3:** Run `NN`: blind review of both projects → review documents with root-cause fields.
 - [ ] **Step 5.4:** Run `NN`: fix findings at their root cause (Guide → Skill; the `base` root-cause field is
@@ -971,8 +972,7 @@ Skill files stay in `spring-boot-skill/` until Step 6.3 ([[Docs/Skill-Directory-
 ---
 
 ## Potential Issues / Risks
-- The ADR for the validation error status (400 vs 422 for Bean Validation failures) must be settled in
-  ADR-0009 before Guide 09 is written; the two are not interchangeable once clients exist.
+- The validation error status is settled in ADR-009 (400); it is not interchangeable with the other once clients exist.
 - Guide rules written before the Base Project exists will be wrong in places. Step 3.7 exists for that; the
   rule is "fix the Guide first".
 - `POST /search` and `@Idempotent` both touch POST semantics; searches must never be idempotency-guarded.
@@ -1084,25 +1084,25 @@ are not renumbered.
 - **Steps Covered:** Step 1.1, Step 1.2, Step 1.3, Step 1.4
 - **Reason for Grouping:** All are decision records with no code; they must exist before any Guide text.
 - **Planned Task File:** `Spring-Boot-Architecture-Guide-and-Base-Project-step-1-decisions-adrs-glossary.md`
-- **Task Document Link:** [Add when the task document is created]
+- **Task Document Link:** [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-1-decisions-adrs-glossary]]
 
 ### Task 2: Guide format and validator
 - **Steps Covered:** Step 2.1
 - **Reason for Grouping:** Establishes the format and tooling every later Guide task reuses.
 - **Planned Task File:** `Spring-Boot-Architecture-Guide-and-Base-Project-step-2-guide-format-validator.md`
-- **Task Document Link:** [Add when the task document is created]
+- **Task Document Link:** [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-2-guide-format-validator]]
 
 ### Task 3: Guide — structure, CRUD and API
 - **Steps Covered:** Step 2.2
 - **Reason for Grouping:** Documents 01–05 define the skeleton every other document refers to.
 - **Planned Task File:** `Spring-Boot-Architecture-Guide-and-Base-Project-step-3-guide-structure-crud-api.md`
-- **Task Document Link:** [Add when the task document is created]
+- **Task Document Link:** [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-3-guide-structure-crud-api]]
 
 ### Task 4: Guide — query, persistence, identity, errors
 - **Steps Covered:** Step 2.3
 - **Reason for Grouping:** High complexity; identity and access alone carry most Critical reference findings.
 - **Planned Task File:** `Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors.md`
-- **Task Document Link:** [Add when the task document is created]
+- **Task Document Link:** [[Tasks/current/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
 
 ### Task 5: Guide — storage, idempotency, operations, recipe, traceability, contract review
 - **Steps Covered:** Step 2.4, Step 2.5, Step 2.6

@@ -1,9 +1,222 @@
 # Progress
 
+## 2026-10-05 (Task 4 document created and reviewed)
+- **Task document written:**
+  [[Tasks/current/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
+  for Task 4 (Step 2.3) of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]; linked from
+  the parent's Task Breakdown. **Not executed yet** — `Docs/Guide/` still holds documents 01–05 only.
+- **Content:** the full text of Guide documents 06–09 as drafts — 78 rules (16, 19, 29, 14) citing 118
+  distinct reference findings (81 not cited by 01–05) and 11 ADRs; 24 new `not verified` Version Notes
+  (index total 38). A `link_pass.py` turns the 17 inline-code names of documents 06–09 in 02–05 into
+  links and adds the `none()` form to document 04's Row Scope sentence.
+- **Gaps the Task closes (the user confirms H1–H11 at execution):** `RowScope` gains `none()` and AND-only
+  composition; a request beyond a list bound is rejected, not clamped; the predicate technology is the
+  Jakarta Persistence criteria API through Spring Data specifications (`not verified`); features refer to
+  a user by id, never by association; the CRUD base stamps actor labels (Spring Data's `AuditorAware`
+  takes no parameter — an ambient read); a disabled user is 401 and roles are read per request; issuer
+  routes sit under `/api/v1/auth` with an added password-change route; the public-route list is closed
+  and fed by a `PublicRoutes` port (no anonymous actor); a seventh exception kind `InvalidRequest` (400);
+  problem types `/problems/<name>` in one registry; failure order 401 → 400 → entry-point checks → hook →
+  database.
+- **Five inconsistencies in the parent's section 8** are listed in the Task (Security 7.0 vs 7.1; issuer
+  routes without the prefix; "only `CurrentUser`" vs "entities reference `User`"; `mustChangePassword`
+  with no change route; "non-UUID literal" vs numeric example ids). The parent is not edited for them.
+- **Verified while writing (2026-10-04/05):** the four documents pass the real `guide` target in a
+  scratch copy, also when rebuilt from the Task text alone; the red state after each step was measured
+  (links to later documents only); `rule_evidence.py` reports `141 rules; rule texts that contain '@': 0`.
+  Traceability: 61 of the 78 in-scope findings have a rule after documents 01–09 (35 new); 17 remain for
+  documents 10–14.
+- **Found:** the Spring Boot application-properties page is too long for one fetch — every property name
+  in the documents is in a `not verified` note.
+- Reviewed with `task-reviewer`: 6 findings patched (0 critical, 0 high, 4 moderate, 2 low).
+
+## 2026-10-04 (Task 3 — Guide 01–05)
+- **Executed and closed:** [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-3-guide-structure-crud-api]]
+  (Step 2.2 of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]). Parent Step 2.2 ticked.
+  Validated by the user (2026-10-04): the rules of the five documents are approved as written and the
+  documents render correctly in Obsidian; the Task was moved to `Tasks/done/` at the user's request.
+- **Five Guide documents written as drafts** (`#draft`) in `documentation/Docs/Guide/`: `01-Principles-and-Baseline`
+  (9 rules), `02-Project-Layout-and-Module-Boundaries` (11), `03-Feature-Module-Anatomy` (10),
+  `04-CRUD-Base-and-Service-Hooks` (20), `05-API-Contract` (13) — **63 rules** citing 87 findings and 13
+  ADRs, 14 `not verified` Version Notes. `python3 scripts/validate-analysis-docs.py guide` exits **0**;
+  `Guide-Index.md` reports `Draft documents: 5`, `Version Notes not verified: 14`, five rows linked as
+  `draft`, 11 still `planned`.
+- **Order of checks — user decision: Option A + ADR-018.** At a row entry point: authenticate → scoped
+  load (404) → policy check with the loaded row (403) → precondition (428/412) → mutate, at every row
+  entry point including download. **ADR-018** written and `Accepted` (replaces only the order sentence of
+  ADR-005 decision 8; ADR-005 and ADR-013 unchanged). Parent section 6's check-order sentence, the ADR
+  table (row 018) and "ADRs 001–018" updated.
+- **All seven ★ gaps confirmed as proposed:** G2 one home per rule; G3 `platform` dependency table
+  (`config` ← `errors` ← `identity` ← `access` ← `query` ← `crud`, `RowScope` in `platform.access`);
+  G4 seven `Action` values (get, list, search, create, update, delete, download); G6 `PUT` is full
+  replacement; G7 zero-based `page`; G10 `G01-09` applies to every project; G12 the CRUD base is the
+  named exception to "one to four entry points".
+- **Glossary:** *Entry Point*, *Service Hook*, *Concurrency Token*, *Page Response* and *Depth Criterion*
+  added (all five accepted by the user).
+- **Verified:** expected red state after each step matched exactly (forward references only); `rule_evidence.py`
+  reports `63 rules; rule texts that contain '@': 0` and 0 unresolved IDs; 104 validator tests pass; the
+  three project targets exit 0; frozen checksums (validator, tests, conventions, ADR-001…017) and the
+  three reference-project snapshots unchanged. 24 inline-code names of planned documents remain for the
+  Tasks 4–5 link pass.
+
+## 2026-10-04 (Task 3 document created and reviewed)
+- **Task document written:**
+  [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-3-guide-structure-crud-api]] for
+  Task 3 (Step 2.2) of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]; linked from the
+  parent's Task Breakdown. **Not executed yet** — `Docs/Guide/` still holds only the conventions and the
+  index, and no ADR was added.
+- **Content:** the full text of Guide documents 01–05 as drafts — 63 rules (9, 11, 10, 20, 13) citing 87
+  distinct reference findings and 13 ADRs; 14 `not verified` Version Notes. One home per rule; planned
+  documents are named in inline code (the validator rejects a link or a Rule ID that does not resolve).
+- **Conflict found between two accepted ADRs (the user decides in the Task's Step 1):** ADR-005 decision 8
+  orders an entry point as policy check (403) → scoped load (404); ADR-013 decision 7 orders the download
+  entry point as scoped load (404) → policy check. With ADR-005 decisions 5 and 6 (the policy receives
+  the entity; a hidden row reads as 404, not 403) only the second order is coherent. Recommended: scoped
+  load first everywhere, recorded as a narrow **ADR-018** that replaces the order sentence only. The Task
+  also carries a tested script for the other option.
+- **Second parent inconsistency:** "a small interface (1–4 entry points)" for every Platform Module vs
+  six entry points on the CRUD base; rule `G01-02` names the CRUD base as the exception.
+- **Gaps closed by the Task (for the user to confirm at execution):** a dependency direction inside
+  `platform` (`config` ← `errors` ← `identity` ← `access` ← `query` ← `crud`, `RowScope` in
+  `platform.access`); seven `Action` values (the six entry points plus download); only `applyRelations`
+  receives the actor; `PUT` is full replacement; zero-based `page`; rule IDs cited in the type-level
+  documentation of Platform Modules in every project.
+- **Verified while writing (2026-10-04):** both options were built in the scratchpad and pass the real
+  `guide` target, also when rebuilt from the Task text alone. Spring Boot **4.1.x** (4.1.2) manages
+  Spring Framework 7.0.9, **Spring Security 7.1.1**, Spring Data 4.1.1, Hibernate 7.4.5, Jackson 3.1.5,
+  JUnit Jupiter 6.0.3 and Testcontainers 2.0.5; MapStruct (1.6.3), ArchUnit (1.5.1) and springdoc-openapi
+  (3.1.1) are not managed. In Framework 7.0.9 `If-Match` on an unsafe method is compared strongly and
+  yields 412, but an absent `If-Match` is not rejected — the 428 must come from the CRUD base.
+- Reviewed with `task-reviewer`: 12 findings patched (0 critical, 1 high, 6 moderate, 5 low).
+
+## 2026-10-04 (Task 2 — Guide format and validator)
+- **Executed and closed:** [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-2-guide-format-validator]]
+  (Step 2.1 of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]). Parent Step 2.1 ticked.
+  The user confirmed the Manual Validation items (written format approved; both Guide files render correctly
+  in Obsidian) and asked for the Task to be moved to `Tasks/done/`.
+- **Two Guide files created:** `documentation/Docs/Guide/Guide-Conventions.md` (the format contract: layout,
+  tags and the `#draft` marker, document template, rule blocks `G<NN>-<MM>`, the four ID families, Version
+  Note grammar, index, contract reviews, traceability matrix) and `Guide-Index.md` (front page with the
+  sixteen planned documents, the two Status counts and the Changelog).
+- **`guide` target added** to `scripts/validate-analysis-docs.py` (same CLI; the three project targets are
+  unchanged). It checks file kinds and names, one document per number, title and `#doc #guide` tags, the six
+  required headings in order, no wiki link into `Features/`, `Tasks/` or `Bugs/`, rule blocks (ID form,
+  document number, uniqueness, the four fields, the withdrawn form), evidence (a reference Finding ID or an
+  ADR; no Superseded/Deprecated ADR), that every Finding ID / `ADR-NNN` / Rule ID resolves (prose and code),
+  Version Note markers and their three kinds of evidence, index coverage and the two status counts, contract
+  reviews (`GC-R<NN>-<MM>` with summary coverage), and the traceability scope (🔴 + 🟠 + every
+  security-review finding).
+- **Tests:** `scripts/tests/test_validate_guide_docs.py` — 60 tests in nine classes (the 59 planned plus one
+  added at review: a contract-review finding alone is not rule evidence). Full suite 104 tests, all passing;
+  the 44 existing tests are untouched. 17 of 17 seeded defects killed. Probe on the real evidence base:
+  `scope errors: 77`, clean without the probe.
+- **User's format decisions (confirmed before any code):** plain IDs are valid citations (wiki links
+  optional, resolved everywhere including code); `**Differs from references:**` is required with an explicit
+  `None — <what is kept>`; Version Notes are `- ` items starting `**verified on <major>.<minor>.x**` or
+  `**not verified**`, no text outside an entry, evidence = exact test path with `/src/test/` under
+  `base-project/` or `documentation/Docs/Validation/`, a reference Finding ID, or a URL with a version
+  segment (never fetched); `#draft` is the draft marker and the index reports `Draft documents` and
+  `Version Notes not verified`, both recomputed by the validator.
+- **Glossary:** *Contract Review*, *Traceability Matrix* and *Draft Marker* added (all three accepted by the
+  user).
+- **Memory bank updated:** `tech` (the `guide` command), `architecture` (source-map rows for `Docs/Guide/`
+  and the validator), `known-issues` (docs.spring.io versioned-URL redirect; no Guide links to moving
+  documents), `context`, this entry. `brief.md` untouched.
+
+## 2026-10-04 (Task 2 document created and reviewed)
+- **Task document written:**
+  [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-2-guide-format-validator]] for Task 2
+  (Step 2.1) of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]; linked from the parent's
+  Task Breakdown. **Not executed yet** — `scripts/` and `Docs/Guide/` are unchanged.
+- **Design in the Task:** the `guide` target is added to `scripts/validate-analysis-docs.py` (same CLI, no
+  second script); tests in a new `scripts/tests/test_validate_guide_docs.py`. It checks file kinds, title
+  and tags, the six headings, rule blocks (`G<NN>-<MM>`, four fields, withdrawn form), evidence (a reference
+  Finding ID or an ADR; no Superseded/Deprecated ADR), that every Finding ID / `ADR-NNN` / Rule ID resolves
+  (also inside code), Version Note markers and evidence, index coverage and two status counts, contract
+  reviews (`GC-R<NN>-<MM>`), and the traceability scope.
+- **Gaps in the parent closed by the Task** (for the user to confirm at execution): plain IDs are valid
+  citations (wiki links optional); `**Differs from references:**` is required with an explicit `None —`;
+  Version Notes are list items that start with `**verified on <major>.<minor>.x**` or `**not verified**`;
+  `#draft` is the draft marker and the index reports the draft and `not verified` counts; a Rule ID is
+  withdrawn and replaced, never renumbered; Guide documents never link a Feature, Task or Bug (they move).
+- **Verified while writing:** the whole design was prototyped in the scratchpad — 103 tests pass (44
+  existing + 59 new), the new tests fail against the current validator, 17 of 17 seeded defects are caught,
+  each of the seven slices ends green in the planned order, and the validator rebuilt from the Task text
+  alone passes the same 103 tests. Both Guide files validate against a copy of the real documentation.
+  The traceability scope on the real findings is **78** (18 🔴 + 45 🟠 + 40 security-review findings,
+  minus the overlap).
+- **Found:** `docs.spring.io` redirects the versioned URL of the *current* line to the unversioned address
+  (seen for Spring Boot 4.1 and Spring Framework 7.0; Spring Security 7.0 is served as written) — a
+  Version Note must cite the versioned form. `rg` is a shell function of the agent harness, not a binary;
+  Task commands use `grep`.
+- Reviewed with `task-reviewer`: 6 findings patched (0 critical, 0 high, 2 moderate, 4 low).
+
+## 2026-10-04 (Task 1 — decisions, ADRs, glossary)
+- **Task 1 executed:**
+  [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-1-decisions-adrs-glossary]] of
+  [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]. ADR system initialised
+  (`doc-config.json` gains `adrs` + four statuses; `documentation/ADRs/ADR-index.md` created).
+- **ADRs written and accepted:** `ADR-001`…`ADR-016` are `Accepted`; `ADR-017` (D18, Skill architecture)
+  is written and stays `Proposed` until Task 6 completes it. Three-digit IDs per the documentation skill
+  (`ADR-[NNN]-[short-title].md`), confirmed by the user. Review decisions F1–F17 are folded into the ADR of
+  the decision each one changed. `check_adrs.py` reports `0 error(s); mode=final`.
+- **Two decisions confirmed at acceptance:** ADR 009 — a failed request validation is **400** ("invalid by
+  itself"); 422 stays "valid but refused against state or content" (business rule, fingerprint mismatch,
+  digest mismatch), and **422** is confirmed for a business rule violation. ADR 014 — idempotency stays
+  **opt-in per endpoint** (US 38); the convention's upload recipe opts in, the guard has no default.
+- **Parent corrections P1–P8 applied** to
+  [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]: four-digit `ADR-00NN` → `ADR-0NN`
+  (11 occurrences + 17 table rows); "ADRs 0001–0018" → "ADRs 001–017"; the Step 1.3 / Step 4.1 / ADR-017
+  row texts; the non-existent **`WP-R05-08` → `WP-R05-04`**; the stale "after the Guide and the Base
+  Project exist" sentence; the open 400-vs-422 texts; the "`@Idempotent` by default" contradiction; the
+  `<F>AccessPolicy>` typo (6 occurrences); ADR table titles synced with the index. Steps 1.1–1.4 ticked.
+  [[Bugs/done/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] left untouched as a closed record.
+- **Glossary: 26 → 50 terms in six categories.** Batch A (15 new, the parent's list), Batch B (3 updates:
+  *Feature Module*, *Generic CRUD Stack*, *DTO Tiers* now describe the Guide's shape alongside the
+  reference shape), Batch C (12 accepted beyond the parent's list: 9 new + 3 updates), Batch D (5
+  back-links). New categories *Guide and Convention*, *Platform Modules*, *Validation Loop*. All writes
+  through the `glossary` CLI runner (`glossary_terms.py`, scratchpad).
+- **Verified at execution:** the Spring Boot generations API re-read 2026-10-04 (4.1.x current GA, OSS
+  until 2027-07-31; 4.2.x scheduled 2026-11-30); the method-validation exception is documented as **400
+  for input validation errors** (500 for return-value validation) — Spring Framework reference and javadoc,
+  2026-10-04. Tooling baseline held: three validators exit 0, 44 unit tests OK, three checksum snapshots
+  unchanged.
+- Memory bank updated: [[Memory/known-issues]] (the "one project only" rule replaced by the ADR-001
+  citation rule; ADR citation and glossary-search notes added), [[Memory/architecture]] (ADRs in the source
+  map; the Guide is the source of truth), [[Memory/context]].
+
+
+## 2026-10-04 (Task 1 document created and reviewed)
+- **Task document written:**
+  [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-1-decisions-adrs-glossary]] for Task 1
+  (Steps 1.1–1.4) of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]; linked from the
+  parent's Task Breakdown. **Not executed yet** — no ADR exists and the glossary is unchanged.
+- **Parent inconsistencies found** (the Task corrects them in its Step 7): four-digit ADR IDs vs the
+  documentation skill's three-digit `ADR-NNN`; "ADRs 0001–0018" (there are 17); **`WP-R05-08` is cited in
+  section 10 but does not exist** (the buffering finding is WP-R05-04); section 14 still says the Skill is
+  designed "after the Guide and the Base Project exist" (stale since F8/F10); the open 400-vs-422 validation
+  status; "`@Idempotent` by default" vs US 38 opt-in; the stray `>` in `<F>AccessPolicy>`.
+- **Design choices in the Task, for the user to confirm at execution:** three-digit ADR IDs; ADR 017
+  (D18) opened now as `Proposed` to reserve the number and completed in Step 4.1; F1–F17 folded into the ADR
+  of the decision each one changed; ADR 009 recommends 400 for request validation ("400 = invalid by itself,
+  422 = valid but refused against state or content"); ADR 014 "opt-in per endpoint, the upload recipe opts
+  in"; nine glossary terms proposed beyond the parent's list (Row Scope, Access Policy, …).
+- **Verified while writing:** all 75 finding IDs the parent cites resolve except WP-R05-08; the Spring Boot
+  generations API (4.1.x current GA, OSS until 2027-07-31); Spring Framework's default 400 for a failed
+  `@Valid` request body; `glossary add` creates a new category on first use and `glossary search` matches
+  term names only (not synonyms). The Task's ADR checker, glossary runner and parent `sed` edits were
+  dry-run on scratch copies.
+- Reviewed with `task-reviewer`: 8 findings patched (0 critical, 0 high, 5 moderate, 3 low).
+
 ## 2026-10-03 (Findings resolution COMPLETE — F11–F17; all 17 done)
-- Resumed [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] at F11 and processed
+- Resumed [[Bugs/done/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] at F11 and processed
   F11–F17 to completion. **17 of 17 resolved** (16 Done, F16 Auto-resolved). The parent
   [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]] is patched for every accepted decision.
+- **Closed out:** the Bug Report moved `Bugs/to-do/` → `Bugs/done/` (all wiki links updated), and Step 1.1
+  was applied — [[Memory/brief]] now describes a **project-agnostic convention skill** (rules, module
+  contracts, pseudo-code; no code artifacts; no project initialization; not Claude-Code-specific), with the
+  "grounded, not invented" constraint relaxed to **"grounded or corrected, always cited"** and the F11
+  support-policy baseline added. `auth-server` → `backend` in the reference-project names.
 - **F11 (Moderate) → Done.** Option 4 (alternative): the version baseline is a **support policy**, not a pin.
   Verified 2026-10-03: **every Spring Boot 3.x line is OSS-EOL** (3.5 ended 2026-06-30, terminal 3.x minor;
   3.4 ended 2025-12-31); 4.1.x is current GA, 4.2 GA scheduled 2026-11-30. Boot 4 changes the Guide's
@@ -55,7 +268,7 @@
   decision, evidence that is checkable rather than assumed.
 
 ## 2026-10-03 (Findings resolution — F9 decided; paused)
-- **F9 (Moderate) → Done.** [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] finding
+- **F9 (Moderate) → Done.** [[Bugs/done/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] finding
   "No concurrency control (lost updates)". User chose Option 4 (alternative, promoted to first-class) — the
   **Conditional-Write Contract**: concurrency token on managed entities, strong `ETag` + required `If-Match`
   on `update`/`delete`, stale → 412, missing → 428, `If-Match: *` unconditional; no body version
@@ -102,7 +315,7 @@
   homes ("role/action rules" in the policy AND in the `authorize` hook) — F7's own drift one level down.
   Patched: Feature sections 4, 5, 6, 8 (incl. the mermaid node), US 13, Guide rows 04/08, ADR-0005, Steps
   3.4/3.7, Testing Decisions,
-  [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F7 Decision + summary table.
+  [[Bugs/done/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F7 Decision + summary table.
 - **F6 (High) → Done.** Local identity lifecycle undefined. User chose the alternative (Option 4): durable
   `User` + rebindable subject binding + one `UserDirectory` lifecycle contract. `User.externalSubject` always
   equals the token `sub` (local mode `sub` = `User.id`, no `"local:"` prefix — the `iss` claim namespaces).
@@ -133,7 +346,7 @@
   documented as fallback only, never a per-adapter default, hashing in the spool pass (closes WP-R04-06).
   Patched: Feature sections 10 (`UploadSource` + digest verification) and 11 (fingerprint composition),
   Guide rows 10/11, Steps 3.5/3.6, Testing Decisions,
-  [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F5 Decision + summary table.
+  [[Bugs/done/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F5 Decision + summary table.
 - Four read-only solution subagents ran (three listed options + one alternative search). The alternative
   (binder-side fingerprint construction, fail-closed digest, server-computed proof on replay) judged itself
   **not materially better** — the client-declared digest verified while streaming is forced by the constraint
@@ -154,7 +367,7 @@
   `@Transactional(propagation = NEVER)` (framework-native fail-fast before any storage I/O). Added a
   transaction-boundary contract test and named the invariant in Step 3.7's contract-conformance checklist.
   Patched: Feature sections 6 and 10, Guide rows 04/10/13, Steps 3.5/3.7, Testing Decisions,
-  [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F4 Decision + summary table.
+  [[Bugs/done/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] F4 Decision + summary table.
 - Analysis noted that the Bug Report's Option 3 (ArchUnit "classes calling UploadCoordinator must not be
   `@Transactional`") cannot work as worded: `isAnnotatedWith(Transactional.class)` is blind to the class-level
   `@Transactional` inherited from `CrudService` (spring-tx 6.2.1 `@Transactional` is `@Inherited`;
@@ -186,7 +399,7 @@
   (`Docs/Guide/`, rule IDs) → Base Project (platform modules) → rewritten Skill → Validation Loop (two user
   domains, blind review, strict exit gate). Decisions D1–D18 from a user interview. Auth seam verified against the
   Spring Security 7.0 resource-server docs; MapStruct `@MappingTarget` and `ReportingPolicy.ERROR` verified.
-- **Reviewed:** [[Bugs/to-do/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] — 17 findings; the Critical
+- **Reviewed:** [[Bugs/done/Review-of-Spring-Boot-Architecture-Guide-and-Base-Project]] — 17 findings; the Critical
   one is the conflict with `brief.md` "standalone skill" (the Skill would depend on `base-project/`).
 
 ## 2026-09-29 (Phase 1 Tasks 1–3 closed)

@@ -6,12 +6,14 @@
     "tasks": "Tasks",
     "docs": "Docs",
     "code": "Code",
+    "adrs": "ADRs",
     "rules": "rules"
   },
   "statuses": {
     "bugs": ["to-do", "in-progress", "done"],
     "features": ["to-do", "in-progress", "done"],
-    "tasks": ["current", "done"]
+    "tasks": ["current", "done"],
+    "adrs": ["proposed", "accepted", "deprecated", "superseded"]
   },
   "obsidian": {
     "use_cli": false,
