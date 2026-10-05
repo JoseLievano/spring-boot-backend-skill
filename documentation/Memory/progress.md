@@ -1,8 +1,20 @@
 # Progress
 
+## 2026-10-05 (Task 4 closed — manual validation confirmed)
+- **Executed and closed:**
+  [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
+  (Step 2.3 of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]). The user confirmed the
+  Manual Validation items — the rules of documents 06–09 are approved as written, and documents 06–09 and
+  the new links in 02–05 render correctly in Obsidian — and the Task was moved to `Tasks/done/`.
+- Task tags set to `#done` (also corrected a stale `#current` on
+  [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-3-guide-structure-crud-api]] and the
+  three [[Tasks/done/Spring-Boot-Skill-Creation-step-1-Analyze-backend|analysis]]-[[Tasks/done/Spring-Boot-Skill-Creation-step-2-Analyze-BugTracker|task]]-[[Tasks/done/Spring-Boot-Skill-Creation-step-3-Analyze-wpmanager|docs]]).
+  All wiki links to the Task updated (`Tasks/current/` → `Tasks/done/`). Next: **Task 5** — Guide 10–16,
+  the traceability matrix and the blind contract review (`GC-R`); Rule IDs become permanent there.
+
 ## 2026-10-05 (Task 4 — Guide 06–09)
 - **Executed:**
-  [[Tasks/current/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
+  [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
   (Step 2.3 of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]). Parent Step 2.3 ticked.
   The four Guide documents are written as drafts and autonomously reviewed; the user's manual validation
   (read/approve the rules, Obsidian rendering) is still open.
@@ -50,7 +62,7 @@
 
 ## 2026-10-05 (Task 4 document created and reviewed)
 - **Task document written:**
-  [[Tasks/current/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
+  [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
   for Task 4 (Step 2.3) of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]; linked from
   the parent's Task Breakdown. **Not executed yet** — `Docs/Guide/` still holds documents 01–05 only.
 - **Content:** the full text of Guide documents 06–09 as drafts — 78 rules (16, 19, 29, 14) citing 118

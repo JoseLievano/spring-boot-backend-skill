@@ -1,6 +1,6 @@
 # Task: Guide Documents 01–05 — Principles, Layout, Feature Anatomy, CRUD Base and API Contract
 
-#task #current #high-complexity #parent-spring-boot-architecture-guide-and-base-project
+#task #done #high-complexity #parent-spring-boot-architecture-guide-and-base-project
 
 **Parent:** [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project|Spring Boot Architecture Guide, Base Project and Skill]]
 **Parent Type:** Feature

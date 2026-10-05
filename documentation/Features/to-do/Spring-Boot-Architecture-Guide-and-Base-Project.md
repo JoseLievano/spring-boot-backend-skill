@@ -1102,7 +1102,7 @@ are not renumbered.
 - **Steps Covered:** Step 2.3
 - **Reason for Grouping:** High complexity; identity and access alone carry most Critical reference findings.
 - **Planned Task File:** `Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors.md`
-- **Task Document Link:** [[Tasks/current/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
+- **Task Document Link:** [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
 
 ### Task 5: Guide — storage, idempotency, operations, recipe, traceability, contract review
 - **Steps Covered:** Step 2.4, Step 2.5, Step 2.6

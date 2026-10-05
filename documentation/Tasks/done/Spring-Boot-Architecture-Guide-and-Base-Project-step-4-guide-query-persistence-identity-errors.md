@@ -1,6 +1,6 @@
 # Task: Guide Documents 06–09 — Query Engine, Domain Model and Persistence, Identity and Access, Errors and Validation
 
-#task #current #high-complexity #parent-spring-boot-architecture-guide-and-base-project
+#task #done #high-complexity #parent-spring-boot-architecture-guide-and-base-project
 
 **Parent:** [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project|Spring Boot Architecture Guide, Base Project and Skill]]
 **Parent Type:** Feature
@@ -2582,10 +2582,10 @@ rule text names a framework API — is covered by `rule_evidence.py` (an aid) an
 
 - [x] **(User)** Confirm or change the ★ gaps H1–H11 (Step 1).
 - [x] **(User)** Say whether the five inconsistencies in the parent should be corrected there (Step 1).
-- [ ] **(User)** Read the four documents and approve the rules, or ask for changes. The Rule IDs become
+- [x] **(User)** Read the four documents and approve the rules, or ask for changes. The Rule IDs become
   permanent at the contract review, so this is the cheap moment to move, merge or reword a rule. The
   output of `rule_evidence.py` shows each rule beside the findings it rests on.
-- [ ] **(User)** Open the four documents in Obsidian: the tags appear, the links to the other Guide
+- [x] **(User)** Open the four documents in Obsidian: the tags appear, the links to the other Guide
   documents and to the ADRs open, the tables render, and the seven Mermaid diagrams render (one in
   document 06, two in 07, three in 08, one in 09). Open documents 02–05 and check that the new links
   open.
@@ -2665,12 +2665,17 @@ Autonomous review after implementation found **no defects** in the written docum
 Unresolved (by design — the user's manual validation):
 
 1. **(User)** Read the four documents and approve the rules (Rule IDs become permanent at the contract
-   review — Task 5).
-2. **(User)** Open the four documents and documents 02–05 in Obsidian and check rendering.
+   review — Task 5). — resolved 2026-10-05: the user approved the rules as written.
+2. **(User)** Open the four documents and documents 02–05 in Obsidian and check rendering. — resolved
+   2026-10-05: rendering confirmed.
 3. The five parent inconsistencies are **not** corrected in the parent (user's choice, Step 1); they are
    reported in this Task's execution report.
 4. No technology stack was supplied to the executor; the Task is docs-only and proceeded as such
    (user's choice).
+
+**Status: DONE (2026-10-05).** All automatic completion criteria are met and the user confirmed the
+Manual Validation items: the four documents' rules are approved and documents 06–09 and 02–05 render
+correctly in Obsidian. The Task is moved to `Tasks/done/` at the user's request.
 
 ---
 
@@ -2691,8 +2696,8 @@ Unresolved (by design — the user's manual validation):
   the Row Scope forms the user approved
 - [x] `Guide-Index.md` links the four documents with state `draft`, reports `Draft documents: 9` and
   `Version Notes not verified: 38`, and has the changelog line
-- [ ] The user approved the rules of the four documents, or the requested changes were applied and
-  validated
+- [x] The user approved the rules of the four documents, or the requested changes were applied and
+  validated — done (2026-10-05): the user approved the rules as written
 - [x] Glossary proposals handled as the user decided
 - [x] Memory bank updated (`context`, `progress`, `architecture`, `known-issues`); `brief.md` untouched
 - [x] The validator, its tests, `Guide-Conventions.md`, document 01 and every ADR are unchanged by this
