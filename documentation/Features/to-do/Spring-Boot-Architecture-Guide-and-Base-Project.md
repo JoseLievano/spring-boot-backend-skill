@@ -1110,7 +1110,7 @@ are not renumbered.
   blind contract design review that **gates the Skill** (Phase 4). Guide prose stays at `draft` until Task 12
   finalizes it against the built code.
 - **Planned Task File:** `Spring-Boot-Architecture-Guide-and-Base-Project-step-5-guide-contracts-gate.md`
-- **Task Document Link:** [Add when the task document is created]
+- **Task Document Link:** [[Tasks/current/Spring-Boot-Architecture-Guide-and-Base-Project-step-5-guide-contracts-gate]]
 
 ### Task 6: Skill rewrite
 - **Steps Covered:** Step 4.1, Step 4.2
