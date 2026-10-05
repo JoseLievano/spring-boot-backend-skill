@@ -18,7 +18,7 @@ pseudo-code). It ships no code artifacts and no Spring app; project initializati
 | `documentation/Memory/` | Memory Bank — persistent context for Claude across sessions |
 | `documentation/Docs/` | System-level docs: analysis findings, pattern comparisons, skill design |
 | `documentation/Docs/<project>/` | Phase 1 analysis per reference project: `<project>-Index.md`, `Explanations/NN-*.md`, `Reviews/NN-*-Review.md` + `Reviews/00-Review-Summary.md`. Format: [[Docs/Analysis-Doc-Conventions]] |
-| `documentation/Docs/Guide/` | The Guide — `Guide-Index.md`, `Guide-Conventions.md`, documents `NN-Title-Words.md`, `Reviews/` (contract reviews, `GC-R<NN>-<MM>`). Documents 01–05 exist as drafts (63 rules); 06–16 are planned. Format: [[Docs/Guide/Guide-Conventions]] (ADR-016) |
+| `documentation/Docs/Guide/` | The Guide — `Guide-Index.md`, `Guide-Conventions.md`, documents `NN-Title-Words.md`, `Reviews/` (contract reviews, `GC-R<NN>-<MM>`). Documents 01–09 exist as drafts (141 rules); 10–16 are planned. Format: [[Docs/Guide/Guide-Conventions]] (ADR-016) |
 | `scripts/validate-analysis-docs.py` | Validator for the analysis docs and the Guide (headings, citations `path:line`, wiki links + anchors, finding IDs, summary/index coverage; `guide` adds rule blocks, ID resolution, Version Notes, status counts, traceability scope). Targets: `backend`, `BugTracker`, `wpmanager`, `guide`. Tests in `scripts/tests/` (two files). Local read-only guard snapshots in `scripts/.snapshots/` (gitignored) |
 | `documentation/ADRs/` | Architecture Decision Records — `ADR-index.md` plus `ADR-001`…`ADR-018` (Nygard format, three-digit IDs; ADR-017 stays `Proposed` until Step 4.1) |
 | `documentation/Features/` | Feature tracking for the skill-authoring work |

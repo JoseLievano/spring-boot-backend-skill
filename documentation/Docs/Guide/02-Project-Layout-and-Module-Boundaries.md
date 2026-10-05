@@ -267,7 +267,7 @@ above was found by reading.
 - [[Docs/Guide/01-Principles-and-Baseline]] — the principles this layout applies.
 - [[Docs/Guide/03-Feature-Module-Anatomy]] — what is inside one `features.<feature>` package.
 - [[Docs/Guide/04-CRUD-Base-and-Service-Hooks]] — `platform.crud` and the Access Policy contract.
-- `08-Identity-Authentication-and-Authorization` — planned: `platform.identity`, `platform.access`, the
+- [[Docs/Guide/08-Identity-Authentication-and-Authorization]] — `platform.identity`, `platform.access`, the
   URL rules and the single method-security switch.
 - `13-Testing-Strategy` — planned: where the architecture tests sit among the other test layers.
 - [[ADRs/ADR-004-platform-and-features-package-layout|ADR-004]] — the layout decision and its seven

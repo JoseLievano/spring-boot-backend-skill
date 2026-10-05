@@ -896,7 +896,7 @@ Skill files stay in `spring-boot-skill/` until Step 6.3 ([[Docs/Skill-Directory-
 ### Phase 2: The Guide
 - [x] **Step 2.1:** Write `Docs/Guide/Guide-Conventions.md` and `Guide-Index.md`; extend the validator with the `guide` target and unit tests.
 - [x] **Step 2.2:** Write Guide 01–05 (principles, layout and boundaries, feature anatomy, CRUD base, API contract).
-- [ ] **Step 2.3:** Write Guide 06–09 (query engine, domain and persistence, identity and access, errors and validation).
+- [x] **Step 2.3:** Write Guide 06–09 (query engine, domain and persistence, identity and access, errors and validation).
 - [ ] **Step 2.4:** Write Guide 10–11 (object storage and uploads incl. the optional replication extension; idempotency).
 - [ ] **Step 2.5:** Write Guide 12–15 (configuration and secrets, testing strategy, observability, recipe).
 - [ ] **Step 2.6:** Write Guide 16 (traceability matrix): every 🔴/🟠 reference finding **plus every 🟡/🟢

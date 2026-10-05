@@ -32,8 +32,8 @@ A Feature Module is the package `<root>.features.<feature>`. `<F>` is the entity
 | `<F>Controller` | Routing | The resource path; feature-specific routes | A business rule; an entity in a signature |
 | `V<n>__<feature>.sql` | Schema | The feature's tables and constraints | — |
 
-The migration file sits with the other migrations, not in the feature package; `07-Domain-Model-and-Persistence`
-(planned) states the migration rules.
+The migration file sits with the other migrations, not in the feature package;
+[[Docs/Guide/07-Domain-Model-and-Persistence]] states the migration rules.
 
 ### The three shapes and the mapper
 
@@ -217,7 +217,7 @@ missing input surfaced as a null-pointer failure inside a mapper.
 - **not verified** — current-docs lookup at execution time: that MapStruct 1.6 builds on this line with
   the project's Java version, and the order of annotation processors when another processor is present.
 - **not verified** — current-docs lookup at execution time: the repository base type and the query
-  capability the list engine needs from it; the choice is recorded in `06-Query-Engine` (planned).
+  capability the list engine needs from it; the choice is recorded in [[Docs/Guide/06-Query-Engine]].
 - **not verified** — current-docs lookup at execution time: the constraint annotations of the Request
   (`jakarta.validation`) and how the controller triggers them.
 
@@ -226,8 +226,8 @@ missing input surfaced as a null-pointer failure inside a mapper.
 - [[Docs/Guide/02-Project-Layout-and-Module-Boundaries]] — where the package sits and what it may import.
 - [[Docs/Guide/04-CRUD-Base-and-Service-Hooks]] — what the service and the controller inherit.
 - [[Docs/Guide/05-API-Contract]] — what the routes look like on the wire.
-- `06-Query-Engine` — planned: the Query Profile in full.
-- `07-Domain-Model-and-Persistence` — planned: the entity, the concurrency token, migrations.
+- [[Docs/Guide/06-Query-Engine]] — the Query Profile in full.
+- [[Docs/Guide/07-Domain-Model-and-Persistence]] — the entity, the concurrency token, migrations.
 - `15-Recipe-Add-a-Feature` — planned: this document as a step-by-step walk.
 - [[ADRs/ADR-005-deepened-crud-base-with-access-policy|ADR-005]] — three shapes, hooks, the Access Policy.
 - [[ADRs/ADR-012-mapstruct-mapping-with-unmapped-target-errors|ADR-012]] — generated mappers.

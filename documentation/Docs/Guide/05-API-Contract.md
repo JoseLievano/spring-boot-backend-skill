@@ -35,7 +35,7 @@ They follow the same naming, the same statuses and the same error shape.
 Operational endpoints such as health checks are not API routes and do not sit under the prefix;
 `14-Observability-and-Operations` (planned) says where they live.
 
-The list parameters and the search body are specified in `06-Query-Engine` (planned).
+The list parameters and the search body are specified in [[Docs/Guide/06-Query-Engine]].
 
 ### Status codes
 
@@ -62,7 +62,7 @@ The framework answers a few protocol errors before any controller runs: 405 for 
 not have, 406 and 415 for media types. They keep their standard meaning.
 
 Every error status carries one body shape, an RFC 9457 problem detail whose `type` identifies the
-failure. `09-Errors-and-Validation` (planned) defines the shape and the `type` values. When several
+failure. [[Docs/Guide/09-Errors-and-Validation]] defines the shape and the `type` values. When several
 failures apply to one request, G04-11 fixes which one the client sees.
 
 ### Conditional writes on the wire
@@ -291,9 +291,9 @@ route, the statuses each route returns and the error shape.
 - [[Docs/Guide/03-Feature-Module-Anatomy]] — the Request, Response and Summary shapes.
 - [[Docs/Guide/04-CRUD-Base-and-Service-Hooks]] — the operations behind the routes and the order of
   checks.
-- `06-Query-Engine` — planned: list parameters, the search body, operators and bounds.
-- `08-Identity-Authentication-and-Authorization` — planned: which routes are public.
-- `09-Errors-and-Validation` — planned: the problem-detail shape and its `type` values.
+- [[Docs/Guide/06-Query-Engine]] — list parameters, the search body, operators and bounds.
+- [[Docs/Guide/08-Identity-Authentication-and-Authorization]] — which routes are public.
+- [[Docs/Guide/09-Errors-and-Validation]] — the problem-detail shape and its `type` values.
 - `10-Object-Storage-and-Uploads` — planned: the Download Ticket.
 - `11-Idempotency` — planned: the `Idempotency-Key` header.
 - `14-Observability-and-Operations` — planned: operational endpoints.

@@ -47,6 +47,13 @@ It is NOT a bug tracker — specific bugs belong in `documentation/Bugs/`.
   only.
 
 ## Framework / Library behaviors
+- Spring Data's `AuditorAware.getCurrentAuditor()` takes **no parameter** — an ambient read. The
+  convention's actor labels (`createdBy`/`updatedBy`) are therefore stamped by the CRUD base from its
+  actor parameter (and by the base type's single stamping operation in a feature-specific write), never
+  through the framework's auditing (G07-06).
+- The Spring Boot **application-properties** documentation page is too long for one fetch — a lookup
+  there truncates. Look a property up in the section page of its own module instead. Every property name
+  in Guide documents 06–09 is consequently in a `not verified` Version Note.
 - A `SecurityFilterChain` without `authorizeHttpRequests` permits every request; `@PreAuthorize` does
   nothing without `@EnableMethodSecurity`. Reference projects rely on both being present when they are not.
 - `@EnableMethodSecurity` works (globally) even on a `@Service`: any `@Component` is a lite configuration

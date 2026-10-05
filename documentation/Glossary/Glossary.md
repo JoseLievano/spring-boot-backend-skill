@@ -400,6 +400,20 @@
 
 ---
 
+### Actor Label
+
+**Term:** Actor Label
+
+**Definition:** The text stored in the created-by and updated-by fields of a managed entity: the user id of the entry point's actor, or the word system for the System Actor. It is a label, not a foreign key, and the CRUD base writes it from the actor parameter, never from an ambient read.
+
+**Examples:** A note created by user 42 has createdBy = 42; one created by a scheduled import has createdBy = system.
+
+**Synonyms:** createdBy, updatedBy
+
+**Related:** System Actor, Current User, Entry Point
+
+---
+
 ### Claims Mapper
 
 **Term:** Claims Mapper
@@ -456,6 +470,20 @@
 
 ---
 
+### Domain Exception
+
+**Term:** Domain Exception
+
+**Definition:** An unchecked exception of the convention's single hierarchy, raised by a service, a hook or a Platform Module to report a failure. Each kind carries its error code: status, Problem Type and title. The kinds are invalid request, not found, forbidden, conflict, precondition failed, precondition required and business rule violation.
+
+**Examples:** A delete hook raises Conflict when an order still has payments; the client receives 409 with type /problems/conflict.
+
+**Synonyms:** DomainException
+
+**Related:** Problem Type, Service Hook, Entry Point
+
+---
+
 ### Download Ticket
 
 **Term:** Download Ticket
@@ -495,6 +523,20 @@
 **Synonyms:** IdempotencyGuard
 
 **Related:** Idempotency Key, Upload Coordinator, Current User
+
+---
+
+### Identity Mode
+
+**Term:** Identity Mode
+
+**Definition:** The single setting (app.identity.mode) that chooses how tokens are verified: local, with the public key of the application's own Token Issuer, or external, with the key set an identity provider publishes. It also decides who writes roles and whether a user record is created on first request.
+
+**Examples:** Moving login to an external provider ends with app.identity.mode=external.
+
+**Synonyms:** app.identity.mode, local mode, external mode
+
+**Related:** Token Issuer, Claims Mapper, User Provisioning, User Directory
 
 ---
 
@@ -540,6 +582,20 @@
 
 ---
 
+### Problem Type
+
+**Term:** Problem Type
+
+**Definition:** The stable identifier of one failure shape, of the form /problems/<name>, carried in the type member of an RFC 9457 problem detail. Every type has one meaning and one status and is listed in the application's registry; clients switch on it, never on the detail text.
+
+**Examples:** /problems/validation-failed (400), /problems/precondition-failed (412), /problems/content-digest-mismatch (422).
+
+**Synonyms:** problem type URI, type URI
+
+**Related:** Domain Exception, Conditional Write
+
+---
+
 ### Query Profile
 
 **Term:** Query Profile
@@ -558,7 +614,7 @@
 
 **Term:** Row Scope
 
-**Definition:** The technology-neutral description of which rows an actor may see (ownedBy, all, system). It is produced by the Access Policy and ANDed into every get, list, search, update and delete query before paging, so totals and page counts reflect only visible rows. A row outside the scope reads as 404. It is the named extension point for multi-tenancy.
+**Definition:** The technology-neutral description of which rows an actor may see (ownedBy, all, none, system). It is produced by the Access Policy and ANDed into every get, list, search, update and delete query before paging, so totals and page counts reflect only visible rows. A row outside the scope reads as 404. It is the named extension point for multi-tenancy.
 
 **Examples:** rowScope(actor) = ownedBy(ownerPath, actor): a list returns only the caller's rows and GET on another user's row returns 404.
 
@@ -579,6 +635,20 @@
 **Synonyms:** hook, CRUD hook
 
 **Related:** Generic CRUD Stack, Access Policy, Feature Module
+
+---
+
+### System Actor
+
+**Term:** System Actor
+
+**Definition:** The Current User that stands for work with no caller: CurrentUser.system(), whose user id is the reserved word system. Scheduled triggers, workers and the start-up bootstrap pass it explicitly. It is an ordinary actor: it goes through the same Access Policy, carries no role, and no token or user record can produce it.
+
+**Examples:** A nightly clean-up calls noteService.delete(id, precondition, CurrentUser.system()); NoteAccessPolicy has a narrow rule that allows it.
+
+**Synonyms:** CurrentUser.system(), system sentinel
+
+**Related:** Current User, Access Policy, Row Scope, Actor Label
 
 ---
 
@@ -621,6 +691,20 @@
 **Synonyms:** UserDirectory
 
 **Related:** Current User, Token Issuer, Claims Mapper
+
+---
+
+### User Provisioning
+
+**Term:** User Provisioning
+
+**Definition:** The operation that finds the user record of a verified token by its subject and, in external Identity Mode only, creates it on the first request. The creation is safe against two simultaneous first requests and runs in its own transaction.
+
+**Examples:** The first request of a new provider user creates the user record; in local mode an unknown subject is refused.
+
+**Synonyms:** UserProvisioning, provisioning on first request
+
+**Related:** User Directory, Claims Mapper, Identity Mode, Current User
 
 ---
 

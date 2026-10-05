@@ -54,9 +54,9 @@ enum Action { get, list, search, create, update, delete, download }
 - `WritePrecondition` is what the client said about the version it expects: *this token* (one or more),
   *any version* (the explicit unconditional write), or *nothing*. The controller builds it from the
   request; the service evaluates it.
-- `RowScope` is a technology-neutral value: `ownedBy(ownerPath, actor)`, `all()` or `system()`. It is
-  defined in `platform.access`; `06-Query-Engine` (planned) states how the list engine applies and
-  composes it.
+- `RowScope` is a technology-neutral value: `ownedBy(ownerPath, actor)`, `all()`, `none()` or
+  `system(actor)`. It is defined in `platform.access`; [[Docs/Guide/06-Query-Engine]] states how the
+  list engine applies and composes it.
 - `ListRequest` and `PageResponse` belong to `platform.query`; `PageResponse` is specified in
   [[Docs/Guide/05-API-Contract]].
 
@@ -112,7 +112,7 @@ Only `applyRelations` receives the actor, and only to record ownership. The thre
 receive it, so a rule that depends on the caller cannot be written in them. It goes in the Access Policy.
 
 A failed rule in a hook is a domain exception: a business rule violation or a state conflict
-(`09-Errors-and-Validation`, planned). It is unchecked, so the transaction rolls back.
+([[Docs/Guide/09-Errors-and-Validation]]). It is unchecked, so the transaction rolls back.
 
 ### The Access Policy
 
@@ -376,7 +376,7 @@ feature re-implements the hard part.
 - **not verified** — current-docs lookup at execution time: the per-method transaction declaration
   (`@Transactional`, and its read-only form) on a method inherited from a generic base class.
 - **not verified** — current-docs lookup at execution time: the predicate technology behind the scoped
-  load; the choice is recorded in `06-Query-Engine` (planned).
+  load; the choice is recorded in [[Docs/Guide/06-Query-Engine]].
 
 ## Related Documents
 
@@ -385,10 +385,10 @@ feature re-implements the hard part.
   sit.
 - [[Docs/Guide/03-Feature-Module-Anatomy]] — the files a feature supplies to the base.
 - [[Docs/Guide/05-API-Contract]] — the routes, statuses and headers of the base controller.
-- `06-Query-Engine` — planned: the list engine, the Query Profile and how the Row Scope is applied.
-- `07-Domain-Model-and-Persistence` — planned: the concurrency token and the audit fields on the entity.
-- `08-Identity-Authentication-and-Authorization` — planned: `CurrentUser`, the system actor, URL rules.
-- `09-Errors-and-Validation` — planned: the domain exceptions the base raises.
+- [[Docs/Guide/06-Query-Engine]] — the list engine, the Query Profile and how the Row Scope is applied.
+- [[Docs/Guide/07-Domain-Model-and-Persistence]] — the concurrency token and the audit fields on the entity.
+- [[Docs/Guide/08-Identity-Authentication-and-Authorization]] — `CurrentUser`, the system actor, URL rules.
+- [[Docs/Guide/09-Errors-and-Validation]] — the domain exceptions the base raises.
 - [[ADRs/ADR-005-deepened-crud-base-with-access-policy|ADR-005]] — the decision this document details.
 - [[ADRs/ADR-018-scoped-load-before-policy-check|ADR-018]] — the order of checks at a row entry point.
 - [[ADRs/ADR-008-no-multi-tenancy-in-the-base-project|ADR-008]] — the Row Scope as the tenancy extension

@@ -283,21 +283,21 @@ steps (listed in each step). After Step 5 the target exits 0; Step 6 then links 
 
 ### Files to Create/Modify
 
-- [ ] `documentation/Docs/Guide/06-Query-Engine.md` — **new**; 16 rules (Step 2)
-- [ ] `documentation/Docs/Guide/07-Domain-Model-and-Persistence.md` — **new**; 19 rules (Step 3)
-- [ ] `documentation/Docs/Guide/08-Identity-Authentication-and-Authorization.md` — **new**; 29 rules
+- [x] `documentation/Docs/Guide/06-Query-Engine.md` — **new**; 16 rules (Step 2)
+- [x] `documentation/Docs/Guide/07-Domain-Model-and-Persistence.md` — **new**; 19 rules (Step 3)
+- [x] `documentation/Docs/Guide/08-Identity-Authentication-and-Authorization.md` — **new**; 29 rules
   (Step 4)
-- [ ] `documentation/Docs/Guide/09-Errors-and-Validation.md` — **new**; 14 rules (Step 5)
-- [ ] `documentation/Docs/Guide/02-Project-Layout-and-Module-Boundaries.md`, `03-Feature-Module-Anatomy.md`,
+- [x] `documentation/Docs/Guide/09-Errors-and-Validation.md` — **new**; 14 rules (Step 5)
+- [x] `documentation/Docs/Guide/02-Project-Layout-and-Module-Boundaries.md`, `03-Feature-Module-Anatomy.md`,
   `04-CRUD-Base-and-Service-Hooks.md`, `05-API-Contract.md` — the link pass: 17 names become links; one
   sentence of document 04 (Step 6)
-- [ ] `documentation/Docs/Guide/Guide-Index.md` — four rows become links with state `draft`; the two
+- [x] `documentation/Docs/Guide/Guide-Index.md` — four rows become links with state `draft`; the two
   counts; one changelog line (Steps 2–7)
-- [ ] `documentation/Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project.md` — tick Step 2.3
+- [x] `documentation/Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project.md` — tick Step 2.3
   (Step 9)
-- [ ] `documentation/Glossary/glossary.json`, `documentation/Glossary/Glossary.md` — **through the
+- [x] `documentation/Glossary/glossary.json`, `documentation/Glossary/Glossary.md` — **through the
   `glossary` CLI only**, and only the terms the user confirms (Step 8)
-- [ ] `documentation/Memory/context.md`, `progress.md`, `architecture.md`, `known-issues.md` (Step 9)
+- [x] `documentation/Memory/context.md`, `progress.md`, `architecture.md`, `known-issues.md` (Step 9)
 
 **Not modified:** `scripts/validate-analysis-docs.py`, both test files, `Guide-Conventions.md`,
 `01-Principles-and-Baseline.md`, every ADR, `documentation/Memory/brief.md`, the three reference
@@ -314,7 +314,7 @@ Scratch files (session scratchpad, not committed): `link_pass.py` (Step 6), `rul
 **Goal:** Nothing is written until the contract choices are confirmed.
 **Dependencies:** None. **Needs the user.**
 
-- [ ] Run the baseline and keep the output:
+- [x] Run the baseline and keep the output:
 
 ```bash
 python3 scripts/validate-analysis-docs.py guide; echo "guide exit=$?"
@@ -331,11 +331,11 @@ grep -c -o -E '`0[6-9]-[A-Za-z-]+`' documentation/Docs/Guide/0[2-5]-*.md
   Expected: four `exit=0` lines, `Ran 104 tests` and `OK`, three `unchanged` lines, `24` (the validator,
   two test files, two conventions documents, document 01 and eighteen ADRs), and the counts `1`, `4`,
   `7`, `5` for documents 02 to 05 (lines that hold a name; 17 names in all).
-- [ ] Show the user the table "Gaps in the parent that this Task closes" and ask for confirmation of the
+- [x] Show the user the table "Gaps in the parent that this Task closes" and ask for confirmation of the
   ★ rows H1–H11. Record each answer.
-- [ ] Show the user the list "Inconsistencies in the parent" and ask whether the parent should be
+- [x] Show the user the list "Inconsistencies in the parent" and ask whether the parent should be
   corrected. This Task does not edit the parent beyond ticking Step 2.3 unless the user says so.
-- [ ] If the user changes a point, change the affected text **before** writing the document (the edge
+- [x] If the user changes a point, change the affected text **before** writing the document (the edge
   cases below say where each point lives).
 
 **Why this step is critical:**
@@ -376,10 +376,10 @@ the user would have made differently is cheap to change now and costs a withdraw
 **Goal:** The contract of the list engine, the Query Profile and the Row Scope.
 **Dependencies:** Step 1.
 
-- [ ] Create `documentation/Docs/Guide/06-Query-Engine.md` with the text below.
-- [ ] In `Guide-Index.md` replace the row of document 06 with the row given in Step 7, and set
+- [x] Create `documentation/Docs/Guide/06-Query-Engine.md` with the text below.
+- [x] In `Guide-Index.md` replace the row of document 06 with the row given in Step 7, and set
   `Draft documents: 6`, `Version Notes not verified: 19`.
-- [ ] Run `python3 scripts/validate-analysis-docs.py guide`. Expected: exit 1 with **only** these lines,
+- [x] Run `python3 scripts/validate-analysis-docs.py guide`. Expected: exit 1 with **only** these lines,
   each printed twice (one per occurrence): `06-Query-Engine.md: wiki link
   [[Docs/Guide/07-Domain-Model-and-Persistence]] does not resolve to a doc` and the same for
   `[[Docs/Guide/09-Errors-and-Validation]]`.
@@ -812,10 +812,10 @@ wrong error message, and a BugTracker predicate with no root fails only when it 
 **Goal:** The shape of an entity and the ownership of the schema.
 **Dependencies:** Step 2.
 
-- [ ] Create `documentation/Docs/Guide/07-Domain-Model-and-Persistence.md` with the text below.
-- [ ] In `Guide-Index.md` replace the row of document 07 and set `Draft documents: 7`,
+- [x] Create `documentation/Docs/Guide/07-Domain-Model-and-Persistence.md` with the text below.
+- [x] In `Guide-Index.md` replace the row of document 07 and set `Draft documents: 7`,
   `Version Notes not verified: 26`.
-- [ ] Run the validator. Expected: exit 1 with **only** links to documents of later steps, each line
+- [x] Run the validator. Expected: exit 1 with **only** links to documents of later steps, each line
   printed twice: document 06 → `09-Errors-and-Validation`; document 07 →
   `08-Identity-Authentication-and-Authorization` and `09-Errors-and-Validation`.
 
@@ -1197,11 +1197,11 @@ whole tables to test for emptiness and took "the first row" of an unordered list
 **Goal:** Who the caller is, and who owns each authorization decision.
 **Dependencies:** Step 3.
 
-- [ ] Create `documentation/Docs/Guide/08-Identity-Authentication-and-Authorization.md` with the text
+- [x] Create `documentation/Docs/Guide/08-Identity-Authentication-and-Authorization.md` with the text
   below.
-- [ ] In `Guide-Index.md` replace the row of document 08 and set `Draft documents: 8`,
+- [x] In `Guide-Index.md` replace the row of document 08 and set `Draft documents: 8`,
   `Version Notes not verified: 33`.
-- [ ] Run the validator. Expected: exit 1 with **only** `wiki link
+- [x] Run the validator. Expected: exit 1 with **only** `wiki link
   [[Docs/Guide/09-Errors-and-Validation]] does not resolve to a doc` for documents 06, 07 and 08, each
   line printed twice.
 
@@ -1828,10 +1828,10 @@ were one package.
 **Goal:** One failure model from the broken rule to the wire.
 **Dependencies:** Step 4.
 
-- [ ] Create `documentation/Docs/Guide/09-Errors-and-Validation.md` with the text below.
-- [ ] In `Guide-Index.md` replace the row of document 09 and set `Draft documents: 9`,
+- [x] Create `documentation/Docs/Guide/09-Errors-and-Validation.md` with the text below.
+- [x] In `Guide-Index.md` replace the row of document 09 and set `Draft documents: 9`,
   `Version Notes not verified: 38`.
-- [ ] Run the validator. Expected: **no output, exit 0**.
+- [x] Run the validator. Expected: **no output, exit 0**.
 
 **Why this step is critical:**
 The registry of problem types is what every later document adds to, and the order of failures is the
@@ -2224,7 +2224,7 @@ which line of a service ran first.
 of the Row Scope.
 **Dependencies:** Steps 2–5.
 
-- [ ] Save `link_pass.py` (below) in the scratchpad and run `python3 <scratchpad>/link_pass.py .` from
+- [x] Save `link_pass.py` (below) in the scratchpad and run `python3 <scratchpad>/link_pass.py .` from
   the repository root. Expected output:
 
 ```text
@@ -2236,8 +2236,8 @@ total 18; inline-code names of documents 06-09 left in 01-05: 0
 ```
 
   (17 names plus the Row Scope sentence of document 04.)
-- [ ] Run the validator. Expected: no output, exit 0.
-- [ ] Read the eighteen changed places (`git diff` does not show them — `Docs/Guide/` is untracked; use
+- [x] Run the validator. Expected: no output, exit 0.
+- [x] Read the eighteen changed places (`git diff` does not show them — `Docs/Guide/` is untracked; use
   `grep -n -E '\[\[Docs/Guide/0[6-9]-' documentation/Docs/Guide/0[2-5]-*.md`). Two lines grow past the
   usual width; re-wrap them by hand if wanted.
 
@@ -2299,14 +2299,14 @@ print(f"total {total}; inline-code names of documents 06-09 left in 01-05: {left
 **Goal:** The index is true, every check is green, and the user has a reading aid for the review.
 **Dependencies:** Steps 2–6.
 
-- [ ] Check that the four rows of `Guide-Index.md` read exactly as below, that the `## Status` section
+- [x] Check that the four rows of `Guide-Index.md` read exactly as below, that the `## Status` section
   reads as below, and add the changelog line (with the date of execution) as the first item under
   `## Changelog`.
-- [ ] Save `rule_evidence.py` in the scratchpad — the script is in
+- [x] Save `rule_evidence.py` in the scratchpad — the script is in
   [[Tasks/done/Spring-Boot-Architecture-Guide-and-Base-Project-step-3-guide-structure-crud-api]], Step 8,
   unchanged — and run `python3 <scratchpad>/rule_evidence.py | tail -1`. Expected:
   `141 rules; rule texts that contain '@': 0`.
-- [ ] Run every command of "Automatic Validation" and read the output.
+- [x] Run every command of "Automatic Validation" and read the output.
 
 #### Implementation
 
@@ -2357,8 +2357,8 @@ For Task 5 (the traceability matrix; scope 78, measured with the validator's own
 **Goal:** The words these documents introduce have one definition (user story 52).
 **Dependencies:** Step 7. **Needs the user.**
 
-- [ ] Show the user the six proposals below and ask which to accept.
-- [ ] For each accepted term, run its `glossary add` command from the repository root, then
+- [x] Show the user the six proposals below and ask which to accept.
+- [x] For each accepted term, run its `glossary add` command from the repository root, then
   `glossary search "<term>"` — the term is returned.
 
 #### Implementation
@@ -2418,22 +2418,22 @@ glossary add --term "Problem Type" --category "Platform Modules" \
 starts from.
 **Dependencies:** Steps 1–8.
 
-- [ ] `documentation/Memory/context.md` — current focus: Task 4 done; next: Task 5 (Guide 10–16 and the
+- [x] `documentation/Memory/context.md` — current focus: Task 4 done; next: Task 5 (Guide 10–16 and the
   contract review). Keep it short.
-- [ ] `documentation/Memory/progress.md` — prepend `## <date> (Task 4 — Guide 06–09)`: the four
+- [x] `documentation/Memory/progress.md` — prepend `## <date> (Task 4 — Guide 06–09)`: the four
   documents and their rule counts, the user's answers to H1–H11, the glossary terms accepted, the
   traceability coverage (61 of 78), and a link to this Task.
-- [ ] `documentation/Memory/architecture.md` — in the `documentation/Docs/Guide/` row: documents 01–09
+- [x] `documentation/Memory/architecture.md` — in the `documentation/Docs/Guide/` row: documents 01–09
   exist as drafts (141 rules); 10–16 are planned.
-- [ ] `documentation/Memory/known-issues.md` — under "Framework / Library behaviors": (a) Spring Data's
+- [x] `documentation/Memory/known-issues.md` — under "Framework / Library behaviors": (a) Spring Data's
   `AuditorAware.getCurrentAuditor()` takes no parameter, so the convention's actor labels are stamped by
   the CRUD base; (b) the Spring Boot application-properties page is too long for one fetch — look a
   property up in the section page of its module.
-- [ ] `documentation/Memory/tech.md`, `product.md`, `brief.md` — read; no change is expected; `brief.md`
+- [x] `documentation/Memory/tech.md`, `product.md`, `brief.md` — read; no change is expected; `brief.md`
   is never edited.
-- [ ] In the parent Feature, change `- [ ] **Step 2.3:**` to `- [x] **Step 2.3:**`.
-- [ ] Run every command of "Automatic Validation" one last time and read the output.
-- [ ] Tick this Task's completion criteria. Moving the Task to `Tasks/done/` happens when the user asks.
+- [x] In the parent Feature, change `- [ ] **Step 2.3:**` to `- [x] **Step 2.3:**`.
+- [x] Run every command of "Automatic Validation" one last time and read the output.
+- [x] Tick this Task's completion criteria. Moving the Task to `Tasks/done/` happens when the user asks.
 
 **Why this step is critical:**
 Task 5 writes the storage and idempotency documents against the registry and the public-route contract
@@ -2550,38 +2550,38 @@ rule text names a framework API — is covered by `rule_evidence.py` (an aid) an
 
 ### Automatic Validation
 
-- [ ] Run `python3 scripts/validate-analysis-docs.py guide; echo "exit=$?"` — expect no error line and
+- [x] Run `python3 scripts/validate-analysis-docs.py guide; echo "exit=$?"` — expect no error line and
   `exit=0`
-- [ ] Run `grep -c '^### G' documentation/Docs/Guide/0[6-9]-*.md` — expect `16`, `19`, `29` and `14` for
+- [x] Run `grep -c '^### G' documentation/Docs/Guide/0[6-9]-*.md` — expect `16`, `19`, `29` and `14` for
   documents 06 to 09
-- [ ] Run `grep -c '| draft |' documentation/Docs/Guide/Guide-Index.md` — expect `9`; run
+- [x] Run `grep -c '| draft |' documentation/Docs/Guide/Guide-Index.md` — expect `9`; run
   `grep -c '| planned |' documentation/Docs/Guide/Guide-Index.md` — expect `7`
-- [ ] Run `grep -E '^- \*\*(Draft documents|Version Notes not verified):' documentation/Docs/Guide/Guide-Index.md`
+- [x] Run `grep -E '^- \*\*(Draft documents|Version Notes not verified):' documentation/Docs/Guide/Guide-Index.md`
   — expect `- **Draft documents:** 9` and `- **Version Notes not verified:** 38`
-- [ ] Run `python3 <scratchpad>/rule_evidence.py | tail -1` — expect
+- [x] Run `python3 <scratchpad>/rule_evidence.py | tail -1` — expect
   `141 rules; rule texts that contain '@': 0`
-- [ ] Run `python3 <scratchpad>/rule_evidence.py | grep -c 'DOES NOT RESOLVE'` — expect `0`
-- [ ] Run ``grep -c -E '`0[6-9]-[A-Za-z-]+`' documentation/Docs/Guide/0[1-9]-*.md | grep -v ':0$'`` —
+- [x] Run `python3 <scratchpad>/rule_evidence.py | grep -c 'DOES NOT RESOLVE'` — expect `0`
+- [x] Run ``grep -c -E '`0[6-9]-[A-Za-z-]+`' documentation/Docs/Guide/0[1-9]-*.md | grep -v ':0$'`` —
   expect no output (no inline-code name of a written document is left)
-- [ ] Run `grep -n -o -E '\[\[Docs/Guide/1[0-6]-' documentation/Docs/Guide/0[1-9]-*.md` — expect no
+- [x] Run `grep -n -o -E '\[\[Docs/Guide/1[0-6]-' documentation/Docs/Guide/0[1-9]-*.md` — expect no
   output (no link to a document that does not exist)
-- [ ] Run `grep -n -E '\[\[(Features|Tasks|Bugs)/' documentation/Docs/Guide/0[6-9]-*.md` — expect no
+- [x] Run `grep -n -E '\[\[(Features|Tasks|Bugs)/' documentation/Docs/Guide/0[6-9]-*.md` — expect no
   output
-- [ ] Run `grep -rn -i -E "password\s*[:=]|secret\s*[:=]\s*\S|AKIA[0-9A-Z]{12}" documentation/Docs/Guide`
+- [x] Run `grep -rn -i -E "password\s*[:=]|secret\s*[:=]\s*\S|AKIA[0-9A-Z]{12}" documentation/Docs/Guide`
   — expect no output
-- [ ] Run `python3 -m unittest discover -s scripts/tests 2>&1 | tail -3` — expect `Ran 104 tests` and
+- [x] Run `python3 -m unittest discover -s scripts/tests 2>&1 | tail -3` — expect `Ran 104 tests` and
   `OK`
-- [ ] Run `for p in backend BugTracker wpmanager; do python3 scripts/validate-analysis-docs.py "$p" >/dev/null; echo "$p exit=$?"; done`
+- [x] Run `for p in backend BugTracker wpmanager; do python3 scripts/validate-analysis-docs.py "$p" >/dev/null; echo "$p exit=$?"; done`
   — expect exit 0 three times
-- [ ] Run `sha256sum --quiet -c <scratchpad>/frozen.sha256 && echo "frozen files unchanged"` — expect
+- [x] Run `sha256sum --quiet -c <scratchpad>/frozen.sha256 && echo "frozen files unchanged"` — expect
   `frozen files unchanged`
-- [ ] Run `for s in backend bugtracker wpmanager; do sha256sum --quiet -c scripts/.snapshots/$s.sha256 && echo "$s unchanged"; done`
+- [x] Run `for s in backend bugtracker wpmanager; do sha256sum --quiet -c scripts/.snapshots/$s.sha256 && echo "$s unchanged"; done`
   — expect three `unchanged` lines
 
 ### Manual Validation
 
-- [ ] **(User)** Confirm or change the ★ gaps H1–H11 (Step 1).
-- [ ] **(User)** Say whether the five inconsistencies in the parent should be corrected there (Step 1).
+- [x] **(User)** Confirm or change the ★ gaps H1–H11 (Step 1).
+- [x] **(User)** Say whether the five inconsistencies in the parent should be corrected there (Step 1).
 - [ ] **(User)** Read the four documents and approve the rules, or ask for changes. The Rule IDs become
   permanent at the contract review, so this is the cheap moment to move, merge or reword a rule. The
   output of `rule_evidence.py` shows each rule beside the findings it rests on.
@@ -2589,7 +2589,7 @@ rule text names a framework API — is covered by `rule_evidence.py` (an aid) an
   documents and to the ADRs open, the tables render, and the seven Mermaid diagrams render (one in
   document 06, two in 07, three in 08, one in 09). Open documents 02–05 and check that the new links
   open.
-- [ ] **(User)** Glossary: accept or decline *System Actor*, *Actor Label*, *Identity Mode*, *User
+- [x] **(User)** Glossary: accept or decline *System Actor*, *Actor Label*, *Identity Mode*, *User
   Provisioning*, *Domain Exception* and *Problem Type*, and the update of *Row Scope* (Step 8).
 
 **Rule:** Run automatic checks when possible. If validation requires manual testing, document the steps here
@@ -2645,33 +2645,62 @@ the Task text alone afterwards (exit 0; 78 rules; counts unchanged):
 
 ---
 
+## Post-Review Notes (execution, 2026-10-05)
+
+Autonomous review after implementation found **no defects** in the written documents:
+
+- The four documents were extracted byte-exact from this Task's embedded text (`diff` = 0 for all four),
+  so the pre-validated wording — including the six `task-reviewer` patches recorded above — is what
+  shipped.
+- All 78 rules carry `Rule`, `Why`, `Evidence` and `Differs from references`; rule text names no
+  framework class, method, annotation or property (`rule_evidence.py`: 141 rules, 0 `'@'`, 0 unresolved
+  IDs).
+- All eleven ★ decisions verified in place (H1–H11) and the unstarred H12–H18 as well; the registry in
+  document 09 lists the same problem types documents 06 and 08 name; 7 Mermaid diagrams (1/2/3/1).
+- The link pass made 18 replacements (17 names + the Row Scope sentence); the two over-long lines were
+  re-wrapped by hand; the two-layer URL check is clean.
+- The two lines of document 04 and 03 that grew were re-wrapped; the `json` fence of document 06 that
+  opens with a request line was left as the Task's edge case allows.
+
+Unresolved (by design — the user's manual validation):
+
+1. **(User)** Read the four documents and approve the rules (Rule IDs become permanent at the contract
+   review — Task 5).
+2. **(User)** Open the four documents and documents 02–05 in Obsidian and check rendering.
+3. The five parent inconsistencies are **not** corrected in the parent (user's choice, Step 1); they are
+   reported in this Task's execution report.
+4. No technology stack was supplied to the executor; the Task is docs-only and proceeded as such
+   (user's choice).
+
+---
+
 ## Completion Criteria
 
-- [ ] Parent document reviewed and reflected accurately in this task
-- [ ] Relevant skills reviewed and selected for this task
-- [ ] Up-to-date documentation reviewed for the affected technologies (Spring Security 7.1, Spring
+- [x] Parent document reviewed and reflected accurately in this task
+- [x] Relevant skills reviewed and selected for this task
+- [x] Up-to-date documentation reviewed for the affected technologies (Spring Security 7.1, Spring
   Framework 7.0, Spring Data JPA 4.1 — the versions Spring Boot 4.1.x manages)
-- [ ] The user confirmed or changed the ★ gaps H1–H11, and the documents reflect the answers
-- [ ] The four Guide documents exist under `documentation/Docs/Guide/`, each tagged
+- [x] The user confirmed or changed the ★ gaps H1–H11, and the documents reflect the answers
+- [x] The four Guide documents exist under `documentation/Docs/Guide/`, each tagged
   `#doc #guide … #draft`, with the six required headings
-- [ ] 78 rules exist (16, 19, 29, 14) — or the number that follows from the user's changes in Step 1 —
+- [x] 78 rules exist (16, 19, 29, 14) — or the number that follows from the user's changes in Step 1 —
   each with `Rule`, `Why`, `Evidence` and `Differs from references`
-- [ ] No rule text names a framework class, method, annotation or property
-- [ ] `python3 scripts/validate-analysis-docs.py guide` exits 0
-- [ ] Documents 02–05 link documents 06–09 (no inline-code name of them is left), and document 04 names
+- [x] No rule text names a framework class, method, annotation or property
+- [x] `python3 scripts/validate-analysis-docs.py guide` exits 0
+- [x] Documents 02–05 link documents 06–09 (no inline-code name of them is left), and document 04 names
   the Row Scope forms the user approved
-- [ ] `Guide-Index.md` links the four documents with state `draft`, reports `Draft documents: 9` and
+- [x] `Guide-Index.md` links the four documents with state `draft`, reports `Draft documents: 9` and
   `Version Notes not verified: 38`, and has the changelog line
 - [ ] The user approved the rules of the four documents, or the requested changes were applied and
   validated
-- [ ] Glossary proposals handled as the user decided
-- [ ] Memory bank updated (`context`, `progress`, `architecture`, `known-issues`); `brief.md` untouched
-- [ ] The validator, its tests, `Guide-Conventions.md`, document 01 and every ADR are unchanged by this
+- [x] Glossary proposals handled as the user decided
+- [x] Memory bank updated (`context`, `progress`, `architecture`, `known-issues`); `brief.md` untouched
+- [x] The validator, its tests, `Guide-Conventions.md`, document 01 and every ADR are unchanged by this
   Task (checksum check against the Step 1 baseline)
-- [ ] The reference projects are unchanged (three snapshot checks)
-- [ ] All implementation steps checked off
-- [ ] Automatic validation passes
-- [ ] Manual validation steps documented for the user when needed
-- [ ] Code explanation files updated (if new files created) — not applicable: `documentation/Code/` is
+- [x] The reference projects are unchanged (three snapshot checks)
+- [x] All implementation steps checked off
+- [x] Automatic validation passes
+- [x] Manual validation steps documented for the user when needed
+- [x] Code explanation files updated (if new files created) — not applicable: `documentation/Code/` is
   not used
-- [ ] Parent Feature Step 2.3 marked complete
+- [x] Parent Feature Step 2.3 marked complete

@@ -1,5 +1,53 @@
 # Progress
 
+## 2026-10-05 (Task 4 — Guide 06–09)
+- **Executed:**
+  [[Tasks/current/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
+  (Step 2.3 of [[Features/to-do/Spring-Boot-Architecture-Guide-and-Base-Project]]). Parent Step 2.3 ticked.
+  The four Guide documents are written as drafts and autonomously reviewed; the user's manual validation
+  (read/approve the rules, Obsidian rendering) is still open.
+- **Four Guide documents written as drafts** (`#draft`) in `documentation/Docs/Guide/`:
+  `06-Query-Engine` (16 rules), `07-Domain-Model-and-Persistence` (19),
+  `08-Identity-Authentication-and-Authorization` (29), `09-Errors-and-Validation` (14) — **78 rules**
+  (141 in documents 01–09) citing 118 distinct reference findings and 11 ADRs (004–013, 018); 24 new
+  `not verified` Version Notes (index total 38). `python3 scripts/validate-analysis-docs.py guide`
+  exits **0**; `Guide-Index.md` reports `Draft documents: 9`, `Version Notes not verified: 38`, nine
+  rows linked as `draft`, 7 still `planned`.
+- **All eleven ★ gaps confirmed as proposed (user, Step 1):** H1 `RowScope` gains `none()` and
+  `system(actor)` with AND-only composition (one sentence of document 04 reworded); H2 a request beyond
+  a bound is **rejected** (400), never clamped; H3 the predicate technology is the Jakarta Persistence
+  criteria API through Spring Data specifications (`not verified` note); H4 features refer to a user
+  **by id**, never by association (G07-15); H5 the CRUD base stamps actor labels from its actor
+  parameter, feature ops stamp via the base type's one stamping operation (G07-06); H6 a disabled user
+  is **401** and roles are read per request (G08-10); H7 issuer routes under `/api/v1/auth/…` with an
+  added password-change route (G08-14); H8 a closed public-route list in `platform.access`, Platform
+  Modules contribute via a `PublicRoutes` port, features add none (G08-26); H9 a seventh exception kind
+  `InvalidRequest` (400) (G09-01); H10 problem types `/problems/<name>` in one registry, every problem
+  carries a correlation id (G09-02, G09-04); H11 failure order 401 → 400 → entry point → hook → database
+  (G09-14). Unstarred H12–H18 landed as written (422 for dangling ids, identifier as last sort key,
+  `platform.crud` base type, `findVisible`, unique login name on `LocalCredential`, administrator role
+  in typed configuration, no refresh for a disabled user).
+- **The five parent inconsistencies stay uncorrected** (user's choice): Security 7.0 vs 7.1, issuer
+  routes without the prefix, "only `CurrentUser`" vs "entities reference `User`", `mustChangePassword`
+  with no change route, "non-UUID literal" vs numeric example ids. Reported for the user to fix later.
+- **No technology stack was supplied** to the executor; the Task is docs-only (four Markdown documents
+  plus the validator's CLI) and proceeded as such (user's choice).
+- **Link pass:** the 17 inline-code names of documents 06–09 in documents 02–05 became wiki links
+  (`link_pass.py`, 18 replacements); document 04's Row Scope sentence now names all four forms. Two
+  lines were re-wrapped by hand. 7 names of documents 10–15 remain inline for Task 5.
+- **Glossary (Step 8):** *System Actor*, *Actor Label*, *Identity Mode*, *User Provisioning*,
+  *Domain Exception* and *Problem Type* added (all six accepted); *Row Scope* updated to
+  "(ownedBy, all, none, system)".
+- **Verified:** all Automatic Validation checks pass — `guide` exits 0; rule counts 16/19/29/14;
+  `Draft documents: 9`, `Version Notes not verified: 38`; `rule_evidence.py` reports
+  `141 rules; rule texts that contain '@': 0` and 0 unresolved IDs; no inline-code name of a written
+  document left; no link to a planned document; no Feature/Task/Bug link in 06–09; no secret-looking
+  value in `Docs/Guide`; 104 validator tests pass; three project targets exit 0; frozen checksums
+  (validator, tests, conventions, doc 01, ADR-001…018) and the three reference-project snapshots
+  unchanged. The four documents were extracted byte-exact from the Task text (diff = 0).
+- **Traceability:** 61 of the 78 in-scope findings have a rule after documents 01–09 (35 new in this
+  Task); 17 remain for documents 10–14 (lists in the Task's Step 7).
+
 ## 2026-10-05 (Task 4 document created and reviewed)
 - **Task document written:**
   [[Tasks/current/Spring-Boot-Architecture-Guide-and-Base-Project-step-4-guide-query-persistence-identity-errors]]
