@@ -33,7 +33,7 @@ They follow the same naming, the same statuses and the same error shape.
 `Location` on create is the path of the new resource's get route (`/api/v1/notes/42`).
 
 Operational endpoints such as health checks are not API routes and do not sit under the prefix;
-`14-Observability-and-Operations` (planned) says where they live.
+[[Docs/Guide/14-Observability-and-Operations]] says where they live.
 
 The list parameters and the search body are specified in [[Docs/Guide/06-Query-Engine]].
 
@@ -54,7 +54,7 @@ An endpoint returns only these statuses, each with one meaning.
 | 409 | The request conflicts with the **state** of the resource (never a stale write) |
 | 410 | An expired download ticket |
 | 412 | `If-Match` was sent and does not match the current version |
-| 422 | The request is valid in itself but refused against server state or content: a business rule, an idempotency fingerprint mismatch, a content-digest mismatch |
+| 422 | The request is valid in itself but refused against server state or content: a business rule, an idempotency fingerprint mismatch, a content-digest mismatch, content that is not of its declared type |
 | 428 | A write that requires `If-Match` was sent without it |
 | 500 | An unexpected failure; the body carries a correlation id and no internal detail |
 
@@ -119,8 +119,9 @@ the caller and issues a Download Ticket. One platform route redeems tickets:
 | valid, but the object is gone | 404 |
 | expired | 410 |
 
-A client treats every URL in this exchange as opaque. `10-Object-Storage-and-Uploads` (planned) specifies
-the ticket, the route that issues it and the response headers.
+A client treats every URL in this exchange as opaque.
+[[Docs/Guide/10-Object-Storage-and-Uploads]] specifies the ticket, the route that issues it and the
+response headers.
 
 ### Description of the API
 
@@ -294,9 +295,9 @@ route, the statuses each route returns and the error shape.
 - [[Docs/Guide/06-Query-Engine]] — list parameters, the search body, operators and bounds.
 - [[Docs/Guide/08-Identity-Authentication-and-Authorization]] — which routes are public.
 - [[Docs/Guide/09-Errors-and-Validation]] — the problem-detail shape and its `type` values.
-- `10-Object-Storage-and-Uploads` — planned: the Download Ticket.
-- `11-Idempotency` — planned: the `Idempotency-Key` header.
-- `14-Observability-and-Operations` — planned: operational endpoints.
+- [[Docs/Guide/10-Object-Storage-and-Uploads]] — the Download Ticket.
+- [[Docs/Guide/11-Idempotency]] — the `Idempotency-Key` header.
+- [[Docs/Guide/14-Observability-and-Operations]] — operational endpoints.
 - [[ADRs/ADR-009-unchecked-domain-exceptions-as-problem-details|ADR-009]] — the status meanings.
 - [[ADRs/ADR-011-list-api-get-paging-and-post-search|ADR-011]] — `GET` paging, `POST /search`, the page
   shape.

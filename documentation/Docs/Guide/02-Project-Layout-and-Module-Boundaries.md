@@ -269,7 +269,7 @@ above was found by reading.
 - [[Docs/Guide/04-CRUD-Base-and-Service-Hooks]] — `platform.crud` and the Access Policy contract.
 - [[Docs/Guide/08-Identity-Authentication-and-Authorization]] — `platform.identity`, `platform.access`, the
   URL rules and the single method-security switch.
-- `13-Testing-Strategy` — planned: where the architecture tests sit among the other test layers.
+- [[Docs/Guide/13-Testing-Strategy]] — where the architecture tests sit among the other test layers.
 - [[ADRs/ADR-004-platform-and-features-package-layout|ADR-004]] — the layout decision and its seven
   dependency rules.
 - [[ADRs/ADR-006-identity-current-user-seam-and-removable-local-issuer|ADR-006]] — why the local Token

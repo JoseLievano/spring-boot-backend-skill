@@ -246,6 +246,11 @@ interactions between modules — before anything is built on them.
 - `Reviews/00-Review-Summary.md` is required as soon as one review exists. Required `##` headings, in this
   order: `Overview`, `Findings by Severity`, `Related Documents`. Every contract-review Finding ID appears
   in it.
+- Every finding carries a `**Resolution:**` line: `Open` when the review is written, then
+  `Fixed — <what changed, with the Rule IDs>` or `Accepted — <the owner's reason>`. A Critical or High
+  finding is closed only by `Fixed`, confirmed by a second review in a fresh context, or by withdrawing
+  the finding (`**Status:** Withdrawn — <reason>`). It is never `Accepted`. The review summary shows the
+  resolution of every finding.
 - The gate (no Critical and no High finding left open) is judged by the reviewer and the owner, not by the
   validator.
 
@@ -303,6 +308,9 @@ the reviewer.
 
 ## Changelog
 
+- **2026-10-05** — Section 8: every contract-review finding carries a `**Resolution:**` line, and a
+  Critical or High finding is closed only by a verified fix or by withdrawal. Not checked by the
+  validator.
 - **2026-10-04** — Created by Task 2 (Step 2.1) of the Guide, Base Project and Skill feature. Additions
   beyond [[ADRs/ADR-016-guide-document-format-and-rule-ids|ADR-016]], all enforced by the validator: the
   ban on links to documents that move, the `#draft` tag as the draft marker,

@@ -228,6 +228,6 @@ missing input surfaced as a null-pointer failure inside a mapper.
 - [[Docs/Guide/05-API-Contract]] — what the routes look like on the wire.
 - [[Docs/Guide/06-Query-Engine]] — the Query Profile in full.
 - [[Docs/Guide/07-Domain-Model-and-Persistence]] — the entity, the concurrency token, migrations.
-- `15-Recipe-Add-a-Feature` — planned: this document as a step-by-step walk.
+- [[Docs/Guide/15-Recipe-Add-a-Feature]] — this document as a step-by-step walk.
 - [[ADRs/ADR-005-deepened-crud-base-with-access-policy|ADR-005]] — three shapes, hooks, the Access Policy.
 - [[ADRs/ADR-012-mapstruct-mapping-with-unmapped-target-errors|ADR-012]] — generated mappers.

@@ -31,18 +31,18 @@ A planned document is named in inline code. It becomes a link when its file is w
 | 07 | [[Docs/Guide/07-Domain-Model-and-Persistence\|07-Domain-Model-and-Persistence]] | Entities, concurrency token, auditing, constraints, migrations | draft |
 | 08 | [[Docs/Guide/08-Identity-Authentication-and-Authorization\|08-Identity-Authentication-and-Authorization]] | Current User, token verification, local Token Issuer, User Directory, authorization ownership | draft |
 | 09 | [[Docs/Guide/09-Errors-and-Validation\|09-Errors-and-Validation]] | Exception hierarchy, problem details, validation | draft |
-| 10 | `10-Object-Storage-and-Uploads` | Storage port and adapters, Upload Coordinator, download tickets | planned |
-| 11 | `11-Idempotency` | Keys, fingerprints, states, leases, replay | planned |
-| 12 | `12-Configuration-and-Secrets` | Typed properties, fail-fast validation, profiles, no literal secrets | planned |
-| 13 | `13-Testing-Strategy` | Test layers, contract tests, authorization matrix, architecture tests | planned |
-| 14 | `14-Observability-and-Operations` | Health indicators, logging rules | planned |
-| 15 | `15-Recipe-Add-a-Feature` | End-to-end walkthrough of adding one Feature Module | planned |
-| 16 | `16-Traceability-Matrix` | Every in-scope reference finding mapped to the rules that prevent it | planned |
+| 10 | [[Docs/Guide/10-Object-Storage-and-Uploads\|10-Object-Storage-and-Uploads]] | Storage port and adapters, Upload Coordinator, download tickets | draft |
+| 11 | [[Docs/Guide/11-Idempotency\|11-Idempotency]] | Keys, fingerprints, states, leases, replay | draft |
+| 12 | [[Docs/Guide/12-Configuration-and-Secrets\|12-Configuration-and-Secrets]] | Typed properties, fail-fast validation, profiles, no literal secrets | draft |
+| 13 | [[Docs/Guide/13-Testing-Strategy\|13-Testing-Strategy]] | Test layers, contract tests, authorization matrix, architecture tests | draft |
+| 14 | [[Docs/Guide/14-Observability-and-Operations\|14-Observability-and-Operations]] | Health indicators, logging rules | draft |
+| 15 | [[Docs/Guide/15-Recipe-Add-a-Feature\|15-Recipe-Add-a-Feature]] | End-to-end walkthrough of adding one Feature Module | draft |
+| 16 | [[Docs/Guide/16-Traceability-Matrix\|16-Traceability-Matrix]] | Every in-scope reference finding mapped to the rules that prevent it | draft |
 
 ## Status
 
-- **Draft documents:** 9
-- **Version Notes not verified:** 38
+- **Draft documents:** 16
+- **Version Notes not verified:** 63
 
 ## Reviews
 
@@ -50,6 +50,10 @@ None yet. The contract review of the Guide is written after document 16.
 
 ## Changelog
 
+- **2026-10-05** — Documents 10–16 written as drafts: 88 rules (G10-01 to G10-26, G11-01 to G11-15,
+  G12-01 to G12-14, G13-01 to G13-15, G14-01 to G14-13, G15-01 to G15-05) and the traceability matrix.
+  Their names in documents 02–09 became links; the problem type `content-type-mismatch` was added to the
+  registry of document 09.
 - **2026-10-05** — Documents 06–09 written as drafts: 78 rules (G06-01 to G06-16, G07-01 to G07-19,
   G08-01 to G08-29, G09-01 to G09-14). Their names in documents 02–05 became links.
 - **2026-10-04** — Documents 01–05 written as drafts: 63 rules (G01-01 to G01-09, G02-01 to G02-11,

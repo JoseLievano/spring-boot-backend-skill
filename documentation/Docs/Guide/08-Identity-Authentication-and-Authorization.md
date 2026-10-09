@@ -192,8 +192,8 @@ flowchart TB
 
 - the Token Issuer's login, refresh, logout and password routes (while the module exists);
 - the download redemption route — **public by capability**: the ticket is the credential
-  (`10-Object-Storage-and-Uploads`);
-- the health endpoint the deployment needs (`14-Observability-and-Operations`).
+  ([[Docs/Guide/10-Object-Storage-and-Uploads]]);
+- the health endpoint the deployment needs ([[Docs/Guide/14-Observability-and-Operations]]).
 
 Whether the API description (G05-13) is public is a project decision, recorded where the list is.
 
@@ -587,10 +587,10 @@ were one package.
 - [[Docs/Guide/07-Domain-Model-and-Persistence]] — references to a user by id; actor labels.
 - [[Docs/Guide/09-Errors-and-Validation]] — the 401 and 403 responses and the one answer for credential
   failures.
-- `10-Object-Storage-and-Uploads` — planned: the download redemption route.
-- `12-Configuration-and-Secrets` — planned: the signing key, the bootstrap credentials and the CORS
+- [[Docs/Guide/10-Object-Storage-and-Uploads]] — the download redemption route.
+- [[Docs/Guide/12-Configuration-and-Secrets]] — the signing key, the bootstrap credentials and the CORS
   origins as typed configuration.
-- `13-Testing-Strategy` — planned: the route × role matrix and the route-coverage test.
+- [[Docs/Guide/13-Testing-Strategy]] — the route × role matrix and the route-coverage test.
 - [[ADRs/ADR-006-identity-current-user-seam-and-removable-local-issuer|ADR-006]] — the identity seam.
 - [[ADRs/ADR-007-single-user-keyed-by-token-subject|ADR-007]] — the user model and the User Directory.
 - [[ADRs/ADR-005-deepened-crud-base-with-access-policy|ADR-005]] — the Access Policy.

@@ -99,12 +99,13 @@ the same in every environment.
 | `/problems/business-rule-violation` | 422 | A rule of the domain refuses a request that is valid in itself; also a reference to something that does not exist | `platform.errors` |
 | `/problems/idempotency-fingerprint-mismatch` | 422 | The idempotency key was used before with a different request | `platform.idempotency` |
 | `/problems/content-digest-mismatch` | 422 | The declared digest is not the digest of the bytes received | `platform.storage` |
+| `/problems/content-type-mismatch` | 422 | The bytes received are not of the declared content type | `platform.storage` |
 | `/problems/precondition-required` | 428 | A conditional write without its precondition | `platform.errors` |
 | `/problems/internal-error` | 500 | An unexpected failure; `detail` is generic | `platform.errors` |
 
 The rows declared by `platform.storage` and `platform.idempotency` are specified in
-`10-Object-Storage-and-Uploads` and `11-Idempotency`. A feature that needs a type of its own adds a row
-to its project's registry and declares a subtype; the statuses stay those of
+[[Docs/Guide/10-Object-Storage-and-Uploads]] and [[Docs/Guide/11-Idempotency]]. A feature that needs a
+type of its own adds a row to its project's registry and declares a subtype; the statuses stay those of
 [[Docs/Guide/05-API-Contract]] (G05-05).
 
 ### One handler, one writer
@@ -359,9 +360,9 @@ which line of a service ran first.
 - [[Docs/Guide/07-Domain-Model-and-Persistence]] — constraints in the schema.
 - [[Docs/Guide/08-Identity-Authentication-and-Authorization]] — the 401 cases and the one answer for
   credential failures.
-- `10-Object-Storage-and-Uploads` — planned: the ticket and digest types.
-- `11-Idempotency` — planned: the in-progress and fingerprint types.
-- `14-Observability-and-Operations` — planned: logging and the correlation id.
+- [[Docs/Guide/10-Object-Storage-and-Uploads]] — the ticket and digest types.
+- [[Docs/Guide/11-Idempotency]] — the in-progress and fingerprint types.
+- [[Docs/Guide/14-Observability-and-Operations]] — logging and the correlation id.
 - [[ADRs/ADR-009-unchecked-domain-exceptions-as-problem-details|ADR-009]] — the decision this document
   details.
 - [[ADRs/ADR-018-scoped-load-before-policy-check|ADR-018]] — the order of checks at a row entry point.
